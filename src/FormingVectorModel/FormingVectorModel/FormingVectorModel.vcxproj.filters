@@ -13,10 +13,42 @@
       <UniqueIdentifier>{67DA6AB6-F800-4c08-8B7A-83BB121AAD01}</UniqueIdentifier>
       <Extensions>rc;ico;cur;bmp;dlg;rc2;rct;bin;rgs;gif;jpg;jpeg;jpe;resx;tiff;tif;png;wav;mfcribbon-ms</Extensions>
     </Filter>
+    <Filter Include="Header Files\Core">
+      <UniqueIdentifier>{55dc9648-d6e9-4adc-a5b1-1c726a69b5da}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Source Files\Core">
+      <UniqueIdentifier>{b3fea803-cb51-4b54-b5c4-faf9f91ff371}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Header Files\Core\Objects">
+      <UniqueIdentifier>{e510ecf2-b57e-48de-8546-de2afc761a02}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Header Files\Core\Objects\Image">
+      <UniqueIdentifier>{cd47ca6e-1520-42dc-9b4c-37a50868a40f}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Header Files\Core\Objects\Geometric">
+      <UniqueIdentifier>{be433414-e8d9-4ff3-a472-a28a68f91990}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Source Files\Core\Objects">
+      <UniqueIdentifier>{471381f0-f102-4ff0-a5a4-4d6b270627f3}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Source Files\Core\Objects\Image">
+      <UniqueIdentifier>{0ec71065-d157-42f6-8220-143c2a0d19da}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Source Files\Core\Objects\Geometric">
+      <UniqueIdentifier>{f5a6b496-a7aa-4f36-8229-ca1619298bac}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="main.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
+    <ClCompile Include="Core\Objects\Image\Pixel.cpp">
+      <Filter>Source Files\Core\Objects\Image</Filter>
+    </ClCompile>
+  </ItemGroup>
+  <ItemGroup>
+    <ClInclude Include="Core\Objects\Image\Pixel.hpp">
+      <Filter>Header Files\Core\Objects\Image</Filter>
+    </ClInclude>
   </ItemGroup>
 </Project>
