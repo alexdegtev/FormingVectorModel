@@ -1,5 +1,5 @@
 #include "Pixel.hpp"
-#include "../../../Convert.hpp"
+#include "../../CommonFunctions/Convert.hpp"
 
 FVM::Core::Objects::Image::Pixel::Pixel() : Pixel(0, 0, 0)
 {

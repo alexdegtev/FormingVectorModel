@@ -51,7 +51,7 @@
     <ClCompile Include="Core\Objects\Image\Pixel.cpp">
       <Filter>Source Files\Core\Objects\Image</Filter>
     </ClCompile>
-    <ClCompile Include="Convert.cpp">
+    <ClCompile Include="Core\CommonFunctions\Convert.cpp">
       <Filter>Source Files\Core\CommonFunctions</Filter>
     </ClCompile>
   </ItemGroup>
@@ -59,7 +59,7 @@
     <ClInclude Include="Core\Objects\Image\Pixel.hpp">
       <Filter>Header Files\Core\Objects\Image</Filter>
     </ClInclude>
-    <ClInclude Include="Convert.hpp">
+    <ClInclude Include="Core\CommonFunctions\Convert.hpp">
       <Filter>Header Files\Core\CommonFunctions</Filter>
     </ClInclude>
   </ItemGroup>
