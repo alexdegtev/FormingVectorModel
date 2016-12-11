@@ -17,11 +17,6 @@ FVM::Core::Objects::Image::Pixel::Pixel(const Pixel& other) : red_(other.red_), 
 {
 }
 
-FVM::Core::Objects::Image::Pixel FVM::Core::Objects::Image::Pixel::operator=(const Pixel& other) const
-{
-	return Pixel(other.red_, other.green_, other.blue_);
-}
-
 unsigned char FVM::Core::Objects::Image::Pixel::red() const
 {
 	return red_;
@@ -60,4 +55,23 @@ unsigned char FVM::Core::Objects::Image::Pixel::brightness() const
 void FVM::Core::Objects::Image::Pixel::brightness(unsigned char value)
 {
 	red_ = green_ = blue_ = value;
+}
+
+FVM::Core::Objects::Image::Pixel FVM::Core::Objects::Image::Pixel::operator=(const Pixel& other)
+{
+	if (this != &other)
+	{
+		red_ = other.red_;
+		green_ = other.green_;
+		blue_ = other.blue_;
+	}
+	return *this;
+}
+
+std::ostream& FVM::Core::Objects::Image::operator<<(std::ostream& os, const Pixel& dt)
+{
+	os << "(" << static_cast<int>(dt.red_) << ", " 
+		<< static_cast<int>(dt.green_) << ", " 
+		<< static_cast<int>(dt.blue_) << ")";
+	return os;
 }

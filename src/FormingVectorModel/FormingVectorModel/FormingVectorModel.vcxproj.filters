@@ -75,6 +75,9 @@
     <ClCompile Include="Core\IO\Reader.cpp">
       <Filter>Source Files\Core\IO</Filter>
     </ClCompile>
+    <ClCompile Include="Core\IO\Writer.cpp">
+      <Filter>Source Files\Core\IO</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="Core\Objects\Image\Pixel.hpp">
@@ -99,6 +102,9 @@
       <Filter>Header Files\Core\Transformations</Filter>
     </ClInclude>
     <ClInclude Include="Core\IO\Reader.hpp">
+      <Filter>Header Files\Core\IO</Filter>
+    </ClInclude>
+    <ClInclude Include="Core\IO\Writer.hpp">
       <Filter>Header Files\Core\IO</Filter>
     </ClInclude>
   </ItemGroup>
