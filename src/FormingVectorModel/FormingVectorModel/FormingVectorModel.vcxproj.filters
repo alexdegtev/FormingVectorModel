@@ -49,6 +49,12 @@
     <Filter Include="Source Files\Core\Transformations">
       <UniqueIdentifier>{3d832a8c-3ce3-43c4-ac5d-e6c53c73e54a}</UniqueIdentifier>
     </Filter>
+    <Filter Include="Header Files\Core\IO">
+      <UniqueIdentifier>{c4dd5784-0f43-4b15-9727-770733da5f30}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Source Files\Core\IO">
+      <UniqueIdentifier>{7e40f774-18db-4a79-b616-657c075ed84e}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="main.cpp">
@@ -65,6 +71,9 @@
     </ClCompile>
     <ClCompile Include="Core\Transformations\YIQGrayscale.cpp">
       <Filter>Source Files\Core\Transformations</Filter>
+    </ClCompile>
+    <ClCompile Include="Core\IO\Reader.cpp">
+      <Filter>Source Files\Core\IO</Filter>
     </ClCompile>
   </ItemGroup>
   <ItemGroup>
@@ -88,6 +97,9 @@
     </ClInclude>
     <ClInclude Include="Core\Transformations\YIQGrayscale.hpp">
       <Filter>Header Files\Core\Transformations</Filter>
+    </ClInclude>
+    <ClInclude Include="Core\IO\Reader.hpp">
+      <Filter>Header Files\Core\IO</Filter>
     </ClInclude>
   </ItemGroup>
 </Project>
