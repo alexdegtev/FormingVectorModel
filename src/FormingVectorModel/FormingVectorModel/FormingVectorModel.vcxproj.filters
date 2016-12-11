@@ -37,6 +37,12 @@
     <Filter Include="Source Files\Core\Objects\Geometric">
       <UniqueIdentifier>{f5a6b496-a7aa-4f36-8229-ca1619298bac}</UniqueIdentifier>
     </Filter>
+    <Filter Include="Header Files\Core\CommonFunctions">
+      <UniqueIdentifier>{fbdfa5c7-9274-44c3-9bf5-09ac975cfa2a}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Source Files\Core\CommonFunctions">
+      <UniqueIdentifier>{1bd7db2b-1948-4449-900b-0956d778791b}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="main.cpp">
@@ -45,10 +51,16 @@
     <ClCompile Include="Core\Objects\Image\Pixel.cpp">
       <Filter>Source Files\Core\Objects\Image</Filter>
     </ClCompile>
+    <ClCompile Include="Convert.cpp">
+      <Filter>Source Files\Core\CommonFunctions</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="Core\Objects\Image\Pixel.hpp">
       <Filter>Header Files\Core\Objects\Image</Filter>
+    </ClInclude>
+    <ClInclude Include="Convert.hpp">
+      <Filter>Header Files\Core\CommonFunctions</Filter>
     </ClInclude>
   </ItemGroup>
 </Project>
