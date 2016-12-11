@@ -146,11 +146,14 @@
   </ItemDefinitionGroup>
   <ItemGroup>
     <ClCompile Include="Core\CommonFunctions\Convert.cpp" />
+    <ClCompile Include="Core\Objects\Image\DefaultImage.cpp" />
     <ClCompile Include="Core\Objects\Image\Pixel.cpp" />
     <ClCompile Include="main.cpp" />
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="Core\CommonFunctions\Convert.hpp" />
+    <ClInclude Include="Core\Objects\Image\DefaultImage.hpp" />
+    <ClInclude Include="Core\Objects\Image\IImage.hpp" />
     <ClInclude Include="Core\Objects\Image\Pixel.hpp" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
