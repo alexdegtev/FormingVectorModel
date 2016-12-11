@@ -43,6 +43,12 @@
     <Filter Include="Source Files\Core\CommonFunctions">
       <UniqueIdentifier>{1bd7db2b-1948-4449-900b-0956d778791b}</UniqueIdentifier>
     </Filter>
+    <Filter Include="Header Files\Core\Transformations">
+      <UniqueIdentifier>{4db43310-ec9e-4285-91bc-f281f308ff19}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Source Files\Core\Transformations">
+      <UniqueIdentifier>{3d832a8c-3ce3-43c4-ac5d-e6c53c73e54a}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="main.cpp">
@@ -57,6 +63,9 @@
     <ClCompile Include="Core\Objects\Image\DefaultImage.cpp">
       <Filter>Source Files\Core\Objects\Image</Filter>
     </ClCompile>
+    <ClCompile Include="Core\Transformations\YIQGrayscale.cpp">
+      <Filter>Source Files\Core\Transformations</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="Core\Objects\Image\Pixel.hpp">
@@ -70,6 +79,15 @@
     </ClInclude>
     <ClInclude Include="Core\Objects\Image\DefaultImage.hpp">
       <Filter>Header Files\Core\Objects\Image</Filter>
+    </ClInclude>
+    <ClInclude Include="Core\Transformations\ITransformation.hpp">
+      <Filter>Header Files\Core\Transformations</Filter>
+    </ClInclude>
+    <ClInclude Include="Core\Transformations\IGrayscale.hpp">
+      <Filter>Header Files\Core\Transformations</Filter>
+    </ClInclude>
+    <ClInclude Include="Core\Transformations\YIQGrayscale.hpp">
+      <Filter>Header Files\Core\Transformations</Filter>
     </ClInclude>
   </ItemGroup>
 </Project>
