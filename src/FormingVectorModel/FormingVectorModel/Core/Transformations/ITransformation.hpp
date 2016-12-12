@@ -1,7 +1,15 @@
 #ifndef FVM_CORE_TRANSFORMATIONS_ITRANSFORMATION_HPP
 #define FVM_CORE_TRANSFORMATIONS_ITRANSFORMATION_HPP
 
-#include "../Objects/Image/IImage.hpp"
+namespace FVM {
+	namespace Core {
+		namespace Objects {
+			namespace Image {
+				class IImage;
+			}
+		}
+	}
+}
 
 namespace FVM
 {

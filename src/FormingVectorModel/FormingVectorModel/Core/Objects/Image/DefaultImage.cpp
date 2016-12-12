@@ -36,3 +36,8 @@ int FVM::Core::Objects::Image::DefaultImage::cols()
 {
 	return cols_;
 }
+
+void FVM::Core::Objects::Image::DefaultImage::transform(Transformations::ITransformation* transformation)
+{
+	transformation->execute(this);
+}

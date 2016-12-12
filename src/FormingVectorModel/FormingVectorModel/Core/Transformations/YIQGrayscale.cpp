@@ -1,4 +1,6 @@
 #include "YIQGrayscale.hpp"
+#include "../Objects/Image/Pixel.hpp"
+#include "../Objects/Image/IImage.hpp"
 
 void FVM::Core::Transformations::YIQGrayscale::execute(Objects::Image::IImage* image)
 {

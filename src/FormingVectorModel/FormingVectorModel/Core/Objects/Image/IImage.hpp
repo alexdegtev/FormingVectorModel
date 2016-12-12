@@ -2,6 +2,7 @@
 #define FVM_CORE_OBJECTS_IMAGE_IIMAGE_HPP
 
 #include "Pixel.hpp"
+#include "../../Transformations/ITransformation.hpp"
 
 namespace FVM
 {
@@ -22,6 +23,8 @@ namespace FVM
 
 					virtual int rows() = 0;
 					virtual int cols() = 0;
+
+					virtual void transform(Transformations::ITransformation *transformation) = 0;
 				};
 			}
 		}

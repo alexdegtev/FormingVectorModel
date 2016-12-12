@@ -24,6 +24,8 @@ namespace FVM
 					int rows() override;
 					int cols() override;
 
+					void transform(Transformations::ITransformation* transformation) override;
+
 				private:
 					Pixel *data;
 					int rows_;
