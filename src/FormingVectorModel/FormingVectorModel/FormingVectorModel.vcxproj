@@ -150,6 +150,7 @@
     <ClCompile Include="Core\IO\Writer.cpp" />
     <ClCompile Include="Core\Objects\Image\DefaultImage.cpp" />
     <ClCompile Include="Core\Objects\Image\Pixel.cpp" />
+    <ClCompile Include="Core\Transformations\OtsuBinarization.cpp" />
     <ClCompile Include="Core\Transformations\YIQGrayscale.cpp" />
     <ClCompile Include="main.cpp" />
   </ItemGroup>
@@ -160,8 +161,10 @@
     <ClInclude Include="Core\Objects\Image\DefaultImage.hpp" />
     <ClInclude Include="Core\Objects\Image\IImage.hpp" />
     <ClInclude Include="Core\Objects\Image\Pixel.hpp" />
+    <ClInclude Include="Core\Transformations\IBinarization.hpp" />
     <ClInclude Include="Core\Transformations\IGrayscale.hpp" />
     <ClInclude Include="Core\Transformations\ITransformation.hpp" />
+    <ClInclude Include="Core\Transformations\OtsuBinarization.hpp" />
     <ClInclude Include="Core\Transformations\YIQGrayscale.hpp" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
