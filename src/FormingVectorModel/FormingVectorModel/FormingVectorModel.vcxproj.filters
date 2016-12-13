@@ -81,6 +81,12 @@
     <ClCompile Include="Core\Transformations\OtsuBinarization.cpp">
       <Filter>Source Files\Core\Transformations</Filter>
     </ClCompile>
+    <ClCompile Include="Core\Transformations\GuoHallSkeletization.cpp">
+      <Filter>Source Files\Core\Transformations</Filter>
+    </ClCompile>
+    <ClCompile Include="Core\Transformations\ZhangSuenSkeletization.cpp">
+      <Filter>Source Files\Core\Transformations</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="Core\Objects\Image\Pixel.hpp">
@@ -114,6 +120,15 @@
       <Filter>Header Files\Core\Transformations</Filter>
     </ClInclude>
     <ClInclude Include="Core\Transformations\OtsuBinarization.hpp">
+      <Filter>Header Files\Core\Transformations</Filter>
+    </ClInclude>
+    <ClInclude Include="Core\Transformations\GuoHallSkeletization.hpp">
+      <Filter>Header Files\Core\Transformations</Filter>
+    </ClInclude>
+    <ClInclude Include="Core\Transformations\ISkeletization.hpp">
+      <Filter>Header Files\Core\Transformations</Filter>
+    </ClInclude>
+    <ClInclude Include="Core\Transformations\ZhangSuenSkeletization.hpp">
       <Filter>Header Files\Core\Transformations</Filter>
     </ClInclude>
   </ItemGroup>
