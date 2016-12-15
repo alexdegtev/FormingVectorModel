@@ -87,6 +87,12 @@
     <ClCompile Include="Core\Transformations\ZhangSuenSkeletization.cpp">
       <Filter>Source Files\Core\Transformations</Filter>
     </ClCompile>
+    <ClCompile Include="Core\Objects\Geometric\Line.cpp">
+      <Filter>Source Files\Core\Objects\Geometric</Filter>
+    </ClCompile>
+    <ClCompile Include="Core\Objects\Geometric\Point.cpp">
+      <Filter>Source Files\Core\Objects\Geometric</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="Core\Objects\Image\Pixel.hpp">
@@ -130,6 +136,15 @@
     </ClInclude>
     <ClInclude Include="Core\Transformations\ZhangSuenSkeletization.hpp">
       <Filter>Header Files\Core\Transformations</Filter>
+    </ClInclude>
+    <ClInclude Include="Core\Objects\Geometric\IObject.hpp">
+      <Filter>Header Files\Core\Objects\Geometric</Filter>
+    </ClInclude>
+    <ClInclude Include="Core\Objects\Geometric\Line.hpp">
+      <Filter>Header Files\Core\Objects\Geometric</Filter>
+    </ClInclude>
+    <ClInclude Include="Core\Objects\Geometric\Point.hpp">
+      <Filter>Header Files\Core\Objects\Geometric</Filter>
     </ClInclude>
   </ItemGroup>
 </Project>

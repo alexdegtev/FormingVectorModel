@@ -148,6 +148,8 @@
     <ClCompile Include="Core\CommonFunctions\Convert.cpp" />
     <ClCompile Include="Core\IO\Reader.cpp" />
     <ClCompile Include="Core\IO\Writer.cpp" />
+    <ClCompile Include="Core\Objects\Geometric\Line.cpp" />
+    <ClCompile Include="Core\Objects\Geometric\Point.cpp" />
     <ClCompile Include="Core\Objects\Image\DefaultImage.cpp" />
     <ClCompile Include="Core\Objects\Image\Pixel.cpp" />
     <ClCompile Include="Core\Transformations\GuoHallSkeletization.cpp" />
@@ -160,6 +162,9 @@
     <ClInclude Include="Core\CommonFunctions\Convert.hpp" />
     <ClInclude Include="Core\IO\Reader.hpp" />
     <ClInclude Include="Core\IO\Writer.hpp" />
+    <ClInclude Include="Core\Objects\Geometric\IObject.hpp" />
+    <ClInclude Include="Core\Objects\Geometric\Line.hpp" />
+    <ClInclude Include="Core\Objects\Geometric\Point.hpp" />
     <ClInclude Include="Core\Objects\Image\DefaultImage.hpp" />
     <ClInclude Include="Core\Objects\Image\IImage.hpp" />
     <ClInclude Include="Core\Objects\Image\Pixel.hpp" />
