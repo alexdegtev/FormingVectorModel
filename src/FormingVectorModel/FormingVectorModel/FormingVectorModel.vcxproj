@@ -156,6 +156,7 @@
     <ClCompile Include="Core\Transformations\OtsuBinarization.cpp" />
     <ClCompile Include="Core\Transformations\YIQGrayscale.cpp" />
     <ClCompile Include="Core\Transformations\ZhangSuenSkeletization.cpp" />
+    <ClCompile Include="Core\Vectorization\DefaultVectorization.cpp" />
     <ClCompile Include="main.cpp" />
   </ItemGroup>
   <ItemGroup>
@@ -176,6 +177,8 @@
     <ClInclude Include="Core\Transformations\OtsuBinarization.hpp" />
     <ClInclude Include="Core\Transformations\YIQGrayscale.hpp" />
     <ClInclude Include="Core\Transformations\ZhangSuenSkeletization.hpp" />
+    <ClInclude Include="Core\Vectorization\DefaultVectorization.hpp" />
+    <ClInclude Include="Core\Vectorization\IVectorization.hpp" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">

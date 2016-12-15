@@ -55,6 +55,12 @@
     <Filter Include="Source Files\Core\IO">
       <UniqueIdentifier>{7e40f774-18db-4a79-b616-657c075ed84e}</UniqueIdentifier>
     </Filter>
+    <Filter Include="Header Files\Core\Vectorization">
+      <UniqueIdentifier>{45e2c3cd-154d-45cc-8dbe-6c87a0c61337}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Source Files\Core\Vectorization">
+      <UniqueIdentifier>{4a609fc2-8302-4cd9-a6a8-48fb49f0d722}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="main.cpp">
@@ -92,6 +98,9 @@
     </ClCompile>
     <ClCompile Include="Core\Objects\Geometric\Point.cpp">
       <Filter>Source Files\Core\Objects\Geometric</Filter>
+    </ClCompile>
+    <ClCompile Include="Core\Vectorization\DefaultVectorization.cpp">
+      <Filter>Source Files\Core\Vectorization</Filter>
     </ClCompile>
   </ItemGroup>
   <ItemGroup>
@@ -145,6 +154,12 @@
     </ClInclude>
     <ClInclude Include="Core\Objects\Geometric\Point.hpp">
       <Filter>Header Files\Core\Objects\Geometric</Filter>
+    </ClInclude>
+    <ClInclude Include="Core\Vectorization\DefaultVectorization.hpp">
+      <Filter>Header Files\Core\Vectorization</Filter>
+    </ClInclude>
+    <ClInclude Include="Core\Vectorization\IVectorization.hpp">
+      <Filter>Header Files\Core\Vectorization</Filter>
     </ClInclude>
   </ItemGroup>
 </Project>
