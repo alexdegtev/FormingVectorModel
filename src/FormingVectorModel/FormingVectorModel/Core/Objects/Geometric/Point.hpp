@@ -22,6 +22,7 @@ namespace FVM
 					int y() const;
 
 					Point operator= (const Point& other);
+					bool operator== (const Point& other);
 
 				private:
 					int x_;

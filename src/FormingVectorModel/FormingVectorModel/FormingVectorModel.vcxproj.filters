@@ -37,12 +37,6 @@
     <Filter Include="Source Files\Core\Objects\Geometric">
       <UniqueIdentifier>{f5a6b496-a7aa-4f36-8229-ca1619298bac}</UniqueIdentifier>
     </Filter>
-    <Filter Include="Header Files\Core\CommonFunctions">
-      <UniqueIdentifier>{fbdfa5c7-9274-44c3-9bf5-09ac975cfa2a}</UniqueIdentifier>
-    </Filter>
-    <Filter Include="Source Files\Core\CommonFunctions">
-      <UniqueIdentifier>{1bd7db2b-1948-4449-900b-0956d778791b}</UniqueIdentifier>
-    </Filter>
     <Filter Include="Header Files\Core\Transformations">
       <UniqueIdentifier>{4db43310-ec9e-4285-91bc-f281f308ff19}</UniqueIdentifier>
     </Filter>
@@ -61,6 +55,24 @@
     <Filter Include="Source Files\Core\Vectorization">
       <UniqueIdentifier>{4a609fc2-8302-4cd9-a6a8-48fb49f0d722}</UniqueIdentifier>
     </Filter>
+    <Filter Include="Header Files\Core\Common">
+      <UniqueIdentifier>{2ec2622d-a93c-48bb-8504-8e4e4041ff24}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Header Files\Core\Common\Functions">
+      <UniqueIdentifier>{33af471c-8057-4f51-a006-0594562e8a24}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Source Files\Core\Common">
+      <UniqueIdentifier>{50018909-8064-43d1-8f1b-04e10ca71b81}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Source Files\Core\Common\Functions">
+      <UniqueIdentifier>{2e863b87-af5c-4380-8898-4699f84329fc}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Header Files\Core\Common\Types">
+      <UniqueIdentifier>{295e8a9f-b2c5-4cff-bd8a-8451f5173ac6}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Source Files\Core\Common\Types">
+      <UniqueIdentifier>{c439bd39-476f-4d76-9d30-1a093206e4f9}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="main.cpp">
@@ -68,9 +80,6 @@
     </ClCompile>
     <ClCompile Include="Core\Objects\Image\Pixel.cpp">
       <Filter>Source Files\Core\Objects\Image</Filter>
-    </ClCompile>
-    <ClCompile Include="Core\CommonFunctions\Convert.cpp">
-      <Filter>Source Files\Core\CommonFunctions</Filter>
     </ClCompile>
     <ClCompile Include="Core\Objects\Image\DefaultImage.cpp">
       <Filter>Source Files\Core\Objects\Image</Filter>
@@ -102,13 +111,13 @@
     <ClCompile Include="Core\Vectorization\DefaultVectorization.cpp">
       <Filter>Source Files\Core\Vectorization</Filter>
     </ClCompile>
+    <ClCompile Include="Core\Common\Functions\Convert.cpp">
+      <Filter>Source Files\Core\Common\Functions</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="Core\Objects\Image\Pixel.hpp">
       <Filter>Header Files\Core\Objects\Image</Filter>
-    </ClInclude>
-    <ClInclude Include="Core\CommonFunctions\Convert.hpp">
-      <Filter>Header Files\Core\CommonFunctions</Filter>
     </ClInclude>
     <ClInclude Include="Core\Objects\Image\IImage.hpp">
       <Filter>Header Files\Core\Objects\Image</Filter>
@@ -160,6 +169,15 @@
     </ClInclude>
     <ClInclude Include="Core\Vectorization\IVectorization.hpp">
       <Filter>Header Files\Core\Vectorization</Filter>
+    </ClInclude>
+    <ClInclude Include="Core\Common\Functions\Convert.hpp">
+      <Filter>Header Files\Core\Common\Functions</Filter>
+    </ClInclude>
+    <ClInclude Include="Core\Common\Types\Array.hpp">
+      <Filter>Header Files\Core\Common\Types</Filter>
+    </ClInclude>
+    <ClInclude Include="Core\Common\Types\Matrix.hpp">
+      <Filter>Header Files\Core\Common\Types</Filter>
     </ClInclude>
   </ItemGroup>
 </Project>

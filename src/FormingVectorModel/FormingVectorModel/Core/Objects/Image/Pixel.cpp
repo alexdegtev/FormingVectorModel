@@ -1,5 +1,5 @@
 #include "Pixel.hpp"
-#include "../../CommonFunctions/Convert.hpp"
+#include "../../Common/Functions/Convert.hpp"
 
 FVM::Core::Objects::Image::Pixel::Pixel() : Pixel(0, 0, 0)
 {
@@ -49,7 +49,7 @@ void FVM::Core::Objects::Image::Pixel::blue(unsigned char value)
 
 unsigned char FVM::Core::Objects::Image::Pixel::brightness() const
 {
-	return CommonFunctions::Convert::rgb2brightness(red_, green_, blue_);
+	return Common::Functions::Convert::rgb2brightness(red_, green_, blue_);
 }
 
 void FVM::Core::Objects::Image::Pixel::brightness(unsigned char value)

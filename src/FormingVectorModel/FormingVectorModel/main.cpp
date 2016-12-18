@@ -6,6 +6,11 @@
 #include "Core/Transformations/OtsuBinarization.hpp"
 #include "Core/Transformations/GuoHallSkeletization.hpp"
 #include "Core/Transformations/ZhangSuenSkeletization.hpp"
+#include "Core/Common/Types/Array.hpp"
+#include <array>
+#include "Core/Common/Types/Matrix.hpp"
+#include "Core/Objects/Geometric/Line.hpp"
+#include "Core/Vectorization/DefaultVectorization.hpp"
 
 void test_open_and_writing_image()
 {
@@ -76,7 +81,75 @@ void test_zhang_suen_skeletization()
 	delete image;
 }
 
+void test_array_type_size()
+{
+	FVM::Core::Common::Types::Array<int, 10> a;
+	for (int i = 0; i < a.size(); i++)
+		std::cout << a[i] << " ";
+	std::cout << std::endl;
+
+	FVM::Core::Common::Types::Array<int, 10> b;
+	for (int i = 0; i < b.size(); i++)
+		b[i] = i;
+	for (int i = 0; i < b.size(); i++)
+		std::cout << b[i] << " ";
+	std::cout << std::endl;
+
+	a = b;
+	for (int i = 0; i < a.size(); i++)
+		std::cout << a[i] << " ";
+	std::cout << std::endl;
+
+	a[5] = 0;
+	for (int i = 0; i < a.size(); i++)
+		std::cout << a[i] << " ";
+	std::cout << std::endl;
+	for (int i = 0; i < b.size(); i++)
+		std::cout << b[i] << " ";
+	std::cout << std::endl;
+}
+
+void test_array_type()
+{
+	FVM::Core::Common::Types::Array<int> a(10);
+	for (int i = 0; i < a.size(); i++)
+		std::cout << a[i] << " ";
+	std::cout << std::endl;
+
+	FVM::Core::Common::Types::Array<int> b(11);
+	for (int i = 0; i < b.size(); i++)
+		b[i] = i;
+	for (int i = 0; i < b.size(); i++)
+		std::cout << b[i] << " ";
+	std::cout << std::endl;
+
+	a = b;
+	for (int i = 0; i < a.size(); i++)
+		std::cout << a[i] << " ";
+	std::cout << std::endl;
+
+	a[5] = 0;
+	for (int i = 0; i < a.size(); i++)
+		std::cout << a[i] << " ";
+	std::cout << std::endl;
+	for (int i = 0; i < b.size(); i++)
+		std::cout << b[i] << " ";
+	std::cout << std::endl;
+}
+
+
 int main()
 {
+	FVM::Core::Objects::Image::IImage *image = FVM::Core::IO::Reader<FVM::Core::Objects::Image::DefaultImage>::read("d:\\C\\diplom_mag\\FormingVectorModel\\data\\13.png");
+
+	FVM::Core::Vectorization::DefaultVectorization dv;
+	std::vector<FVM::Core::Objects::Geometric::IObject*> lines = dv.vectorizate(image);
+
+	for (int i = 0; i < lines.size(); i++)
+	{
+		Line *l = static_cast<Line*>(lines[i]);
+		std::cout << l->p1().x() << " " << l->p1().y() << std::endl << l->p2().x() << " " << l->p2().y() << std::endl << std::endl;
+	}
+
 	return 0;
 }

@@ -16,6 +16,8 @@ namespace FVM
 				public:
 					DefaultImage();
 					DefaultImage(int rows, int cols);
+					DefaultImage(const DefaultImage& other);
+					DefaultImage(const DefaultImage* other);
 					~DefaultImage();
 
 					Pixel *pixel(int row, int col) override;
@@ -25,6 +27,7 @@ namespace FVM
 					int cols() override;
 
 					void transform(Transformations::ITransformation* transformation) override;
+					IImage *copy() override;
 
 				private:
 					Pixel *data;

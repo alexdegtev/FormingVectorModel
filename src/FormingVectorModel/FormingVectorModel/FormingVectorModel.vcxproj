@@ -145,7 +145,7 @@
     </Link>
   </ItemDefinitionGroup>
   <ItemGroup>
-    <ClCompile Include="Core\CommonFunctions\Convert.cpp" />
+    <ClCompile Include="Core\Common\Functions\Convert.cpp" />
     <ClCompile Include="Core\IO\Reader.cpp" />
     <ClCompile Include="Core\IO\Writer.cpp" />
     <ClCompile Include="Core\Objects\Geometric\Line.cpp" />
@@ -160,7 +160,9 @@
     <ClCompile Include="main.cpp" />
   </ItemGroup>
   <ItemGroup>
-    <ClInclude Include="Core\CommonFunctions\Convert.hpp" />
+    <ClInclude Include="Core\Common\Functions\Convert.hpp" />
+    <ClInclude Include="Core\Common\Types\Array.hpp" />
+    <ClInclude Include="Core\Common\Types\Matrix.hpp" />
     <ClInclude Include="Core\IO\Reader.hpp" />
     <ClInclude Include="Core\IO\Writer.hpp" />
     <ClInclude Include="Core\Objects\Geometric\IObject.hpp" />

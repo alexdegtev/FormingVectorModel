@@ -1,16 +1,16 @@
 #include "GuoHallSkeletization.hpp"
 #include "../Objects/Image/IImage.hpp"
 #include <opencv2/core.hpp>
-#include "../CommonFunctions/Convert.hpp"
+#include "../Common/Functions/Convert.hpp"
 
 void FVM::Core::Transformations::GuoHallSkeletization::execute(Objects::Image::IImage* image)
 {
 	cv::Mat skeleton(image->rows(), image->cols(), CV_8UC1);
-	CommonFunctions::Convert::iimage2mat(image, &skeleton);
+	Common::Functions::Convert::iimage2mat(image, &skeleton);
 	
 	thinning(skeleton);
 	
-	CommonFunctions::Convert::mat2iimage(&skeleton, image);
+	Common::Functions::Convert::mat2iimage(&skeleton, image);
 }
 
 void FVM::Core::Transformations::GuoHallSkeletization::thinning(cv::Mat& im)

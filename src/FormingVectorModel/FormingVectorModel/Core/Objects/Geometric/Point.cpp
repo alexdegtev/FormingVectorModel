@@ -31,3 +31,8 @@ FVM::Core::Objects::Geometric::Point FVM::Core::Objects::Geometric::Point::opera
 	}
 	return *this;
 }
+
+bool FVM::Core::Objects::Geometric::Point::operator==(const Point& other)
+{
+	return x_ == other.x_ && y_ == other.y_;
+}

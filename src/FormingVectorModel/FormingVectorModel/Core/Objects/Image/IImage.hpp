@@ -25,6 +25,7 @@ namespace FVM
 					virtual int cols() = 0;
 
 					virtual void transform(Transformations::ITransformation *transformation) = 0;
+					virtual IImage *copy() = 0;
 				};
 			}
 		}

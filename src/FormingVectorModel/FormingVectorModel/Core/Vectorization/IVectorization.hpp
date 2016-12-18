@@ -16,7 +16,7 @@ namespace FVM
 			public:
 				virtual ~IVectorization() {}
 
-				virtual std::vector<Objects::Geometric::IObject> vectorizate(Objects::Image::IImage *image) = 0;
+				virtual std::vector<Objects::Geometric::IObject*> vectorizate(Objects::Image::IImage *image) = 0;
 			};
 		}
 	}
