@@ -11,6 +11,7 @@
 #include "Core/Common/Types/Matrix.hpp"
 #include "Core/Objects/Geometric/Line.hpp"
 #include "Core/Vectorization/DefaultVectorization.hpp"
+#include "Core/Vectorization/DefaultVectorization1.hpp"
 
 void test_open_and_writing_image()
 {
@@ -57,13 +58,13 @@ void test_binarization_image()
 
 void test_guo_hall_skeletization()
 {
-	FVM::Core::Objects::Image::IImage *image = FVM::Core::IO::Reader<FVM::Core::Objects::Image::DefaultImage>::read("d:\\C\\diplom_mag\\FormingVectorModel\\data\\5.jpg");
+	FVM::Core::Objects::Image::IImage *image = FVM::Core::IO::Reader<FVM::Core::Objects::Image::DefaultImage>::read("d:\\C\\diplom_mag\\FormingVectorModel\\data\\2.jpg");
 
 	image->transform(new FVM::Core::Transformations::YIQGrayscale);
 	image->transform(new FVM::Core::Transformations::OtsuBinarization);
 	image->transform(new FVM::Core::Transformations::GuoHallSkeletization);
 
-	FVM::Core::IO::Writer::write("d:\\C\\diplom_mag\\FormingVectorModel\\data\\5_s.jpg", image);
+	FVM::Core::IO::Writer::write("d:\\C\\diplom_mag\\FormingVectorModel\\data\\2_s.jpg", image);
 
 	delete image;
 }
@@ -81,59 +82,31 @@ void test_zhang_suen_skeletization()
 	delete image;
 }
 
-void test_array_type_size()
-{
-	FVM::Core::Common::Types::Array<int, 10> a;
-	for (int i = 0; i < a.size(); i++)
-		std::cout << a[i] << " ";
-	std::cout << std::endl;
-
-	FVM::Core::Common::Types::Array<int, 10> b;
-	for (int i = 0; i < b.size(); i++)
-		b[i] = i;
-	for (int i = 0; i < b.size(); i++)
-		std::cout << b[i] << " ";
-	std::cout << std::endl;
-
-	a = b;
-	for (int i = 0; i < a.size(); i++)
-		std::cout << a[i] << " ";
-	std::cout << std::endl;
-
-	a[5] = 0;
-	for (int i = 0; i < a.size(); i++)
-		std::cout << a[i] << " ";
-	std::cout << std::endl;
-	for (int i = 0; i < b.size(); i++)
-		std::cout << b[i] << " ";
-	std::cout << std::endl;
-}
-
 void test_array_type()
 {
 	FVM::Core::Common::Types::Array<int> a(10);
 	for (int i = 0; i < a.size(); i++)
-		std::cout << a[i] << " ";
+		std::cout << a(i) << " ";
 	std::cout << std::endl;
 
 	FVM::Core::Common::Types::Array<int> b(11);
 	for (int i = 0; i < b.size(); i++)
-		b[i] = i;
+		b(i) = i;
 	for (int i = 0; i < b.size(); i++)
-		std::cout << b[i] << " ";
+		std::cout << b(i) << " ";
 	std::cout << std::endl;
 
 	a = b;
 	for (int i = 0; i < a.size(); i++)
-		std::cout << a[i] << " ";
+		std::cout << a(i) << " ";
 	std::cout << std::endl;
 
-	a[5] = 0;
+	a(5) = 0;
 	for (int i = 0; i < a.size(); i++)
-		std::cout << a[i] << " ";
+		std::cout << a(i) << " ";
 	std::cout << std::endl;
 	for (int i = 0; i < b.size(); i++)
-		std::cout << b[i] << " ";
+		std::cout << b(i) << " ";
 	std::cout << std::endl;
 }
 
@@ -142,7 +115,7 @@ int main()
 {
 	FVM::Core::Objects::Image::IImage *image = FVM::Core::IO::Reader<FVM::Core::Objects::Image::DefaultImage>::read("d:\\C\\diplom_mag\\FormingVectorModel\\data\\13.png");
 
-	FVM::Core::Vectorization::DefaultVectorization dv;
+	FVM::Core::Vectorization::DefaultVectorization1 dv;
 	std::vector<FVM::Core::Objects::Geometric::IObject*> lines = dv.vectorizate(image);
 
 	for (int i = 0; i < lines.size(); i++)

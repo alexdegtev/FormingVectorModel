@@ -11,17 +11,10 @@ namespace FVM
 		{
 			namespace Types
 			{
-				template <class _T, size_t...> class Matrix;
-
-				template <class _T, size_t _rows, size_t _cols>
-				class Matrix<_T, _rows, _cols>
-				{
-				private:
-					Array<_T>* data;
-				};
+				template <class _T> class Matrix;
 
 				template <class _T>
-				class Matrix<_T>
+				class Matrix
 				{
 				public:
 					Matrix() : Matrix(0, 0) { }
@@ -34,6 +27,11 @@ namespace FVM
 					Matrix(const Matrix& other) : _rows(other._rows), _cols(other._cols)
 					{
 						_data = new Array<_T>(other._data);
+					}
+
+					~Matrix()
+					{
+						delete _data;
 					}
 
 					int rows() const
@@ -60,9 +58,9 @@ namespace FVM
 						return *this;
 					}
 
-					_T& operator[](int index)
+					_T& operator()(size_t row, size_t col)
 					{
-						return _data[index];
+						return (*_data)(row * _cols + col);
 					}
 
 				private:
