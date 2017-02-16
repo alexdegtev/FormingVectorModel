@@ -1,0 +1,203 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<package xmlns:dm0="http://schemas.microsoft.com/VisualStudio/2008/DslTools/Core" xmlns:dm1="http://schemas.microsoft.com/dsltools/Kernel" xmlns:dm2="http://schemas.microsoft.com/dsltools/Component" xmlns:dm3="http://schemas.microsoft.com/dsltools/Activity" xmlns:dm4="http://schemas.microsoft.com/dsltools/UseCase" xmlns:dm5="http://schemas.microsoft.com/dsltools/Interaction" xmlns:dm6="http://schemas.microsoft.com/dsltools/UmlModelLibrary" xmlns:dm7="http://schemas.microsoft.com/dsltools/UmlDiagrams" xmlns:dm8="http://schemas.microsoft.com/dsltools/LogicalClassDesigner"
+  dslVersion="1.0.0.0"
+  Id="41fd5d9a-4756-486a-b9fa-68579e809a3d"
+  name="Common" xmlns="http://schemas.microsoft.com/dsltools/ModelStore">
+  <packagedElements>
+    <packageHasNamedElement>
+      <class
+        Id="0de9b095-e46e-4b97-9049-d691c731c9f0"
+        name="CommonFunctions"
+        isAbstract="false"
+        isLeaf="false"
+        isActiveClass="false">
+        <ownedOperationsInternal>
+          <operation
+            Id="bda6eafd-20eb-48af-b3c5-c1e41cb346ee"
+            name="rgb_to_brightness"
+            isLeaf="false"
+            isStatic="false"
+            isAbstract="false"
+            concurrency="Sequential"
+            isQuery="false">
+            <ownedParameters>
+              <operationHasOwnedParameters>
+                <parameter
+                  Id="3214fc10-ef81-40b1-86cd-405c392a1cfd"
+                  name="red"
+                  direction="In"
+                  isUnique="false">
+                  <type_NamedElement>
+                    <undefinedTypeMoniker
+                      Id="53ea7c69-19fa-4f51-a74b-d9d18db27bce"
+                      LastKnownName="unsigned char"
+                      LastKnownLocation="Package_2034.uml" />
+                  </type_NamedElement>
+                </parameter>
+              </operationHasOwnedParameters>
+              <operationHasOwnedParameters>
+                <parameter
+                  Id="00d96476-1587-4d68-a1f6-ad9248f49b7b"
+                  name="green"
+                  direction="In"
+                  isUnique="false">
+                  <type_NamedElement>
+                    <undefinedTypeMoniker
+                      Id="53ea7c69-19fa-4f51-a74b-d9d18db27bce"
+                      LastKnownName="unsigned char"
+                      LastKnownLocation="Package_2034.uml" />
+                  </type_NamedElement>
+                </parameter>
+              </operationHasOwnedParameters>
+              <operationHasOwnedParameters>
+                <parameter
+                  Id="d3d497b0-a9df-4553-8483-0bcfbff74a99"
+                  name="blue"
+                  direction="In"
+                  isUnique="false">
+                  <type_NamedElement>
+                    <undefinedTypeMoniker
+                      Id="53ea7c69-19fa-4f51-a74b-d9d18db27bce"
+                      LastKnownName="unsigned char"
+                      LastKnownLocation="Package_2034.uml" />
+                  </type_NamedElement>
+                </parameter>
+              </operationHasOwnedParameters>
+              <operationHasOwnedParameters>
+                <parameter
+                  Id="19ae1d6e-c0c9-4a41-8379-ab887babf0ac"
+                  direction="Return"
+                  isUnique="false">
+                  <type_NamedElement>
+                    <undefinedTypeMoniker
+                      Id="53ea7c69-19fa-4f51-a74b-d9d18db27bce"
+                      LastKnownName="unsigned char"
+                      LastKnownLocation="Package_2034.uml" />
+                  </type_NamedElement>
+                </parameter>
+              </operationHasOwnedParameters>
+            </ownedParameters>
+          </operation>
+          <operation
+            Id="2f1250cd-9b0f-40a6-9aed-f1dd8cbd021b"
+            name="is_aligned"
+            isLeaf="false"
+            isStatic="false"
+            isAbstract="false"
+            concurrency="Sequential"
+            isQuery="false">
+            <ownedParameters>
+              <operationHasOwnedParameters>
+                <parameter
+                  Id="33802c6b-d1de-4e4d-a035-35108e454dca"
+                  name="a"
+                  direction="In"
+                  isUnique="false">
+                  <type_NamedElement>
+                    <undefinedTypeMoniker
+                      Id="d01894f1-0ae5-48cb-9e23-5eddf6e670b4"
+                      LastKnownName="IPoint"
+                      LastKnownLocation="Package_2107.uml" />
+                  </type_NamedElement>
+                </parameter>
+              </operationHasOwnedParameters>
+              <operationHasOwnedParameters>
+                <parameter
+                  Id="fdf61999-903a-42c9-923a-ac4776ed2c63"
+                  name="b"
+                  direction="In"
+                  isUnique="false">
+                  <type_NamedElement>
+                    <undefinedTypeMoniker
+                      Id="d01894f1-0ae5-48cb-9e23-5eddf6e670b4"
+                      LastKnownName="IPoint"
+                      LastKnownLocation="Package_2107.uml" />
+                  </type_NamedElement>
+                </parameter>
+              </operationHasOwnedParameters>
+              <operationHasOwnedParameters>
+                <parameter
+                  Id="1a969109-4009-4362-8540-d0b45ab7f112"
+                  name="c"
+                  direction="In"
+                  isUnique="false">
+                  <type_NamedElement>
+                    <undefinedTypeMoniker
+                      Id="d01894f1-0ae5-48cb-9e23-5eddf6e670b4"
+                      LastKnownName="IPoint"
+                      LastKnownLocation="Package_2107.uml" />
+                  </type_NamedElement>
+                </parameter>
+              </operationHasOwnedParameters>
+              <operationHasOwnedParameters>
+                <parameter
+                  Id="64e24507-4552-4736-836e-5b949a3f1c14"
+                  direction="Return"
+                  isUnique="false">
+                  <type_NamedElement>
+                    <undefinedTypeMoniker
+                      Id="34a75419-68fa-464c-98bd-9a43bd840457"
+                      LastKnownName="bool"
+                      LastKnownLocation="Package_2107.uml" />
+                  </type_NamedElement>
+                </parameter>
+              </operationHasOwnedParameters>
+            </ownedParameters>
+          </operation>
+          <operation
+            Id="7e9dea80-ef3c-42a7-9c8a-8d9fd390d4c3"
+            name="vertical_or_horizontal_neighbour"
+            isLeaf="false"
+            isStatic="false"
+            isAbstract="false"
+            concurrency="Sequential"
+            isQuery="false">
+            <ownedParameters>
+              <operationHasOwnedParameters>
+                <parameter
+                  Id="0a997d82-8b4c-4b13-89dc-73137e6d0630"
+                  name="central_point"
+                  direction="In"
+                  isUnique="false">
+                  <type_NamedElement>
+                    <undefinedTypeMoniker
+                      Id="d01894f1-0ae5-48cb-9e23-5eddf6e670b4"
+                      LastKnownName="IPoint"
+                      LastKnownLocation="Package_2107.uml" />
+                  </type_NamedElement>
+                </parameter>
+              </operationHasOwnedParameters>
+              <operationHasOwnedParameters>
+                <parameter
+                  Id="67cad94b-cce1-49f5-84f5-ec76bcd2d22d"
+                  name="neighbours"
+                  direction="In"
+                  isUnique="false">
+                  <type_NamedElement>
+                    <undefinedTypeMoniker
+                      Id="d8642e34-6791-4c38-82ba-9c74a387a6ed"
+                      LastKnownName="Array&lt;IPoint&gt;"
+                      LastKnownLocation="Package_2107.uml" />
+                  </type_NamedElement>
+                </parameter>
+              </operationHasOwnedParameters>
+              <operationHasOwnedParameters>
+                <parameter
+                  Id="a0dc7c50-57c9-4e64-881f-76b544279f40"
+                  direction="Return"
+                  isUnique="false">
+                  <type_NamedElement>
+                    <undefinedTypeMoniker
+                      Id="d01894f1-0ae5-48cb-9e23-5eddf6e670b4"
+                      LastKnownName="IPoint"
+                      LastKnownLocation="Package_2107.uml" />
+                  </type_NamedElement>
+                </parameter>
+              </operationHasOwnedParameters>
+            </ownedParameters>
+          </operation>
+        </ownedOperationsInternal>
+      </class>
+    </packageHasNamedElement>
+  </packagedElements>
+</package>
