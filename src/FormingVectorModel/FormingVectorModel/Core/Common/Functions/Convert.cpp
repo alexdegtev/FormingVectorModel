@@ -1,7 +1,7 @@
 #include "Convert.hpp"
 #include <cmath>
 
-unsigned char FVM::Core::Common::Functions::Convert::rgb2brightness(unsigned char red, unsigned char green, unsigned char blue)
+unsigned char FVM::Core::Common::Functions::Convert::RgbToBrightness(unsigned char red, unsigned char green, unsigned char blue)
 {
 	return static_cast<unsigned char>(round(
 		0.299 * static_cast<double>(red) +
@@ -10,7 +10,7 @@ unsigned char FVM::Core::Common::Functions::Convert::rgb2brightness(unsigned cha
 	));	// From YIQ model.
 }
 
-void FVM::Core::Common::Functions::Convert::iimage2mat(Objects::Image::IImage* image, cv::Mat* mat)
+void FVM::Core::Common::Functions::Convert::IImageToMat(Objects::Image::IImage* image, cv::Mat* mat)
 {
 	for (int i = 0; i < image->rows(); i++)
 	{
@@ -30,7 +30,7 @@ void FVM::Core::Common::Functions::Convert::iimage2mat(Objects::Image::IImage* i
 }
 
 
-void FVM::Core::Common::Functions::Convert::mat2iimage(cv::Mat *mat, Objects::Image::IImage *image)
+void FVM::Core::Common::Functions::Convert::MatToIImage(cv::Mat *mat, Objects::Image::IImage *image)
 {
 	for (int i = 0; i < image->rows(); i++)
 	{

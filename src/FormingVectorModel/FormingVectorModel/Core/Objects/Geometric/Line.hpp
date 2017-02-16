@@ -21,7 +21,7 @@ namespace FVM
 
 					Point p1() const;
 					Point p2() const;
-					double length() const;
+					double length();
 
 					Line operator= (const Line& other);
 

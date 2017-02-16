@@ -5,11 +5,11 @@
 void FVM::Core::Transformations::ZhangSuenSkeletization::execute(Objects::Image::IImage* image)
 {
 	cv::Mat skeleton(image->rows(), image->cols(), CV_8UC1);
-	Common::Functions::Convert::iimage2mat(image, &skeleton);
+	Common::Functions::Convert::IImageToMat(image, &skeleton);
 	
 	thinning(skeleton);
 	
-	Common::Functions::Convert::mat2iimage(&skeleton, image);
+	Common::Functions::Convert::MatToIImage(&skeleton, image);
 }
 
 void FVM::Core::Transformations::ZhangSuenSkeletization::thinning(cv::Mat& im)

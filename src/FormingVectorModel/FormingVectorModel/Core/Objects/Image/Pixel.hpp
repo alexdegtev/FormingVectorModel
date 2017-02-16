@@ -2,6 +2,7 @@
 #define FVM_CORE_OBJECTS_IMAGE_PIXEL_HPP
 
 #include <ostream>
+#include "IPixel.hpp"
 
 namespace FVM
 {
@@ -11,7 +12,7 @@ namespace FVM
 		{
 			namespace Image
 			{
-				class Pixel
+				class Pixel : public IPixel
 				{
 				public:
 					Pixel();
@@ -19,17 +20,17 @@ namespace FVM
 					Pixel(unsigned char red, unsigned char green, unsigned char blue);
 					Pixel(const Pixel& other);
 
-					unsigned char red() const;
-					void red(unsigned char value);
+					unsigned char red() override;
+					void red(unsigned char value) override;
 
-					unsigned char green() const;
-					void green(unsigned char value);
+					unsigned char green() override;
+					void green(unsigned char value) override;
 
-					unsigned char blue() const;
-					void blue(unsigned char value);
+					unsigned char blue() override;
+					void blue(unsigned char value) override;
 
-					unsigned char brightness() const;
-					void brightness(unsigned char value);
+					unsigned char brightness() override;
+					void brightness(unsigned char value) override;
 
 					Pixel operator= (const Pixel& other);
 					friend std::ostream& operator<< (std::ostream& os, const Pixel& dt);

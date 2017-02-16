@@ -46,7 +46,6 @@ namespace FVM
 				DefaultVectorization();
 
 				std::vector<Objects::Geometric::IObject*> vectorizate(IImage* image) override;
-
 			private:
 				IImage *_image;
 				VizitMatrix *_vizit_matrix;

@@ -22,6 +22,7 @@
     <ProjectGuid>{60B69CB7-F0FA-4BFD-99C5-48EE9D0D19A4}</ProjectGuid>
     <RootNamespace>FormingVectorModel</RootNamespace>
     <WindowsTargetPlatformVersion>8.1</WindowsTargetPlatformVersion>
+    <ProjectName>FormingVectorModel</ProjectName>
   </PropertyGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.Default.props" />
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'" Label="Configuration">
@@ -104,11 +105,15 @@
       <SDLCheck>true</SDLCheck>
       <AdditionalIncludeDirectories>
       </AdditionalIncludeDirectories>
+      <BrowseInformation>true</BrowseInformation>
     </ClCompile>
     <Link>
       <SubSystem>Console</SubSystem>
       <AdditionalDependencies>opencv_world310d.lib;%(AdditionalDependencies)</AdditionalDependencies>
     </Link>
+    <Bscmake>
+      <PreserveSbr>true</PreserveSbr>
+    </Bscmake>
   </ItemDefinitionGroup>
   <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">
     <ClCompile>
@@ -148,6 +153,7 @@
     <ClCompile Include="Core\Common\Functions\Convert.cpp" />
     <ClCompile Include="Core\IO\Reader.cpp" />
     <ClCompile Include="Core\IO\Writer.cpp" />
+    <ClCompile Include="Core\Objects\Geometric\IntersectionPoint.cpp" />
     <ClCompile Include="Core\Objects\Geometric\Line.cpp" />
     <ClCompile Include="Core\Objects\Geometric\Point.cpp" />
     <ClCompile Include="Core\Objects\Image\DefaultImage.cpp" />
@@ -157,6 +163,9 @@
     <ClCompile Include="Core\Transformations\YIQGrayscale.cpp" />
     <ClCompile Include="Core\Transformations\ZhangSuenSkeletization.cpp" />
     <ClCompile Include="Core\Vectorization\DefaultVectorization.cpp" />
+    <ClCompile Include="Core\Vectorization\DefaultVectorization1.cpp" />
+    <ClCompile Include="Core\Vectorization\DefaultVectorization2.cpp" />
+    <ClCompile Include="Core\Vectorization\DefaultVectorization3.cpp" />
     <ClCompile Include="main.cpp" />
   </ItemGroup>
   <ItemGroup>
@@ -165,12 +174,16 @@
     <ClInclude Include="Core\Common\Types\Matrix.hpp" />
     <ClInclude Include="Core\IO\Reader.hpp" />
     <ClInclude Include="Core\IO\Writer.hpp" />
+    <ClInclude Include="Core\Objects\Geometric\IntersectionPoint.hpp" />
     <ClInclude Include="Core\Objects\Geometric\IObject.hpp" />
+    <ClInclude Include="Core\Objects\Geometric\IPoint.hpp" />
     <ClInclude Include="Core\Objects\Geometric\Line.hpp" />
     <ClInclude Include="Core\Objects\Geometric\Point.hpp" />
     <ClInclude Include="Core\Objects\Image\DefaultImage.hpp" />
     <ClInclude Include="Core\Objects\Image\IImage.hpp" />
+    <ClInclude Include="Core\Objects\Image\IPixel.hpp" />
     <ClInclude Include="Core\Objects\Image\Pixel.hpp" />
+    <ClInclude Include="Core\Objects\Image\TImage.hpp" />
     <ClInclude Include="Core\Transformations\GuoHallSkeletization.hpp" />
     <ClInclude Include="Core\Transformations\IBinarization.hpp" />
     <ClInclude Include="Core\Transformations\IGrayscale.hpp" />
@@ -180,6 +193,9 @@
     <ClInclude Include="Core\Transformations\YIQGrayscale.hpp" />
     <ClInclude Include="Core\Transformations\ZhangSuenSkeletization.hpp" />
     <ClInclude Include="Core\Vectorization\DefaultVectorization.hpp" />
+    <ClInclude Include="Core\Vectorization\DefaultVectorization1.hpp" />
+    <ClInclude Include="Core\Vectorization\DefaultVectorization2.hpp" />
+    <ClInclude Include="Core\Vectorization\DefaultVectorization3.hpp" />
     <ClInclude Include="Core\Vectorization\IVectorization.hpp" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />

@@ -14,10 +14,10 @@ namespace FVM
 				class Convert
 				{
 				public:
-					static unsigned char rgb2brightness(unsigned char red, unsigned char green, unsigned char blue);
+					static unsigned char RgbToBrightness(unsigned char red, unsigned char green, unsigned char blue);
 
-					static void iimage2mat(Objects::Image::IImage *image, cv::Mat *mat);
-					static void mat2iimage(cv::Mat *mat, Objects::Image::IImage *image);
+					static void IImageToMat(Objects::Image::IImage *image, cv::Mat *mat);
+					static void MatToIImage(cv::Mat *mat, Objects::Image::IImage *image);
 				};
 			}
 		}

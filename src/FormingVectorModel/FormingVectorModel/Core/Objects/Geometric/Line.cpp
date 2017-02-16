@@ -23,7 +23,7 @@ FVM::Core::Objects::Geometric::Point FVM::Core::Objects::Geometric::Line::p2() c
 	return p2_;
 }
 
-double FVM::Core::Objects::Geometric::Line::length() const
+double FVM::Core::Objects::Geometric::Line::length()
 {
 	return sqrt(pow(p2_.x() - p1_.x(), 2) + pow(p2_.y() - p1_.y(), 2));
 }

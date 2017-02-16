@@ -1,6 +1,8 @@
 #include <iostream>
 #include "../FormingVectorModel/Core/Common/Types/Array.hpp"
 #include "../FormingVectorModel/Core/Common/Types/Matrix.hpp"
+#include <vector>
+#include <algorithm>
 using namespace std;
 using namespace FVM::Core::Common::Types;
 
@@ -58,5 +60,16 @@ void matrix_test()
 
 int main()
 {
+	vector<int> a = { 1, 2, 3 };
+	for(int i=0;i<a.size();i++)
+	{
+		if(a[i] == 2)
+		{
+			a.erase(a.begin() + i);
+			break;
+		}
+	}
+
+
 	return 0;
 }

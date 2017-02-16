@@ -17,7 +17,7 @@ FVM::Core::Objects::Image::Pixel::Pixel(const Pixel& other) : red_(other.red_), 
 {
 }
 
-unsigned char FVM::Core::Objects::Image::Pixel::red() const
+unsigned char FVM::Core::Objects::Image::Pixel::red()
 {
 	return red_;
 }
@@ -27,7 +27,7 @@ void FVM::Core::Objects::Image::Pixel::red(unsigned char value)
 	red_ = value;
 }
 
-unsigned char FVM::Core::Objects::Image::Pixel::green() const
+unsigned char FVM::Core::Objects::Image::Pixel::green()
 {
 	return green_;
 }
@@ -37,7 +37,7 @@ void FVM::Core::Objects::Image::Pixel::green(unsigned char value)
 	red_ = value;
 }
 
-unsigned char FVM::Core::Objects::Image::Pixel::blue() const
+unsigned char FVM::Core::Objects::Image::Pixel::blue()
 {
 	return blue_;
 }
@@ -47,9 +47,9 @@ void FVM::Core::Objects::Image::Pixel::blue(unsigned char value)
 	blue_ = value;
 }
 
-unsigned char FVM::Core::Objects::Image::Pixel::brightness() const
+unsigned char FVM::Core::Objects::Image::Pixel::brightness()
 {
-	return Common::Functions::Convert::rgb2brightness(red_, green_, blue_);
+	return Common::Functions::Convert::RgbToBrightness(red_, green_, blue_);
 }
 
 void FVM::Core::Objects::Image::Pixel::brightness(unsigned char value)

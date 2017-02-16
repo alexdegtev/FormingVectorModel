@@ -12,12 +12,12 @@ FVM::Core::Objects::Geometric::Point::Point(const Point& other) : x_(other.x_), 
 {
 }
 
-int FVM::Core::Objects::Geometric::Point::x() const
+int FVM::Core::Objects::Geometric::Point::x()
 {
 	return x_;
 }
 
-int FVM::Core::Objects::Geometric::Point::y() const
+int FVM::Core::Objects::Geometric::Point::y()
 {
 	return y_;
 }
@@ -35,4 +35,9 @@ FVM::Core::Objects::Geometric::Point FVM::Core::Objects::Geometric::Point::opera
 bool FVM::Core::Objects::Geometric::Point::operator==(const Point& other)
 {
 	return x_ == other.x_ && y_ == other.y_;
+}
+
+bool FVM::Core::Objects::Geometric::Point::operator!=(const Point& other)
+{
+	return !(*this == other);
 }

@@ -76,6 +76,10 @@ std::vector<IObject*> FVM::Core::Vectorization::DefaultVectorization::vectorizat
 			}
 			break;
 
+		case 3:
+
+			break;
+
 		default:
 			break;
 		}
@@ -86,6 +90,7 @@ std::vector<IObject*> FVM::Core::Vectorization::DefaultVectorization::vectorizat
 	delete _image;
 	return lines;
 }
+
 
 std::vector<Point*> FVM::Core::Vectorization::DefaultVectorization::find_neighbours(int row, int col)
 {

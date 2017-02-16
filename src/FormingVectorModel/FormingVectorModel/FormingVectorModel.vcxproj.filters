@@ -114,6 +114,18 @@
     <ClCompile Include="Core\Common\Functions\Convert.cpp">
       <Filter>Source Files\Core\Common\Functions</Filter>
     </ClCompile>
+    <ClCompile Include="Core\Objects\Geometric\IntersectionPoint.cpp">
+      <Filter>Source Files\Core\Objects\Geometric</Filter>
+    </ClCompile>
+    <ClCompile Include="Core\Vectorization\DefaultVectorization1.cpp">
+      <Filter>Source Files\Core\Vectorization</Filter>
+    </ClCompile>
+    <ClCompile Include="Core\Vectorization\DefaultVectorization2.cpp">
+      <Filter>Source Files\Core\Vectorization</Filter>
+    </ClCompile>
+    <ClCompile Include="Core\Vectorization\DefaultVectorization3.cpp">
+      <Filter>Source Files\Core\Vectorization</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="Core\Objects\Image\Pixel.hpp">
@@ -170,14 +182,35 @@
     <ClInclude Include="Core\Vectorization\IVectorization.hpp">
       <Filter>Header Files\Core\Vectorization</Filter>
     </ClInclude>
-    <ClInclude Include="Core\Common\Functions\Convert.hpp">
-      <Filter>Header Files\Core\Common\Functions</Filter>
-    </ClInclude>
     <ClInclude Include="Core\Common\Types\Array.hpp">
       <Filter>Header Files\Core\Common\Types</Filter>
     </ClInclude>
     <ClInclude Include="Core\Common\Types\Matrix.hpp">
       <Filter>Header Files\Core\Common\Types</Filter>
+    </ClInclude>
+    <ClInclude Include="Core\Objects\Geometric\IntersectionPoint.hpp">
+      <Filter>Header Files\Core\Objects\Geometric</Filter>
+    </ClInclude>
+    <ClInclude Include="Core\Vectorization\DefaultVectorization1.hpp">
+      <Filter>Header Files\Core\Vectorization</Filter>
+    </ClInclude>
+    <ClInclude Include="Core\Vectorization\DefaultVectorization2.hpp">
+      <Filter>Header Files\Core\Vectorization</Filter>
+    </ClInclude>
+    <ClInclude Include="Core\Objects\Image\TImage.hpp">
+      <Filter>Header Files\Core\Objects\Image</Filter>
+    </ClInclude>
+    <ClInclude Include="Core\Objects\Geometric\IPoint.hpp">
+      <Filter>Header Files\Core\Objects\Geometric</Filter>
+    </ClInclude>
+    <ClInclude Include="Core\Objects\Image\IPixel.hpp">
+      <Filter>Header Files\Core\Objects\Image</Filter>
+    </ClInclude>
+    <ClInclude Include="Core\Vectorization\DefaultVectorization3.hpp">
+      <Filter>Header Files\Core\Vectorization</Filter>
+    </ClInclude>
+    <ClInclude Include="Core\Common\Functions\Convert.hpp">
+      <Filter>Header Files\Core\Common\Functions</Filter>
     </ClInclude>
   </ItemGroup>
 </Project>

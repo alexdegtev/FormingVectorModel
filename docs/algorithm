@@ -1,0 +1,244 @@
+
+-------------------
+Структуры данных
+
+	Point
+		+ enum state
+			unvisited
+			visited
+			excluded
+
+	Image
+
+	ImageWithVisitMarks
+		+ bool has_unvisited_points()
+		+ Point get_first_unvisit()	// unvisit and point of interest
+		+ List<Point> get_neighbours(Point central_point)	// all neighbours
+		+ void convert_all_excluded_to_unvisited()
+
+	VectorizationState
+		+ Point previous
+		+ Point current
+		+ List<Point> neighbours
+		+ Point start
+		+ List<Point> next	// neighbours without previous and visited
+
+	Object
+
+	Line : Object
+
+	CommonFunctions
+		+ bool is_aligned(Point a, Point b, Point c)
+		+ Point vertical_or_horizontal_neighbour(Point central_point, List<Point> neighbours)
+
+--------------------
+Алгоритм
+
+iwvm = new ImageWithVisitMarks
+vs = null
+objects = new List<Object>
+
+while (iwvm.has_unvisited_points)
+	if vs == null
+		vs = new VectorizationState
+		Point virst_unvisited = iwvm.get_first_unvisit()
+		if (virst_unvisited != null)
+			vs.current = virst_unvisited
+		else
+			break
+
+	vs.neighbours = iwvm.get_neighbours(vs.current)
+
+	switch (vs.neighbours.count)
+		case 0: 
+			break
+
+		case 1:
+			if (vs.previous == null)	// [1]
+				vs.current.state = Point.state.visited
+				vs.previous = vs.current
+				vs.start = vs.current
+				vs.current = vs.next[0]
+				continue
+			
+			else	// [2]
+				iwvm.convert_all_excluded_to_unvisited()
+				objects.add(new Line(vs.start, vs.current))
+				vs = null
+				continue
+			break
+
+		case 2:
+			if (vs.previous == null)
+				vs.current.state = Point.state.visited
+				vs.previous = vs.current
+				vs.start = vs.current
+
+				Point neighbour = CommonFunctions.vertical_or_horizontal_neighbour(vs.current, vs.next)
+				vs.current = neighbour == null ? vs.next[0] /*[8]*/ : neighbour /*[6, 7]*/
+
+				for (i in vs.next)
+					if (i != vs.current)
+						i.state = Point.state.excluded
+				continue
+			else
+				if (CommonFunctions.is_aligned(vs.previous, vs.current, vs.next[0]))	// [3]
+					vs.current.state = Point.state.visited
+					vs.previous = vs.current
+					vs.current = vs.next[0]
+					continue
+				else	// [4, 5]
+					objects.add(new Line(vs.start, vs.current))
+					vs.current.state = Point.state.visited
+					vs.previous = vs.current
+					vs.start = vs.current
+					vs.current = vs.next[0]
+					continue
+			break
+
+		case 3:
+			if (vs.previous == null)
+				vs.current.state = Point.state.visited
+				vs.previous = vs.current
+				vs.start = vs.current
+
+				Point neighbour = CommonFunctions.vertical_or_horizontal_neighbour(vs.current, vs.neighbours)
+				vs.current = neighbour == null ? vs.next[0] : neighbour /*[12, 13]*/
+
+				for (i in vs.next)
+					if (i != vs.current)
+						i.state = Point.state.excluded
+				continue
+			else
+				for (i in vs.next)
+					if (CommonFunctions.is_aligned(vs.previous, vs.current, i))	// [9, 10]
+						if (vs.next.count == 1)
+							vs.current.state = Point.state.visited
+						vs.previous = vs.current
+						vs.current = i
+						for (i in vs.next)
+							if (i != vs.current)
+								i.state = Point.state.excluded
+						continue
+
+				// [11]
+				if (vs.next.count == 1)
+					vs.current.state = Point.state.visited
+				vs.previous = vs.current
+				vs.current = vs.next[0]
+				for (i in vs.next)
+					if (i != vs.current)
+						i.state = Point.state.excluded
+				continue
+			break
+
+		case 4:
+			if (vs.previous == null)
+				vs.current.state = Point.state.visited
+				vs.previous = vs.current
+				vs.start = vs.current
+
+				Point neighbour = CommonFunctions.vertical_or_horizontal_neighbour(vs.current, vs.neighbours)
+				vs.current = neighbour == null ? vs.next[0] : neighbour /*[18]*/
+
+				for (i in vs.next)
+					if (i != vs.current)
+						i.state = Point.state.excluded
+				continue
+			else
+				for (i in vs.next)
+					if (CommonFunctions.is_aligned(vs.previous, vs.current, i))
+						if (vs.next.count == 1)
+							vs.current.state = Point.state.visited
+						vs.previous = vs.current
+						vs.current = i
+						for (i in vs.next)
+							if (i != vs.current)
+								i.state = Point.state.excluded
+						continue
+
+				if (vs.next.count == 1)
+					vs.current.state = Point.state.visited
+				vs.previous = vs.current
+				vs.current = vs.next[0]
+				for (i in vs.next)
+					if (i != vs.current)
+						i.state = Point.state.excluded
+				continue
+			break
+
+		case 5:
+			if (vs.previous == null)	// ?
+				vs.current.state = Point.state.visited
+				vs.previous = vs.current
+				vs.start = vs.current
+
+				Point neighbour = CommonFunctions.vertical_or_horizontal_neighbour(vs.current, vs.neighbours)
+				vs.current = neighbour == null ? vs.next[0] : neighbour /*[18]*/
+
+				for (i in vs.next)
+					if (i != vs.current)
+						i.state = Point.state.excluded
+				continue
+			else
+				for (i in vs.next)
+					if (CommonFunctions.is_aligned(vs.previous, vs.current, i))
+						if (vs.next.count == 1)
+							vs.current.state = Point.state.visited
+						vs.previous = vs.current
+						vs.current = i
+						for (i in vs.next)
+							if (i != vs.current)
+								i.state = Point.state.excluded
+						continue
+
+				if (vs.next.count == 1)
+					vs.current.state = Point.state.visited
+				vs.previous = vs.current
+				vs.current = vs.next[0]
+				for (i in vs.next)
+					if (i != vs.current)
+						i.state = Point.state.excluded
+				continue
+			break
+
+		case 6:
+			if (vs.previous == null)	// ?
+				vs.current.state = Point.state.visited
+				vs.previous = vs.current
+				vs.start = vs.current
+
+				Point neighbour = CommonFunctions.vertical_or_horizontal_neighbour(vs.current, vs.neighbours)
+				vs.current = neighbour == null ? vs.next[0] : neighbour /*[18]*/
+
+				for (i in vs.next)
+					if (i != vs.current)
+						i.state = Point.state.excluded
+				continue
+			else
+				for (i in vs.next)
+					if (CommonFunctions.is_aligned(vs.previous, vs.current, i))
+						if (vs.next.count == 1)
+							vs.current.state = Point.state.visited
+						vs.previous = vs.current
+						vs.current = i
+						for (i in vs.next)
+							if (i != vs.current)
+								i.state = Point.state.excluded
+						continue
+
+				if (vs.next.count == 1)
+					vs.current.state = Point.state.visited
+				vs.previous = vs.current
+				vs.current = vs.next[0]
+				for (i in vs.next)
+					if (i != vs.current)
+						i.state = Point.state.excluded
+				continue
+			break
+
+		case 7:
+			break
+
+		case 8:
+			break

@@ -1,7 +1,7 @@
 #ifndef FVM_CORE_OBJECTS_GEOMETRIC_POINT_HPP
 #define FVM_CORE_OBJECTS_GEOMETRIC_POINT_HPP
 
-#include "IObject.hpp"
+#include "IPoint.hpp"
 
 namespace FVM
 {
@@ -11,18 +11,19 @@ namespace FVM
 		{
 			namespace Geometric
 			{
-				class Point : public IObject
+				class Point : public IPoint
 				{
 				public:
 					Point();
 					Point(int x, int y);
 					Point(const Point& other);
 
-					int x() const;
-					int y() const;
+					int x() override;
+					int y() override;
 
 					Point operator= (const Point& other);
 					bool operator== (const Point& other);
+					bool operator!= (const Point& other);
 
 				private:
 					int x_;

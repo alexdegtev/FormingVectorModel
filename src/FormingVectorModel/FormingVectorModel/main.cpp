@@ -12,6 +12,7 @@
 #include "Core/Objects/Geometric/Line.hpp"
 #include "Core/Vectorization/DefaultVectorization.hpp"
 #include "Core/Vectorization/DefaultVectorization1.hpp"
+#include "Core/Vectorization/DefaultVectorization2.hpp"
 
 void test_open_and_writing_image()
 {
@@ -110,13 +111,221 @@ void test_array_type()
 	std::cout << std::endl;
 }
 
+bool test_image_1()
+{
+	IImage *image = FVM::Core::IO::Reader<DefaultImage>::read("..\\..\\..\\data\\1.png");
+	if(image == nullptr) return false;
+
+	FVM::Core::Vectorization::DefaultVectorization2 dv;
+	std::vector<IObject*> lines = dv.vectorizate(image);
+
+	if(lines.size() != 1) return false;
+
+	Line *l = static_cast<Line*>(lines[0]);
+	if (l->p1() != Point(1, 1) && l->p2() != Point(3, 1)) return false;
+	delete l;
+
+	delete image;
+	return true;
+}
+
+bool test_image_2()
+{
+	IImage *image = FVM::Core::IO::Reader<DefaultImage>::read("..\\..\\..\\data\\2.png");
+	if (image == nullptr) return false;
+
+	FVM::Core::Vectorization::DefaultVectorization2 dv;
+	std::vector<IObject*> lines = dv.vectorizate(image);
+
+	if (lines.size() != 1) return false;
+
+	Line *l = static_cast<Line*>(lines[0]);
+	if (l->p1() != Point(1, 1) && l->p2() != Point(3, 3)) return false;
+	delete l;
+
+	delete image;
+	return true;
+}
+
+bool test_image_3()
+{
+	IImage *image = FVM::Core::IO::Reader<DefaultImage>::read("..\\..\\..\\data\\3.png");
+	if (image == nullptr) return false;
+
+	FVM::Core::Vectorization::DefaultVectorization2 dv;
+	std::vector<IObject*> lines = dv.vectorizate(image);
+
+	if (lines.size() != 1) return false;
+
+	Line *l = static_cast<Line*>(lines[0]);
+	if (l->p1() != Point(1, 1) && l->p2() != Point(1, 3)) return false;
+	delete l;
+
+	delete image;
+	return true;
+}
+
+bool test_image_4()
+{
+	IImage *image = FVM::Core::IO::Reader<DefaultImage>::read("..\\..\\..\\data\\4.png");
+	if (image == nullptr) return false;
+
+	FVM::Core::Vectorization::DefaultVectorization2 dv;
+	std::vector<IObject*> lines = dv.vectorizate(image);
+
+	if (lines.size() != 2) return false;
+
+	Line *l = static_cast<Line*>(lines[0]);
+	if (l->p1() != Point(1, 1) && l->p2() != Point(3, 1)) return false;
+	delete l;
+
+	l = static_cast<Line*>(lines[1]);
+	if (l->p1() != Point(1, 3) && l->p2() != Point(3, 3)) return false;
+	delete l;
+
+	delete image;
+	return true;
+}
+
+bool test_image_5()
+{
+	IImage *image = FVM::Core::IO::Reader<DefaultImage>::read("..\\..\\..\\data\\5.png");
+	if (image == nullptr) return false;
+
+	FVM::Core::Vectorization::DefaultVectorization2 dv;
+	std::vector<IObject*> lines = dv.vectorizate(image);
+
+	if (lines.size() != 2) return false;
+
+	Line *l = static_cast<Line*>(lines[0]);
+	if (l->p1() != Point(1, 1) && l->p2() != Point(3, 1)) return false;
+	delete l;
+
+	l = static_cast<Line*>(lines[1]);
+	if (l->p1() != Point(3, 1) && l->p2() != Point(5, 3)) return false;
+	delete l;
+
+	delete image;
+	return true;
+}
+
+bool test_image_6()
+{
+	IImage *image = FVM::Core::IO::Reader<DefaultImage>::read("..\\..\\..\\data\\6.png");
+	if (image == nullptr) return false;
+
+	FVM::Core::Vectorization::DefaultVectorization2 dv;
+	std::vector<IObject*> lines = dv.vectorizate(image);
+
+	if (lines.size() != 3) return false;
+
+	Line *l = static_cast<Line*>(lines[0]);
+	if (l->p1() != Point(1, 1) && l->p2() != Point(2, 1)) return false;
+	delete l;
+
+	l = static_cast<Line*>(lines[1]);
+	if (l->p1() != Point(2, 1) && l->p2() != Point(3, 2)) return false;
+	delete l;
+
+	l = static_cast<Line*>(lines[2]);
+	if (l->p1() != Point(3, 2) && l->p2() != Point(3, 3)) return false;
+	delete l;
+
+	delete image;
+	return true;
+}
+
+bool test_image_7()
+{
+	IImage *image = FVM::Core::IO::Reader<DefaultImage>::read("..\\..\\..\\data\\7.png");
+	if (image == nullptr) return false;
+
+	FVM::Core::Vectorization::DefaultVectorization2 dv;
+	std::vector<IObject*> lines = dv.vectorizate(image);
+
+	if (lines.size() != 3) return false;
+
+	Line *l = static_cast<Line*>(lines[0]);
+	if (l->p1() != Point(1, 1) && l->p2() != Point(2, 1)) return false;
+	delete l;
+
+	l = static_cast<Line*>(lines[1]);
+	if (l->p1() != Point(2, 1) && l->p2() != Point(3, 2)) return false;
+	delete l;
+
+	l = static_cast<Line*>(lines[2]);
+	if (l->p1() != Point(3, 2) && l->p2() != Point(3, 3)) return false;
+	delete l;
+
+	delete image;
+	return true;
+}
+
+bool test_image_8()
+{
+	IImage *image = FVM::Core::IO::Reader<DefaultImage>::read("..\\..\\..\\data\\8.png");
+	if (image == nullptr) return false;
+
+	FVM::Core::Vectorization::DefaultVectorization2 dv;
+	std::vector<IObject*> lines = dv.vectorizate(image);
+
+	if (lines.size() != 3) return false;
+
+	Line *l = static_cast<Line*>(lines[0]);
+	if (l->p1() != Point(1, 2) && l->p2() != Point(2, 2)) return false;
+	delete l;
+
+	l = static_cast<Line*>(lines[1]);
+	if (l->p1() != Point(2, 2) && l->p2() != Point(3, 1)) return false;
+	delete l;
+
+	l = static_cast<Line*>(lines[2]);
+	if (l->p1() != Point(2, 2) && l->p2() != Point(3, 3)) return false;
+	delete l;
+
+	delete image;
+	return true;
+}
+
+bool test_image_9()
+{
+	IImage *image = FVM::Core::IO::Reader<DefaultImage>::read("..\\..\\..\\data\\9.png");
+	if (image == nullptr) return false;
+
+	FVM::Core::Vectorization::DefaultVectorization2 dv;
+	std::vector<IObject*> lines = dv.vectorizate(image);
+
+	if (lines.size() != 2) return false;
+
+	Line *l = static_cast<Line*>(lines[0]);
+	if (l->p1() != Point(1, 1) && l->p2() != Point(3, 1)) return false;
+	delete l;
+
+	l = static_cast<Line*>(lines[1]);
+	if (l->p1() != Point(2, 1) && l->p2() != Point(3, 2)) return false;
+	delete l;
+
+	delete image;
+	return true;
+}
 
 int main()
 {
-	FVM::Core::Objects::Image::IImage *image = FVM::Core::IO::Reader<FVM::Core::Objects::Image::DefaultImage>::read("d:\\C\\diplom_mag\\FormingVectorModel\\data\\13.png");
+	std::cout << "image[" << 1 << "]: [ " << (test_image_1() ? "OK" : "FAIL") << " ]" << std::endl;
+	std::cout << "image[" << 2 << "]: [ " << (test_image_2() ? "OK" : "FAIL") << " ]" << std::endl;
+	std::cout << "image[" << 3 << "]: [ " << (test_image_3() ? "OK" : "FAIL") << " ]" << std::endl;
+	std::cout << "image[" << 4 << "]: [ " << (test_image_4() ? "OK" : "FAIL") << " ]" << std::endl;
+	std::cout << "image[" << 5 << "]: [ " << (test_image_5() ? "OK" : "FAIL") << " ]" << std::endl;
+	std::cout << "image[" << 6 << "]: [ " << (test_image_6() ? "OK" : "FAIL") << " ]" << std::endl;
+	//std::cout << "image[" << 7 << "]: [ " << (test_image_7() ? "OK" : "FAIL") << " ]" << std::endl;
+	std::cout << "image[" << 8 << "]: [ " << (test_image_8() ? "OK" : "FAIL") << " ]" << std::endl;
+	std::cout << "image[" << 9 << "]: [ " << (test_image_9() ? "OK" : "FAIL") << " ]" << std::endl;
 
-	FVM::Core::Vectorization::DefaultVectorization1 dv;
-	std::vector<FVM::Core::Objects::Geometric::IObject*> lines = dv.vectorizate(image);
+
+	IImage *image = FVM::Core::IO::Reader<DefaultImage>::read("..\\..\\..\\data\\1.png");
+
+	FVM::Core::Vectorization::DefaultVectorization2 dv;
+	std::vector<IObject*> lines = dv.vectorizate(image);
 
 	for (int i = 0; i < lines.size(); i++)
 	{
