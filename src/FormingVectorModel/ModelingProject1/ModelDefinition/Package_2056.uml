@@ -279,13 +279,6 @@
         name="IImage" />
     </packageHasNamedElement>
     <packageHasNamedElement>
-      <Interface
-        Id="5883e44e-f0a3-4508-8e03-60a0307b0ebe"
-        name="ITransformation"
-        isAbstract="false"
-        isLeaf="false" />
-    </packageHasNamedElement>
-    <packageHasNamedElement>
       <packageMoniker
         Id="8ca1ca71-c8a0-46a9-a4b6-0796380c18b2"
         LastKnownName="Filtrations"

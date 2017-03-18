@@ -13,204 +13,186 @@
       <UniqueIdentifier>{67DA6AB6-F800-4c08-8B7A-83BB121AAD01}</UniqueIdentifier>
       <Extensions>rc;ico;cur;bmp;dlg;rc2;rct;bin;rgs;gif;jpg;jpeg;jpe;resx;tiff;tif;png;wav;mfcribbon-ms</Extensions>
     </Filter>
-    <Filter Include="Header Files\Core">
-      <UniqueIdentifier>{55dc9648-d6e9-4adc-a5b1-1c726a69b5da}</UniqueIdentifier>
-    </Filter>
-    <Filter Include="Source Files\Core">
-      <UniqueIdentifier>{b3fea803-cb51-4b54-b5c4-faf9f91ff371}</UniqueIdentifier>
-    </Filter>
-    <Filter Include="Header Files\Core\Objects">
-      <UniqueIdentifier>{e510ecf2-b57e-48de-8546-de2afc761a02}</UniqueIdentifier>
-    </Filter>
-    <Filter Include="Header Files\Core\Objects\Image">
-      <UniqueIdentifier>{cd47ca6e-1520-42dc-9b4c-37a50868a40f}</UniqueIdentifier>
-    </Filter>
-    <Filter Include="Header Files\Core\Objects\Geometric">
-      <UniqueIdentifier>{be433414-e8d9-4ff3-a472-a28a68f91990}</UniqueIdentifier>
-    </Filter>
-    <Filter Include="Source Files\Core\Objects">
-      <UniqueIdentifier>{471381f0-f102-4ff0-a5a4-4d6b270627f3}</UniqueIdentifier>
-    </Filter>
-    <Filter Include="Source Files\Core\Objects\Image">
-      <UniqueIdentifier>{0ec71065-d157-42f6-8220-143c2a0d19da}</UniqueIdentifier>
-    </Filter>
-    <Filter Include="Source Files\Core\Objects\Geometric">
-      <UniqueIdentifier>{f5a6b496-a7aa-4f36-8229-ca1619298bac}</UniqueIdentifier>
-    </Filter>
-    <Filter Include="Header Files\Core\Transformations">
-      <UniqueIdentifier>{4db43310-ec9e-4285-91bc-f281f308ff19}</UniqueIdentifier>
-    </Filter>
-    <Filter Include="Source Files\Core\Transformations">
-      <UniqueIdentifier>{3d832a8c-3ce3-43c4-ac5d-e6c53c73e54a}</UniqueIdentifier>
-    </Filter>
-    <Filter Include="Header Files\Core\IO">
-      <UniqueIdentifier>{c4dd5784-0f43-4b15-9727-770733da5f30}</UniqueIdentifier>
-    </Filter>
-    <Filter Include="Source Files\Core\IO">
-      <UniqueIdentifier>{7e40f774-18db-4a79-b616-657c075ed84e}</UniqueIdentifier>
-    </Filter>
-    <Filter Include="Header Files\Core\Vectorization">
-      <UniqueIdentifier>{45e2c3cd-154d-45cc-8dbe-6c87a0c61337}</UniqueIdentifier>
-    </Filter>
-    <Filter Include="Source Files\Core\Vectorization">
-      <UniqueIdentifier>{4a609fc2-8302-4cd9-a6a8-48fb49f0d722}</UniqueIdentifier>
-    </Filter>
-    <Filter Include="Header Files\Core\Common">
-      <UniqueIdentifier>{2ec2622d-a93c-48bb-8504-8e4e4041ff24}</UniqueIdentifier>
-    </Filter>
-    <Filter Include="Header Files\Core\Common\Functions">
-      <UniqueIdentifier>{33af471c-8057-4f51-a006-0594562e8a24}</UniqueIdentifier>
-    </Filter>
-    <Filter Include="Source Files\Core\Common">
-      <UniqueIdentifier>{50018909-8064-43d1-8f1b-04e10ca71b81}</UniqueIdentifier>
-    </Filter>
-    <Filter Include="Source Files\Core\Common\Functions">
-      <UniqueIdentifier>{2e863b87-af5c-4380-8898-4699f84329fc}</UniqueIdentifier>
-    </Filter>
-    <Filter Include="Header Files\Core\Common\Types">
-      <UniqueIdentifier>{295e8a9f-b2c5-4cff-bd8a-8451f5173ac6}</UniqueIdentifier>
-    </Filter>
-    <Filter Include="Source Files\Core\Common\Types">
-      <UniqueIdentifier>{c439bd39-476f-4d76-9d30-1a093206e4f9}</UniqueIdentifier>
-    </Filter>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="main.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
-    <ClCompile Include="Core\Objects\Image\Pixel.cpp">
-      <Filter>Source Files\Core\Objects\Image</Filter>
+    <ClCompile Include="Source.cpp">
+      <Filter>Source Files</Filter>
     </ClCompile>
-    <ClCompile Include="Core\Objects\Image\DefaultImage.cpp">
-      <Filter>Source Files\Core\Objects\Image</Filter>
+    <ClCompile Include="main_old.cpp">
+      <Filter>Source Files</Filter>
     </ClCompile>
-    <ClCompile Include="Core\Transformations\YIQGrayscale.cpp">
-      <Filter>Source Files\Core\Transformations</Filter>
-    </ClCompile>
-    <ClCompile Include="Core\IO\Reader.cpp">
-      <Filter>Source Files\Core\IO</Filter>
-    </ClCompile>
-    <ClCompile Include="Core\IO\Writer.cpp">
-      <Filter>Source Files\Core\IO</Filter>
-    </ClCompile>
-    <ClCompile Include="Core\Transformations\OtsuBinarization.cpp">
-      <Filter>Source Files\Core\Transformations</Filter>
-    </ClCompile>
-    <ClCompile Include="Core\Transformations\GuoHallSkeletization.cpp">
-      <Filter>Source Files\Core\Transformations</Filter>
-    </ClCompile>
-    <ClCompile Include="Core\Transformations\ZhangSuenSkeletization.cpp">
-      <Filter>Source Files\Core\Transformations</Filter>
-    </ClCompile>
-    <ClCompile Include="Core\Objects\Geometric\Line.cpp">
-      <Filter>Source Files\Core\Objects\Geometric</Filter>
+    <ClCompile Include="Core\IO\Path.cpp">
+      <Filter>Source Files</Filter>
     </ClCompile>
     <ClCompile Include="Core\Objects\Geometric\Point.cpp">
-      <Filter>Source Files\Core\Objects\Geometric</Filter>
+      <Filter>Source Files</Filter>
     </ClCompile>
-    <ClCompile Include="Core\Vectorization\DefaultVectorization.cpp">
-      <Filter>Source Files\Core\Vectorization</Filter>
+    <ClCompile Include="Core\Objects\Geometric\Line.cpp">
+      <Filter>Source Files</Filter>
     </ClCompile>
-    <ClCompile Include="Core\Common\Functions\Convert.cpp">
-      <Filter>Source Files\Core\Common\Functions</Filter>
+    <ClCompile Include="Core\Objects\Visual\Color.cpp">
+      <Filter>Source Files</Filter>
     </ClCompile>
-    <ClCompile Include="Core\Objects\Geometric\IntersectionPoint.cpp">
-      <Filter>Source Files\Core\Objects\Geometric</Filter>
+    <ClCompile Include="Core\Common\Functions.cpp">
+      <Filter>Source Files</Filter>
     </ClCompile>
-    <ClCompile Include="Core\Vectorization\DefaultVectorization1.cpp">
-      <Filter>Source Files\Core\Vectorization</Filter>
+    <ClCompile Include="Core\Objects\Visual\Pixel.cpp">
+      <Filter>Source Files</Filter>
     </ClCompile>
-    <ClCompile Include="Core\Vectorization\DefaultVectorization2.cpp">
-      <Filter>Source Files\Core\Vectorization</Filter>
+    <ClCompile Include="Core\Objects\Visual\Image.cpp">
+      <Filter>Source Files</Filter>
     </ClCompile>
-    <ClCompile Include="Core\Vectorization\DefaultVectorization3.cpp">
-      <Filter>Source Files\Core\Vectorization</Filter>
+    <ClCompile Include="Core\IO\Reader.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="Core\IO\Writer.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="Core\Transformations\YIQGrayscalation.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="Core\Transformations\OtsuBinarization.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="Core\Transformations\MiddleThresholdBinarization.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="Core\Transformations\Invertation.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="Core\Transformations\ZhangSuenSkeletization.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="Core\Transformations\GuoHallSkeletization.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="Core\Vectorizations\Vectorization.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="Core\Vectorizations\Vectorization2.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="Core\Vectorizations\ImageWithVisitedMarks.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="Core\Vectorizations\VectorizationState.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="Tests\Vectorization\VectorizationTests.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="Core\Vectorizations\IntersectionPoint.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="Core\Objects\Geometric\AObject.cpp">
+      <Filter>Source Files</Filter>
     </ClCompile>
   </ItemGroup>
   <ItemGroup>
-    <ClInclude Include="Core\Objects\Image\Pixel.hpp">
-      <Filter>Header Files\Core\Objects\Image</Filter>
+    <ClInclude Include="Core\Objects\Geometric\IObject.h">
+      <Filter>Header Files</Filter>
     </ClInclude>
-    <ClInclude Include="Core\Objects\Image\IImage.hpp">
-      <Filter>Header Files\Core\Objects\Image</Filter>
+    <ClInclude Include="Core\Objects\Geometric\IPoint.h">
+      <Filter>Header Files</Filter>
     </ClInclude>
-    <ClInclude Include="Core\Objects\Image\DefaultImage.hpp">
-      <Filter>Header Files\Core\Objects\Image</Filter>
+    <ClInclude Include="Core\Objects\Geometric\ILine.h">
+      <Filter>Header Files</Filter>
     </ClInclude>
-    <ClInclude Include="Core\Transformations\ITransformation.hpp">
-      <Filter>Header Files\Core\Transformations</Filter>
+    <ClInclude Include="Core\Objects\Visual\IColor.h">
+      <Filter>Header Files</Filter>
     </ClInclude>
-    <ClInclude Include="Core\Transformations\IGrayscale.hpp">
-      <Filter>Header Files\Core\Transformations</Filter>
+    <ClInclude Include="Core\Objects\Visual\IPixel.h">
+      <Filter>Header Files</Filter>
     </ClInclude>
-    <ClInclude Include="Core\Transformations\YIQGrayscale.hpp">
-      <Filter>Header Files\Core\Transformations</Filter>
+    <ClInclude Include="Core\Objects\Visual\IImage.h">
+      <Filter>Header Files</Filter>
     </ClInclude>
-    <ClInclude Include="Core\IO\Reader.hpp">
-      <Filter>Header Files\Core\IO</Filter>
+    <ClInclude Include="Core\Transformations\ITransformation.h">
+      <Filter>Header Files</Filter>
     </ClInclude>
-    <ClInclude Include="Core\IO\Writer.hpp">
-      <Filter>Header Files\Core\IO</Filter>
+    <ClInclude Include="Core\Transformations\IGrayscalation.h">
+      <Filter>Header Files</Filter>
     </ClInclude>
-    <ClInclude Include="Core\Transformations\IBinarization.hpp">
-      <Filter>Header Files\Core\Transformations</Filter>
+    <ClInclude Include="Core\Transformations\IBinarization.h">
+      <Filter>Header Files</Filter>
     </ClInclude>
-    <ClInclude Include="Core\Transformations\OtsuBinarization.hpp">
-      <Filter>Header Files\Core\Transformations</Filter>
+    <ClInclude Include="Core\Transformations\ISkeletization.h">
+      <Filter>Header Files</Filter>
     </ClInclude>
-    <ClInclude Include="Core\Transformations\GuoHallSkeletization.hpp">
-      <Filter>Header Files\Core\Transformations</Filter>
+    <ClInclude Include="Core\Transformations\IInvertation.h">
+      <Filter>Header Files</Filter>
     </ClInclude>
-    <ClInclude Include="Core\Transformations\ISkeletization.hpp">
-      <Filter>Header Files\Core\Transformations</Filter>
+    <ClInclude Include="Core\Vectorizations\IVectorization.h">
+      <Filter>Header Files</Filter>
     </ClInclude>
-    <ClInclude Include="Core\Transformations\ZhangSuenSkeletization.hpp">
-      <Filter>Header Files\Core\Transformations</Filter>
+    <ClInclude Include="Core\IO\Path.h">
+      <Filter>Header Files</Filter>
     </ClInclude>
-    <ClInclude Include="Core\Objects\Geometric\IObject.hpp">
-      <Filter>Header Files\Core\Objects\Geometric</Filter>
+    <ClInclude Include="Core\Objects\Geometric\Point.h">
+      <Filter>Header Files</Filter>
     </ClInclude>
-    <ClInclude Include="Core\Objects\Geometric\Line.hpp">
-      <Filter>Header Files\Core\Objects\Geometric</Filter>
+    <ClInclude Include="Core\Objects\Geometric\Line.h">
+      <Filter>Header Files</Filter>
     </ClInclude>
-    <ClInclude Include="Core\Objects\Geometric\Point.hpp">
-      <Filter>Header Files\Core\Objects\Geometric</Filter>
+    <ClInclude Include="Core\Objects\Visual\Color.h">
+      <Filter>Header Files</Filter>
     </ClInclude>
-    <ClInclude Include="Core\Vectorization\DefaultVectorization.hpp">
-      <Filter>Header Files\Core\Vectorization</Filter>
+    <ClInclude Include="Core\Common\Functions.h">
+      <Filter>Header Files</Filter>
     </ClInclude>
-    <ClInclude Include="Core\Vectorization\IVectorization.hpp">
-      <Filter>Header Files\Core\Vectorization</Filter>
+    <ClInclude Include="Core\Objects\Visual\Pixel.h">
+      <Filter>Header Files</Filter>
     </ClInclude>
-    <ClInclude Include="Core\Common\Types\Array.hpp">
-      <Filter>Header Files\Core\Common\Types</Filter>
+    <ClInclude Include="Core\Objects\Visual\Image.h">
+      <Filter>Header Files</Filter>
     </ClInclude>
-    <ClInclude Include="Core\Common\Types\Matrix.hpp">
-      <Filter>Header Files\Core\Common\Types</Filter>
+    <ClInclude Include="Core\IO\Reader.h">
+      <Filter>Header Files</Filter>
     </ClInclude>
-    <ClInclude Include="Core\Objects\Geometric\IntersectionPoint.hpp">
-      <Filter>Header Files\Core\Objects\Geometric</Filter>
+    <ClInclude Include="Core\IO\Writer.h">
+      <Filter>Header Files</Filter>
     </ClInclude>
-    <ClInclude Include="Core\Vectorization\DefaultVectorization1.hpp">
-      <Filter>Header Files\Core\Vectorization</Filter>
+    <ClInclude Include="Core\Transformations\YIQGrayscalation.h">
+      <Filter>Header Files</Filter>
     </ClInclude>
-    <ClInclude Include="Core\Vectorization\DefaultVectorization2.hpp">
-      <Filter>Header Files\Core\Vectorization</Filter>
+    <ClInclude Include="Core\Transformations\OtsuBinarization.h">
+      <Filter>Header Files</Filter>
     </ClInclude>
-    <ClInclude Include="Core\Objects\Image\TImage.hpp">
-      <Filter>Header Files\Core\Objects\Image</Filter>
+    <ClInclude Include="Core\Transformations\MiddleThresholdBinarization.h">
+      <Filter>Header Files</Filter>
     </ClInclude>
-    <ClInclude Include="Core\Objects\Geometric\IPoint.hpp">
-      <Filter>Header Files\Core\Objects\Geometric</Filter>
+    <ClInclude Include="Core\Transformations\Invertation.h">
+      <Filter>Header Files</Filter>
     </ClInclude>
-    <ClInclude Include="Core\Objects\Image\IPixel.hpp">
-      <Filter>Header Files\Core\Objects\Image</Filter>
+    <ClInclude Include="Core\Transformations\ZhangSuenSkeletization.h">
+      <Filter>Header Files</Filter>
     </ClInclude>
-    <ClInclude Include="Core\Vectorization\DefaultVectorization3.hpp">
-      <Filter>Header Files\Core\Vectorization</Filter>
+    <ClInclude Include="Core\Transformations\GuoHallSkeletization.h">
+      <Filter>Header Files</Filter>
     </ClInclude>
-    <ClInclude Include="Core\Common\Functions\Convert.hpp">
-      <Filter>Header Files\Core\Common\Functions</Filter>
+    <ClInclude Include="Core\Vectorizations\Vectorization.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="Tests\Vectorization\VectorizationTests.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="Core\Vectorizations\Vectorization2.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="Core\Vectorizations\ImageWithVisitedMarks.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="Core\Vectorizations\VectorizationState.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="Core\Vectorizations\IntersectionPoint.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="Core\Objects\Geometric\AObject.h">
+      <Filter>Header Files</Filter>
     </ClInclude>
   </ItemGroup>
 </Project>

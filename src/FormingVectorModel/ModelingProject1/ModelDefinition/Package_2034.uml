@@ -70,8 +70,132 @@
             <ownedParameters>
               <operationHasOwnedParameters>
                 <parameter
-                  Id="c6342b66-abf6-4133-9c51-0f896b644a65"
+                  Id="26ca14cb-3d67-4923-84ff-eed68d9ec896"
+                  name="value"
+                  direction="In"
+                  isUnique="false">
+                  <type_NamedElement>
+                    <undefinedTypeMoniker
+                      Id="53ea7c69-19fa-4f51-a74b-d9d18db27bce"
+                      LastKnownName="unsigned char"
+                      LastKnownLocation="Package_2034.uml" />
+                  </type_NamedElement>
+                </parameter>
+              </operationHasOwnedParameters>
+            </ownedParameters>
+          </operation>
+          <operation
+            Id="0350a7c2-7e91-422c-9b66-7d7bf8877806"
+            name="brightness"
+            isLeaf="false"
+            isStatic="false"
+            isAbstract="true"
+            concurrency="Sequential"
+            isQuery="false">
+            <ownedParameters>
+              <operationHasOwnedParameters>
+                <parameter
+                  Id="d3841afd-afed-458c-a578-0cc233550511"
                   direction="Return"
+                  isUnique="false">
+                  <type_NamedElement>
+                    <undefinedTypeMoniker
+                      Id="53ea7c69-19fa-4f51-a74b-d9d18db27bce"
+                      LastKnownName="unsigned char"
+                      LastKnownLocation="Package_2034.uml" />
+                  </type_NamedElement>
+                </parameter>
+              </operationHasOwnedParameters>
+            </ownedParameters>
+          </operation>
+          <operation
+            Id="8b189f9d-c7c7-4740-9ab7-1c4f9e8cff6d"
+            name="blue"
+            isLeaf="false"
+            isStatic="false"
+            isAbstract="true"
+            concurrency="Sequential"
+            isQuery="false">
+            <ownedParameters>
+              <operationHasOwnedParameters>
+                <parameter
+                  Id="50a3f15e-e9aa-4d80-8acf-5a3c6c1abb24"
+                  direction="Return"
+                  isUnique="false">
+                  <type_NamedElement>
+                    <undefinedTypeMoniker
+                      Id="53ea7c69-19fa-4f51-a74b-d9d18db27bce"
+                      LastKnownName="unsigned char"
+                      LastKnownLocation="Package_2034.uml" />
+                  </type_NamedElement>
+                </parameter>
+              </operationHasOwnedParameters>
+            </ownedParameters>
+          </operation>
+          <operation
+            Id="0f9667db-fba2-4b69-a0a4-740297822c9e"
+            name="brightness"
+            isLeaf="false"
+            isStatic="false"
+            isAbstract="true"
+            concurrency="Sequential"
+            isQuery="false">
+            <ownedParameters>
+              <operationHasOwnedParameters>
+                <parameter
+                  Id="e4f51d5d-1a00-4132-b487-6357096b008a"
+                  name="value"
+                  direction="In"
+                  isUnique="false">
+                  <type_NamedElement>
+                    <undefinedTypeMoniker
+                      Id="53ea7c69-19fa-4f51-a74b-d9d18db27bce"
+                      LastKnownName="unsigned char"
+                      LastKnownLocation="Package_2034.uml" />
+                  </type_NamedElement>
+                </parameter>
+              </operationHasOwnedParameters>
+            </ownedParameters>
+          </operation>
+          <operation
+            Id="48310337-714b-49a1-9cbe-ab4a914471d4"
+            name="green"
+            isLeaf="false"
+            isStatic="false"
+            isAbstract="true"
+            concurrency="Sequential"
+            isQuery="false">
+            <ownedParameters>
+              <operationHasOwnedParameters>
+                <parameter
+                  Id="58fa663e-27b9-41b9-b250-ca6f0a1a2df0"
+                  name="value"
+                  direction="In"
+                  isUnique="false">
+                  <type_NamedElement>
+                    <undefinedTypeMoniker
+                      Id="53ea7c69-19fa-4f51-a74b-d9d18db27bce"
+                      LastKnownName="unsigned char"
+                      LastKnownLocation="Package_2034.uml" />
+                  </type_NamedElement>
+                </parameter>
+              </operationHasOwnedParameters>
+            </ownedParameters>
+          </operation>
+          <operation
+            Id="4ce1c82b-4dc7-4f24-abd2-aa1a9840a38d"
+            name="red"
+            isLeaf="false"
+            isStatic="false"
+            isAbstract="true"
+            concurrency="Sequential"
+            isQuery="false">
+            <ownedParameters>
+              <operationHasOwnedParameters>
+                <parameter
+                  Id="9c280f80-13d4-4838-974b-d64647892450"
+                  name="value"
+                  direction="In"
                   isUnique="false">
                   <type_NamedElement>
                     <undefinedTypeMoniker
@@ -193,8 +317,9 @@
             <ownedParameters>
               <operationHasOwnedParameters>
                 <parameter
-                  Id="d2bb2de0-1714-417c-8821-0d141fd22aae"
-                  direction="Return"
+                  Id="2c1f142f-a1ec-41c7-b206-acdce76dc08b"
+                  name="value"
+                  direction="In"
                   isUnique="false">
                   <type_NamedElement>
                     <undefinedTypeMoniker
@@ -249,6 +374,105 @@
                       Id="f9b89bbb-c3b6-41e4-b403-aacd0deb03ba"
                       LastKnownName="int"
                       LastKnownLocation="Package2_2029.uml" />
+                  </type_NamedElement>
+                </parameter>
+              </operationHasOwnedParameters>
+            </ownedParameters>
+          </operation>
+          <operation
+            Id="0b5c55b8-c4ea-4285-aa1d-68132fd57a8a"
+            name="brightness"
+            isLeaf="false"
+            isStatic="false"
+            isAbstract="false"
+            concurrency="Sequential"
+            isQuery="false">
+            <ownedParameters>
+              <operationHasOwnedParameters>
+                <parameter
+                  Id="097d90aa-3651-4f4a-9ce7-ec9a57bbdf9a"
+                  direction="Return"
+                  isUnique="false">
+                  <type_NamedElement>
+                    <undefinedTypeMoniker
+                      Id="53ea7c69-19fa-4f51-a74b-d9d18db27bce"
+                      LastKnownName="unsigned char"
+                      LastKnownLocation="Package_2034.uml" />
+                  </type_NamedElement>
+                </parameter>
+              </operationHasOwnedParameters>
+            </ownedParameters>
+          </operation>
+          <operation
+            Id="0269f33c-1f29-4e37-aa85-9ca7536c7a07"
+            name="brightness"
+            isLeaf="false"
+            isStatic="false"
+            isAbstract="false"
+            concurrency="Sequential"
+            isQuery="false">
+            <ownedParameters>
+              <operationHasOwnedParameters>
+                <parameter
+                  Id="27a21533-0253-43af-9ae7-c3904657dcbd"
+                  name="value"
+                  direction="In"
+                  isUnique="false">
+                  <type_NamedElement>
+                    <undefinedTypeMoniker
+                      Id="53ea7c69-19fa-4f51-a74b-d9d18db27bce"
+                      LastKnownName="unsigned char"
+                      LastKnownLocation="Package_2034.uml" />
+                  </type_NamedElement>
+                </parameter>
+              </operationHasOwnedParameters>
+            </ownedParameters>
+          </operation>
+          <operation
+            Id="62c097bb-90c0-4bf8-a355-143884ab1044"
+            name="green"
+            isLeaf="false"
+            isStatic="false"
+            isAbstract="false"
+            concurrency="Sequential"
+            isQuery="false">
+            <ownedParameters>
+              <operationHasOwnedParameters>
+                <parameter
+                  Id="c168ae77-c019-4d7e-bef8-1d01fd30991b"
+                  name="value"
+                  direction="In"
+                  isUnique="false">
+                  <type_NamedElement>
+                    <undefinedTypeMoniker
+                      Id="53ea7c69-19fa-4f51-a74b-d9d18db27bce"
+                      LastKnownName="unsigned char"
+                      LastKnownLocation="Package_2034.uml" />
+                  </type_NamedElement>
+                </parameter>
+              </operationHasOwnedParameters>
+            </ownedParameters>
+          </operation>
+          <operation
+            Id="7a683837-7e63-47b7-abf5-b67b2157a4c0"
+            name="red"
+            isLeaf="false"
+            isStatic="false"
+            isAbstract="false"
+            concurrency="Sequential"
+            isQuery="false">
+            <ownedParameters>
+              <operationHasOwnedParameters>
+                <parameter
+                  Id="bb916377-c147-4cb6-b493-9f8386b0661c"
+                  name="value"
+                  direction="In"
+                  isUnique="false">
+                  <type_NamedElement>
+                    <undefinedTypeMoniker
+                      Id="53ea7c69-19fa-4f51-a74b-d9d18db27bce"
+                      LastKnownName="unsigned char"
+                      LastKnownLocation="Package_2034.uml" />
                   </type_NamedElement>
                 </parameter>
               </operationHasOwnedParameters>
@@ -407,7 +631,7 @@
           </operation>
           <operation
             Id="1b477779-2828-47b3-a2f3-e50053f11fd2"
-            name="element"
+            name="get"
             isLeaf="false"
             isStatic="false"
             isAbstract="false"
@@ -448,9 +672,9 @@
                   direction="Return"
                   isUnique="false">
                   <type_NamedElement>
-                    <interfaceMoniker
-                      Id="30d1eff5-4e9d-429e-be24-07b1326c8965"
-                      LastKnownName="IElement"
+                    <undefinedTypeMoniker
+                      Id="ec87a875-2b4f-4a52-b2b7-95e6951a7e5f"
+                      LastKnownName="T"
                       LastKnownLocation="Package_2037.uml" />
                   </type_NamedElement>
                 </parameter>
@@ -459,7 +683,7 @@
           </operation>
           <operation
             Id="054f9bc7-2f75-4e2f-aa35-6479c04bf111"
-            name="element"
+            name="set"
             isLeaf="false"
             isStatic="false"
             isAbstract="false"
@@ -501,9 +725,9 @@
                   direction="In"
                   isUnique="false">
                   <type_NamedElement>
-                    <interfaceMoniker
-                      Id="30d1eff5-4e9d-429e-be24-07b1326c8965"
-                      LastKnownName="IElement"
+                    <undefinedTypeMoniker
+                      Id="ec87a875-2b4f-4a52-b2b7-95e6951a7e5f"
+                      LastKnownName="T"
                       LastKnownLocation="Package_2037.uml" />
                   </type_NamedElement>
                 </parameter>

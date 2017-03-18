@@ -1,75 +1,43 @@
 #include <iostream>
-#include "../FormingVectorModel/Core/Common/Types/Array.hpp"
-#include "../FormingVectorModel/Core/Common/Types/Matrix.hpp"
+#include <array>
 #include <vector>
-#include <algorithm>
-using namespace std;
-using namespace FVM::Core::Common::Types;
-
-void array_test()
-{
-	int n = 10;
-	Array<int> *a = new Array<int>(n);
-
-	for (int i = 0; i < n; i++)
-		(*a)(i) = 0;
-
-	for (int i = 0; i < n; i++)
-		cout << (*a)(i) << " ";
-	cout << endl;
-
-	Array<int> *b = new Array<int>(n + 1);
-	for (int i = 0; i < n + 1; i++)
-		(*b)(i) = 1;
-
-	for (int i = 0; i < n + 1; i++)
-		cout << (*b)(i) << " ";
-	cout << endl;
-
-
-	(*a) = (*b);
-
-	for (int i = 0; i < n + 1; i++)
-		cout << (*a)(i) << " ";
-	cout << endl;
-
-	(*a)(3) = 0;
-
-	for (int i = 0; i < n + 1; i++)
-		cout << (*a)(i) << " ";
-	cout << endl;
-
-	for (int i = 0; i < n + 1; i++)
-		cout << (*b)(i) << " ";
-	cout << endl;
-
-	delete a;
-	delete b;
-}
-
-void matrix_test()
-{
-	Matrix<int> *m = new Matrix<int>(2, 2);
-
-	cout << (*m)(0, 0) << endl;
-	(*m)(0, 0) = 10;
-	cout << (*m)(0, 0) << endl;
-
-	delete m;
-}
 
 int main()
 {
-	vector<int> a = { 1, 2, 3 };
-	for(int i=0;i<a.size();i++)
-	{
-		if(a[i] == 2)
-		{
-			a.erase(a.begin() + i);
-			break;
-		}
-	}
+	//size_t size = 1000000000;
+
+	//int *a = new int[size];
+	//system("pause");
+	//delete[] a;
 
 
+	//std::vector<int> b;
+	//for (size_t i = 0; i < size; i++)
+	//	b.push_back(0);
+	//system("pause");
+	//b.clear();
+
+	int size = 10;
+	int *a = new int[size];
+	for (int i = 0; i < size; i++)
+		a[i] = i;
+
+	for (int i = 0; i < size; i++)
+		std::cout << a[i] << " ";
+	std::cout << std::endl;
+
+	int *b = new int[size + 1];
+	std::copy(a, a + size, b);
+	delete[] a;
+	b[size] = size;
+
+
+
+	for (int i = 0; i < size + 1; i++)
+		std::cout << b[i] << " ";
+	std::cout << std::endl;
+
+
+	//std::copy(std::begin(src), std::end(src), std::begin(dest));
 	return 0;
 }

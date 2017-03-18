@@ -1,39 +1,38 @@
-#include "Line.hpp"
-#include <math.h>
+﻿#include "Line.h"
+#include "Point.h"
 
-FVM::Core::Objects::Geometric::Line::Line() : p1_(), p2_()
+Core::Objects::Geometric::Line::Line() : Line(nullptr, nullptr)
 {
 }
 
-FVM::Core::Objects::Geometric::Line::Line(Point p1, Point p2) : p1_(p1), p2_(p2)
+Core::Objects::Geometric::Line::Line(IPoint* begin, IPoint* end) : _begin(new Point(begin)), _end(new Point(end))
+{
+	if (!_begin)
+		_begin = new Point();
+
+	if (!_end)
+		_end = new Point();
+}
+
+Core::Objects::Geometric::Line::Line(Point begin, Point end) : Line(new Point(begin.x(), begin.y()), new Point(end.x(), end.y()))
 {
 }
 
-FVM::Core::Objects::Geometric::Line::Line(const Line& other) : p1_(other.p1_), p2_(other.p2_)
+Core::Objects::Geometric::Line::~Line()
 {
+	if (_begin)
+		delete _begin;
+
+	if (_end)
+		delete _end;
 }
 
-FVM::Core::Objects::Geometric::Point FVM::Core::Objects::Geometric::Line::p1() const
+Core::Objects::Geometric::IPoint* Core::Objects::Geometric::Line::begin() const
 {
-	return p1_;
+	return _begin;
 }
 
-FVM::Core::Objects::Geometric::Point FVM::Core::Objects::Geometric::Line::p2() const
+Core::Objects::Geometric::IPoint* Core::Objects::Geometric::Line::end() const
 {
-	return p2_;
-}
-
-double FVM::Core::Objects::Geometric::Line::length()
-{
-	return sqrt(pow(p2_.x() - p1_.x(), 2) + pow(p2_.y() - p1_.y(), 2));
-}
-
-FVM::Core::Objects::Geometric::Line FVM::Core::Objects::Geometric::Line::operator=(const Line& other)
-{
-	if(this != &other)
-	{
-		p1_ = other.p1_;
-		p2_ = other.p2_;
-	}
-	return *this;
+	return _end;
 }

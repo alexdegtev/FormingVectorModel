@@ -19,10 +19,9 @@
     </ProjectConfiguration>
   </ItemGroup>
   <PropertyGroup Label="Globals">
-    <ProjectGuid>{60B69CB7-F0FA-4BFD-99C5-48EE9D0D19A4}</ProjectGuid>
+    <ProjectGuid>{83C909E8-A74C-45B2-ACEF-043974513238}</ProjectGuid>
     <RootNamespace>FormingVectorModel</RootNamespace>
     <WindowsTargetPlatformVersion>8.1</WindowsTargetPlatformVersion>
-    <ProjectName>FormingVectorModel</ProjectName>
   </PropertyGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.Default.props" />
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'" Label="Configuration">
@@ -69,33 +68,28 @@
     <Import Project="$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props" Condition="exists('$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props')" Label="LocalAppDataPlatform" />
   </ImportGroup>
   <PropertyGroup Label="UserMacros" />
-  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">
+    <IncludePath>..\CoreLibrary;C:\opencv\build\include;$(IncludePath)</IncludePath>
     <LibraryPath>C:\opencv\build\x64\vc14\lib;$(LibraryPath)</LibraryPath>
-    <IncludePath>C:\opencv\build\include;$(IncludePath)</IncludePath>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">
+    <IncludePath>..\CoreLibrary;$(IncludePath)</IncludePath>
   </PropertyGroup>
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">
-    <LibraryPath>C:\opencv\build\x64\vc14\lib;$(LibraryPath)</LibraryPath>
-    <IncludePath>C:\opencv\build\include;$(IncludePath)</IncludePath>
-  </PropertyGroup>
-  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">
-    <LibraryPath>C:\opencv\build\x64\vc14\lib;$(LibraryPath)</LibraryPath>
-    <IncludePath>C:\opencv\build\include;$(IncludePath)</IncludePath>
+    <IncludePath>..\CoreLibrary;$(IncludePath)</IncludePath>
   </PropertyGroup>
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|x64'">
+    <IncludePath>..\CoreLibrary;C:\opencv\build\include;$(IncludePath)</IncludePath>
     <LibraryPath>C:\opencv\build\x64\vc14\lib;$(LibraryPath)</LibraryPath>
-    <IncludePath>C:\opencv\build\include;$(IncludePath)</IncludePath>
   </PropertyGroup>
   <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">
     <ClCompile>
       <WarningLevel>Level3</WarningLevel>
       <Optimization>Disabled</Optimization>
       <SDLCheck>true</SDLCheck>
-      <AdditionalIncludeDirectories>
-      </AdditionalIncludeDirectories>
     </ClCompile>
     <Link>
       <SubSystem>Console</SubSystem>
-      <AdditionalDependencies>opencv_world310d.lib;%(AdditionalDependencies)</AdditionalDependencies>
     </Link>
   </ItemDefinitionGroup>
   <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">
@@ -103,17 +97,12 @@
       <WarningLevel>Level3</WarningLevel>
       <Optimization>Disabled</Optimization>
       <SDLCheck>true</SDLCheck>
-      <AdditionalIncludeDirectories>
-      </AdditionalIncludeDirectories>
-      <BrowseInformation>true</BrowseInformation>
+      <PreprocessorDefinitions>_SCL_SECURE_NO_WARNINGS;_MBCS;%(PreprocessorDefinitions)</PreprocessorDefinitions>
     </ClCompile>
     <Link>
+      <AdditionalDependencies>opencv_world310d.lib;kernel32.lib;user32.lib;gdi32.lib;winspool.lib;comdlg32.lib;advapi32.lib;shell32.lib;ole32.lib;oleaut32.lib;uuid.lib;odbc32.lib;odbccp32.lib;%(AdditionalDependencies)</AdditionalDependencies>
       <SubSystem>Console</SubSystem>
-      <AdditionalDependencies>opencv_world310d.lib;%(AdditionalDependencies)</AdditionalDependencies>
     </Link>
-    <Bscmake>
-      <PreserveSbr>true</PreserveSbr>
-    </Bscmake>
   </ItemDefinitionGroup>
   <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">
     <ClCompile>
@@ -122,14 +111,11 @@
       <FunctionLevelLinking>true</FunctionLevelLinking>
       <IntrinsicFunctions>true</IntrinsicFunctions>
       <SDLCheck>true</SDLCheck>
-      <AdditionalIncludeDirectories>
-      </AdditionalIncludeDirectories>
     </ClCompile>
     <Link>
       <EnableCOMDATFolding>true</EnableCOMDATFolding>
       <OptimizeReferences>true</OptimizeReferences>
       <SubSystem>Console</SubSystem>
-      <AdditionalDependencies>opencv_world310.lib;%(AdditionalDependencies)</AdditionalDependencies>
     </Link>
   </ItemDefinitionGroup>
   <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Release|x64'">
@@ -139,8 +125,7 @@
       <FunctionLevelLinking>true</FunctionLevelLinking>
       <IntrinsicFunctions>true</IntrinsicFunctions>
       <SDLCheck>true</SDLCheck>
-      <AdditionalIncludeDirectories>
-      </AdditionalIncludeDirectories>
+      <PreprocessorDefinitions>_SCL_SECURE_NO_WARNINGS;_MBCS;%(PreprocessorDefinitions)</PreprocessorDefinitions>
     </ClCompile>
     <Link>
       <EnableCOMDATFolding>true</EnableCOMDATFolding>
@@ -150,53 +135,67 @@
     </Link>
   </ItemDefinitionGroup>
   <ItemGroup>
-    <ClCompile Include="Core\Common\Functions\Convert.cpp" />
+    <ClCompile Include="Core\Common\Functions.cpp" />
+    <ClCompile Include="Core\IO\Path.cpp" />
     <ClCompile Include="Core\IO\Reader.cpp" />
     <ClCompile Include="Core\IO\Writer.cpp" />
-    <ClCompile Include="Core\Objects\Geometric\IntersectionPoint.cpp" />
+    <ClCompile Include="Core\Objects\Geometric\AObject.cpp" />
     <ClCompile Include="Core\Objects\Geometric\Line.cpp" />
     <ClCompile Include="Core\Objects\Geometric\Point.cpp" />
-    <ClCompile Include="Core\Objects\Image\DefaultImage.cpp" />
-    <ClCompile Include="Core\Objects\Image\Pixel.cpp" />
+    <ClCompile Include="Core\Objects\Visual\Color.cpp" />
+    <ClCompile Include="Core\Objects\Visual\Image.cpp" />
+    <ClCompile Include="Core\Objects\Visual\Pixel.cpp" />
     <ClCompile Include="Core\Transformations\GuoHallSkeletization.cpp" />
+    <ClCompile Include="Core\Transformations\Invertation.cpp" />
+    <ClCompile Include="Core\Transformations\MiddleThresholdBinarization.cpp" />
     <ClCompile Include="Core\Transformations\OtsuBinarization.cpp" />
-    <ClCompile Include="Core\Transformations\YIQGrayscale.cpp" />
+    <ClCompile Include="Core\Transformations\YIQGrayscalation.cpp" />
     <ClCompile Include="Core\Transformations\ZhangSuenSkeletization.cpp" />
-    <ClCompile Include="Core\Vectorization\DefaultVectorization.cpp" />
-    <ClCompile Include="Core\Vectorization\DefaultVectorization1.cpp" />
-    <ClCompile Include="Core\Vectorization\DefaultVectorization2.cpp" />
-    <ClCompile Include="Core\Vectorization\DefaultVectorization3.cpp" />
+    <ClCompile Include="Core\Vectorizations\ImageWithVisitedMarks.cpp" />
+    <ClCompile Include="Core\Vectorizations\IntersectionPoint.cpp" />
+    <ClCompile Include="Core\Vectorizations\Vectorization.cpp" />
+    <ClCompile Include="Core\Vectorizations\Vectorization2.cpp" />
+    <ClCompile Include="Core\Vectorizations\VectorizationState.cpp" />
     <ClCompile Include="main.cpp" />
+    <ClCompile Include="main_old.cpp" />
+    <ClCompile Include="Source.cpp" />
+    <ClCompile Include="Tests\Vectorization\VectorizationTests.cpp" />
   </ItemGroup>
   <ItemGroup>
-    <ClInclude Include="Core\Common\Functions\Convert.hpp" />
-    <ClInclude Include="Core\Common\Types\Array.hpp" />
-    <ClInclude Include="Core\Common\Types\Matrix.hpp" />
-    <ClInclude Include="Core\IO\Reader.hpp" />
-    <ClInclude Include="Core\IO\Writer.hpp" />
-    <ClInclude Include="Core\Objects\Geometric\IntersectionPoint.hpp" />
-    <ClInclude Include="Core\Objects\Geometric\IObject.hpp" />
-    <ClInclude Include="Core\Objects\Geometric\IPoint.hpp" />
-    <ClInclude Include="Core\Objects\Geometric\Line.hpp" />
-    <ClInclude Include="Core\Objects\Geometric\Point.hpp" />
-    <ClInclude Include="Core\Objects\Image\DefaultImage.hpp" />
-    <ClInclude Include="Core\Objects\Image\IImage.hpp" />
-    <ClInclude Include="Core\Objects\Image\IPixel.hpp" />
-    <ClInclude Include="Core\Objects\Image\Pixel.hpp" />
-    <ClInclude Include="Core\Objects\Image\TImage.hpp" />
-    <ClInclude Include="Core\Transformations\GuoHallSkeletization.hpp" />
-    <ClInclude Include="Core\Transformations\IBinarization.hpp" />
-    <ClInclude Include="Core\Transformations\IGrayscale.hpp" />
-    <ClInclude Include="Core\Transformations\ISkeletization.hpp" />
-    <ClInclude Include="Core\Transformations\ITransformation.hpp" />
-    <ClInclude Include="Core\Transformations\OtsuBinarization.hpp" />
-    <ClInclude Include="Core\Transformations\YIQGrayscale.hpp" />
-    <ClInclude Include="Core\Transformations\ZhangSuenSkeletization.hpp" />
-    <ClInclude Include="Core\Vectorization\DefaultVectorization.hpp" />
-    <ClInclude Include="Core\Vectorization\DefaultVectorization1.hpp" />
-    <ClInclude Include="Core\Vectorization\DefaultVectorization2.hpp" />
-    <ClInclude Include="Core\Vectorization\DefaultVectorization3.hpp" />
-    <ClInclude Include="Core\Vectorization\IVectorization.hpp" />
+    <ClInclude Include="Core\Common\Functions.h" />
+    <ClInclude Include="Core\IO\Path.h" />
+    <ClInclude Include="Core\IO\Reader.h" />
+    <ClInclude Include="Core\IO\Writer.h" />
+    <ClInclude Include="Core\Objects\Geometric\AObject.h" />
+    <ClInclude Include="Core\Objects\Geometric\ILine.h" />
+    <ClInclude Include="Core\Objects\Geometric\IObject.h" />
+    <ClInclude Include="Core\Objects\Geometric\IPoint.h" />
+    <ClInclude Include="Core\Objects\Geometric\Line.h" />
+    <ClInclude Include="Core\Objects\Geometric\Point.h" />
+    <ClInclude Include="Core\Objects\Visual\Color.h" />
+    <ClInclude Include="Core\Objects\Visual\IColor.h" />
+    <ClInclude Include="Core\Objects\Visual\IImage.h" />
+    <ClInclude Include="Core\Objects\Visual\Image.h" />
+    <ClInclude Include="Core\Objects\Visual\IPixel.h" />
+    <ClInclude Include="Core\Objects\Visual\Pixel.h" />
+    <ClInclude Include="Core\Transformations\GuoHallSkeletization.h" />
+    <ClInclude Include="Core\Transformations\IBinarization.h" />
+    <ClInclude Include="Core\Transformations\IGrayscalation.h" />
+    <ClInclude Include="Core\Transformations\IInvertation.h" />
+    <ClInclude Include="Core\Transformations\Invertation.h" />
+    <ClInclude Include="Core\Transformations\ISkeletization.h" />
+    <ClInclude Include="Core\Transformations\ITransformation.h" />
+    <ClInclude Include="Core\Transformations\MiddleThresholdBinarization.h" />
+    <ClInclude Include="Core\Transformations\OtsuBinarization.h" />
+    <ClInclude Include="Core\Transformations\YIQGrayscalation.h" />
+    <ClInclude Include="Core\Transformations\ZhangSuenSkeletization.h" />
+    <ClInclude Include="Core\Vectorizations\ImageWithVisitedMarks.h" />
+    <ClInclude Include="Core\Vectorizations\IntersectionPoint.h" />
+    <ClInclude Include="Core\Vectorizations\IVectorization.h" />
+    <ClInclude Include="Core\Vectorizations\Vectorization.h" />
+    <ClInclude Include="Core\Vectorizations\Vectorization2.h" />
+    <ClInclude Include="Core\Vectorizations\VectorizationState.h" />
+    <ClInclude Include="Tests\Vectorization\VectorizationTests.h" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">

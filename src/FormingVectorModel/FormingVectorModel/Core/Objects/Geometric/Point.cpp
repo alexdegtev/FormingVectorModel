@@ -1,43 +1,27 @@
-#include "Point.hpp"
+﻿#include "Point.h"
 
-FVM::Core::Objects::Geometric::Point::Point() : Point(0, 0)
+Core::Objects::Geometric::Point::Point() : Point(0, 0)
 {
 }
 
-FVM::Core::Objects::Geometric::Point::Point(int x, int y) : x_(x), y_(y)
+Core::Objects::Geometric::Point::Point(int x, int y) : _x(x), _y(y)
 {
 }
 
-FVM::Core::Objects::Geometric::Point::Point(const Point& other) : x_(other.x_), y_(other.y_)
+Core::Objects::Geometric::Point::Point(IPoint* other) : Point(other->x(), other->y())
 {
 }
 
-int FVM::Core::Objects::Geometric::Point::x()
+Core::Objects::Geometric::Point::Point(const Point& other) : _x(other._x), _y(other._y)
 {
-	return x_;
 }
 
-int FVM::Core::Objects::Geometric::Point::y()
+int Core::Objects::Geometric::Point::x() const
 {
-	return y_;
+	return _x;
 }
 
-FVM::Core::Objects::Geometric::Point FVM::Core::Objects::Geometric::Point::operator=(const Point& other)
+int Core::Objects::Geometric::Point::y() const
 {
-	if(this != &other)
-	{
-		x_ = other.x_;
-		y_ = other.y_;
-	}
-	return *this;
-}
-
-bool FVM::Core::Objects::Geometric::Point::operator==(const Point& other)
-{
-	return x_ == other.x_ && y_ == other.y_;
-}
-
-bool FVM::Core::Objects::Geometric::Point::operator!=(const Point& other)
-{
-	return !(*this == other);
+	return _y;
 }

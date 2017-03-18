@@ -1,0 +1,118 @@
+algorithm_2
+
+class IObject {
+	List<Point> intersection_points	// Точки пересечения с другими объектами
+	List<Point> special_point
+}
+
+enum VisitState {
+	unvisited,
+	visited,
+	excluded
+}
+
+class Pixel {
+	VisitState state
+}
+
+class ImageWithVisitedMarks {
+	bool has_unvisited_pixels()
+	Pixel find_first_unvisited_pixel()
+	List<Pixel> get_neighbours( Pixel central )	// Все кроме VisitState.excluded
+	void convert_all_excluded_to_unvisited()
+	Pixel find_vertical_or_horizontal_neghbour( Pixel central, List<Pixel> neigbours )
+	bool is_aligned( Pixel a, Pixel b, Pixel c )
+}
+
+class VectorizationState {
+	Pixel current
+	Pixel previous
+	Pixel start	// Начальная точка фигуры (отрезка) 
+	List<Pixel> neigbours
+	List<Pixel> next	// neigbours, кроме previous и VisitState.visited
+}
+
+add_object( ref List<IObject> objects, Line line ) {
+	
+}
+
+function vectorization {
+
+	List<IObject> objects
+	iwvm = new ImageWithVisitedMarks( image )
+	vs = nullptr
+	List<Point> special_points
+
+	while ( iwvm.has_unvisited_pixels() ) {
+		if ( vs == null ) {
+			Pixel p = iwvm.find_first_unvisited_pixel()
+			if ( p == null ) {
+				break
+			} else {
+				vs = new VectorizationState()
+				vs.current = p
+			}
+		}
+		
+		vs.neigbours = iwvm.get_neighbours( vs.current )
+		neighbours_count = vs.neigbours.count
+
+		if ( vs.previous == null ) {
+			if ( neighbours_count == 1 ) {
+				vs.current.state = VisitState.visited
+			} else {
+				intersection_points.add( vs.current.point )	// special_point
+				if ( vs.next.count <= 1 ) {
+					vs.current.state = VisitState.visited
+				}
+			}
+
+			Pixel next = vs.next[0]
+			for ( i : vs.next ) {
+				if ( i != next ) {
+					i.state = VisitState.excluded
+				}
+			}
+
+			vs.previous = vs.current
+			vs.start = vs.current
+			vs.current = next
+		} else {
+			if ( neighbours_count == 1 ) {
+				add_object( ref objects, new Line ( vs.start, vs.current, intersection_points ) )	// special_point
+				iwvm.convert_all_excluded_to_unvisited()
+				vs.current.state = VisitState.visited
+				vs = null
+			} else {
+				if ( neighbours_count != 2 ) {
+					intersection_points.add( vs.current.point )
+				}
+				
+				Pixel next = null
+				for ( i : vs.next ) {
+					if ( ImageWithVisitedMarks.is_aligned( vs.previous, vs.current, i )) {
+						next = i
+					}
+				}
+				if ( next == null ) {
+					next = vs.next[0]
+				}
+				for ( i : vs.next) {
+					if ( i != next ) {
+						i.state = VisitState.excluded
+					}
+				}
+
+				if ( vs.next.count == 1 ) {
+					vs.current.state = VisitState.visited
+				}
+
+				vs.previous = vs.current
+				vs.start = vs.current
+				vs.current = next
+			}
+		}
+	}
+
+	return objects
+}

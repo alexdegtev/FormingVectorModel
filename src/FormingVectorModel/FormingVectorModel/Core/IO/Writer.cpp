@@ -1,7 +1,8 @@
-#include "Writer.hpp"
-#include <opencv2/opencv.hpp>
+﻿#include "Writer.h"
+#include "opencv2/opencv.hpp"
+#include "../Objects/Visual/Color.h"
 
-void FVM::Core::IO::Writer::write(std::string path_to_file, Objects::Image::IImage* image)
+void Core::IO::Writer::write(std::string path, Objects::Visual::IImage* image)
 {
 	cv::Mat mat(image->rows(), image->cols(), CV_8UC3);
 
@@ -9,10 +10,15 @@ void FVM::Core::IO::Writer::write(std::string path_to_file, Objects::Image::IIma
 	{
 		for (int j = 0; j < image->cols(); j++)
 		{
-			Objects::Image::Pixel pixel = *image->pixel(i, j);
-			mat.at<cv::Vec3b>(i, j) = cv::Vec3b(pixel.blue(), pixel.green(), pixel.red());
+			Objects::Visual::IColor* color = image->get(i, j);
+			mat.at<cv::Vec3b>(i, j) = cv::Vec3b(color->blue(), color->green(), color->red());
 		}
 	}
 
-	cv::imwrite(path_to_file, mat);
+	cv::imwrite(path, mat);
+}
+
+void Core::IO::Writer::write(Path path, Objects::Visual::IImage* image)
+{
+	write(path.full_path(), image);
 }

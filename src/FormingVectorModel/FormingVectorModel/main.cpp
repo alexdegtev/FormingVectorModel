@@ -1,337 +1,181 @@
-#include "Core/Objects/Image/IImage.hpp"
-#include "Core/IO/Reader.hpp"
-#include "Core/IO/Writer.hpp"
 #include <iostream>
-#include "Core/Transformations/YIQGrayscale.hpp"
-#include "Core/Transformations/OtsuBinarization.hpp"
-#include "Core/Transformations/GuoHallSkeletization.hpp"
-#include "Core/Transformations/ZhangSuenSkeletization.hpp"
-#include "Core/Common/Types/Array.hpp"
-#include <array>
-#include "Core/Common/Types/Matrix.hpp"
-#include "Core/Objects/Geometric/Line.hpp"
-#include "Core/Vectorization/DefaultVectorization.hpp"
-#include "Core/Vectorization/DefaultVectorization1.hpp"
-#include "Core/Vectorization/DefaultVectorization2.hpp"
+#include <cstring>
+#include "Core/IO/Path.h"
+#include "Core/Objects/Visual/IImage.h"
+#include "Core/IO/Reader.h"
+#include "Core/IO/Writer.h"
+#include "opencv2/opencv.hpp"
+#include "Core/Objects/Visual/Color.h"
+#include "Core/Transformations/YIQGrayscalation.h"
+#include "Core/Transformations/Invertation.h"
+#include "Core/Transformations/MiddleThresholdBinarization.h"
+#include "Core/Transformations/ZhangSuenSkeletization.h"
+#include "Core/Transformations/GuoHallSkeletization.h"
+#include "Core/Vectorizations/Vectorization.h"
+#include "Core/Objects/Geometric/ILine.h"
+#include "Tests/Vectorization/VectorizationTests.h"
 
-void test_open_and_writing_image()
+void grayscalation(Core::Objects::Visual::IImage* image, Core::IO::Path path)
 {
-	FVM::Core::Objects::Image::IImage *image = FVM::Core::IO::Reader<FVM::Core::Objects::Image::DefaultImage>::read("d:\\C\\diplom_mag\\FormingVectorModel\\data\\2.jpg");
-	//delete image;
+	std::cout << "grayscalation (YIQGrayscalation)..." << std::endl;
+	image->transform(new Core::Transformations::YIQGrayscalation);
 
-	//system("pause");
+	std::cout << "writing..." << std::endl;
+	Core::IO::Writer::write(Core::IO::Path(path.path_to_file(), path.file_name() + "_out_1_YIQGrayscalation", path.file_extention()), image);
+}
 
-	/*for (int i = 0; i < image->rows(); i++)
+void invertation(Core::Objects::Visual::IImage* image, Core::IO::Path path)
+{
+	std::cout << "invertation (Invertation)..." << std::endl;
+	image->transform(new Core::Transformations::Invertation);
+
+	std::cout << "writing..." << std::endl;
+	Core::IO::Writer::write(Core::IO::Path(path.path_to_file(), path.file_name() + "_out_2_Invertation", path.file_extention()), image);
+}
+
+void binarization_MiddleThresholdBinarization(Core::Objects::Visual::IImage* image, Core::IO::Path path)
+{
+	std::cout << "binarization (MiddleThresholdBinarization)..." << std::endl;
+	image->transform(new Core::Transformations::MiddleThresholdBinarization);
+
+	std::cout << "writing..." << std::endl;
+	Core::IO::Writer::write(Core::IO::Path(path.path_to_file(), path.file_name() + "_out_3_MiddleThresholdBinarization", path.file_extention()), image);
+}
+
+void skeletization_ZhangSuenSkeletization(Core::Objects::Visual::IImage* image, Core::IO::Path path)
+{
+	std::cout << "skeletization (ZhangSuenSkeletization)..." << std::endl;
+	image->transform(new Core::Transformations::ZhangSuenSkeletization);
+
+	std::cout << "writing..." << std::endl;
+	Core::IO::Writer::write(Core::IO::Path(path.path_to_file(), path.file_name() + "_out_4_ZhangSuenSkeletization", path.file_extention()), image);
+}
+
+void skeletization_GuoHallSkeletization(Core::Objects::Visual::IImage* image, Core::IO::Path path)
+{
+	std::cout << "skeletization (ZhangSuenSkeletization)..." << std::endl;
+	image->transform(new Core::Transformations::GuoHallSkeletization);
+
+	std::cout << "writing..." << std::endl;
+	Core::IO::Writer::write(Core::IO::Path(path.path_to_file(), path.file_name() + "_out_4_GuoHallSkeletization", path.file_extention()), image);
+}
+
+std::vector<Core::Objects::Geometric::IObject*> vectorization(Core::Objects::Visual::IImage* image, Core::IO::Path path)
+{
+	std::cout << "vectorization" << std::endl;
+	std::vector<Core::Objects::Geometric::IObject*> result;// = image->vectorize(new Core::Vectorizations::Vectorization);
+
+	std::cout << "writing..." << std::endl;
+	Core::IO::Writer::write(Core::IO::Path(path.path_to_file(), path.file_name() + "_out_5_Vectorization", path.file_extention()), image);
+
+	return result;
+}
+
+
+
+int main(int argc, char* argv[])
+{
+	//std::string path = argv[1];
+	//cv::Mat mat = cv::imread(path);
+	//Core::Objects::Visual::Color *colors = new Core::Objects::Visual::Color[mat.rows * mat.cols];
+
+	//for (int i = 0; i < mat.rows; i++)
+	//{
+	//	for (int j = 0; j < mat.cols; j++)
+	//	{
+	//		cv::Vec3b row_color = mat.at<cv::Vec3b>(i, j);
+	//		colors[i * mat.cols + j] = Core::Objects::Visual::Color(row_color.val[2], row_color.val[1], row_color.val[0]);
+	//	}
+	//}
+
+	//std::cout << '\t' << "(0, 0): " << (int)colors[0 * mat.cols + 0].red() << std::endl;
+	//std::cout << '\t' << "(0, 1): " << (int)colors[0 * mat.cols + 1].red() << std::endl;
+
+	//Core::Objects::Visual::IColor *ic = &colors[0 * mat.cols + 1];
+	//std::cout << '\t' << "(0, 1): " << (int)ic->red() << std::endl;
+
+
+	//delete[] colors;
+	//return 0;
+
+
+	//std::cout << "params:" << std::endl;
+	//for (int i = 0; i < argc; i++)
+	//{
+	//	std::cout << '\t' << "[" << i << "]: " << argv[i] << std::endl;
+	//}
+
+	switch (argc)
 	{
-	for (int j = 0; j < image->cols(); j++)
-	{
-	std::cout << *image->pixel(i, j) << std::endl;
+	case 2:
+		if (strcmp(argv[1], "help") == 0)
+		{
+			std::cout << "<program_name> <image_name>" << std::endl;
+		}
+		else
+		{
+			std::cout << "starting..." << std::endl;
+
+			std::cout << "reading..." << std::endl;
+			Core::IO::Path path(argv[1]);
+			Core::Objects::Visual::IImage* image = Core::IO::Reader::read(path);
+
+			std::cout << "image:" << std::endl;
+			std::cout << '\t' << "rows (height): " << image->rows() << std::endl;
+			std::cout << '\t' << "cols (width): " << image->cols() << std::endl;
+			std::cout << '\t' << "(0, 0): " << (int)image->get(0, 0)->blue() << std::endl;
+			std::cout << '\t' << "(0, 1): " << (int)image->get(0, 1)->red() << std::endl;
+
+			grayscalation(image, path);
+			invertation(image, path);
+			binarization_MiddleThresholdBinarization(image, path);
+			//skeletization_ZhangSuenSkeletization(image, path);
+			skeletization_GuoHallSkeletization(image, path);
+
+			std::cout << "end." << std::endl;
+			delete image;
+		}
+
+		break;
+
+	case 3:
+		if (strcmp(argv[1], "/debug") == 0)
+		{
+			if(strcmp(argv[2], "/tests") == 0)
+			{
+				VectorizationTests vt;
+				vt.run_all_tests();
+			}
+		}
+		break;
+
+	case 4:
+		if (strcmp(argv[1], "/debug") == 0)
+		{
+			if (strcmp(argv[2], "vectorize") == 0)
+			{
+				Core::IO::Path path(argv[3]);
+				Core::Objects::Visual::IImage* image = Core::IO::Reader::read(path);
+
+				std::vector<Core::Objects::Geometric::IObject*> objects = vectorization(image, path);
+				for (auto obj : objects)
+				{
+					Core::Objects::Geometric::ILine* l = (Core::Objects::Geometric::ILine*)obj;
+					std::cout << "[(" << l->begin()->x() << ";" << l->begin()->y() << "),(" << l->end()->x() << ";" << l->end()->y() << ")]" << std::endl;
+				}
+
+				std::cout << "end." << std::endl;
+				delete image;
+			}
+
+		}
+		break;
+
+	default:
+		std::cout << "use help" << std::endl;
+		break;
 	}
-	}*/
 
-	FVM::Core::IO::Writer::write("d:\\C\\diplom_mag\\FormingVectorModel\\data\\2_s.jpg", image);
-
-	delete image;
-}
-
-void test_transform_image_to_grayscale()
-{
-	FVM::Core::Objects::Image::IImage *image = FVM::Core::IO::Reader<FVM::Core::Objects::Image::DefaultImage>::read("d:\\C\\diplom_mag\\FormingVectorModel\\data\\1.jpg");
-
-	image->transform(new FVM::Core::Transformations::YIQGrayscale());
-
-	FVM::Core::IO::Writer::write("d:\\C\\diplom_mag\\FormingVectorModel\\data\\1_s.jpg", image);
-
-	delete image;
-}
-
-void test_binarization_image()
-{
-	FVM::Core::Objects::Image::IImage *image = FVM::Core::IO::Reader<FVM::Core::Objects::Image::DefaultImage>::read("d:\\C\\diplom_mag\\FormingVectorModel\\data\\1.jpg");
-
-	image->transform(new FVM::Core::Transformations::YIQGrayscale);
-	image->transform(new FVM::Core::Transformations::OtsuBinarization);
-
-	FVM::Core::IO::Writer::write("d:\\C\\diplom_mag\\FormingVectorModel\\data\\1_s.jpg", image);
-
-	delete image;
-}
-
-void test_guo_hall_skeletization()
-{
-	FVM::Core::Objects::Image::IImage *image = FVM::Core::IO::Reader<FVM::Core::Objects::Image::DefaultImage>::read("d:\\C\\diplom_mag\\FormingVectorModel\\data\\2.jpg");
-
-	image->transform(new FVM::Core::Transformations::YIQGrayscale);
-	image->transform(new FVM::Core::Transformations::OtsuBinarization);
-	image->transform(new FVM::Core::Transformations::GuoHallSkeletization);
-
-	FVM::Core::IO::Writer::write("d:\\C\\diplom_mag\\FormingVectorModel\\data\\2_s.jpg", image);
-
-	delete image;
-}
-
-void test_zhang_suen_skeletization()
-{
-	FVM::Core::Objects::Image::IImage *image = FVM::Core::IO::Reader<FVM::Core::Objects::Image::DefaultImage>::read("d:\\C\\diplom_mag\\FormingVectorModel\\data\\5.jpg");
-
-	image->transform(new FVM::Core::Transformations::YIQGrayscale);
-	image->transform(new FVM::Core::Transformations::OtsuBinarization);
-	image->transform(new FVM::Core::Transformations::ZhangSuenSkeletization);
-
-	FVM::Core::IO::Writer::write("d:\\C\\diplom_mag\\FormingVectorModel\\data\\5_s.jpg", image);
-
-	delete image;
-}
-
-void test_array_type()
-{
-	FVM::Core::Common::Types::Array<int> a(10);
-	for (int i = 0; i < a.size(); i++)
-		std::cout << a(i) << " ";
-	std::cout << std::endl;
-
-	FVM::Core::Common::Types::Array<int> b(11);
-	for (int i = 0; i < b.size(); i++)
-		b(i) = i;
-	for (int i = 0; i < b.size(); i++)
-		std::cout << b(i) << " ";
-	std::cout << std::endl;
-
-	a = b;
-	for (int i = 0; i < a.size(); i++)
-		std::cout << a(i) << " ";
-	std::cout << std::endl;
-
-	a(5) = 0;
-	for (int i = 0; i < a.size(); i++)
-		std::cout << a(i) << " ";
-	std::cout << std::endl;
-	for (int i = 0; i < b.size(); i++)
-		std::cout << b(i) << " ";
-	std::cout << std::endl;
-}
-
-bool test_image_1()
-{
-	IImage *image = FVM::Core::IO::Reader<DefaultImage>::read("..\\..\\..\\data\\1.png");
-	if(image == nullptr) return false;
-
-	FVM::Core::Vectorization::DefaultVectorization2 dv;
-	std::vector<IObject*> lines = dv.vectorizate(image);
-
-	if(lines.size() != 1) return false;
-
-	Line *l = static_cast<Line*>(lines[0]);
-	if (l->p1() != Point(1, 1) && l->p2() != Point(3, 1)) return false;
-	delete l;
-
-	delete image;
-	return true;
-}
-
-bool test_image_2()
-{
-	IImage *image = FVM::Core::IO::Reader<DefaultImage>::read("..\\..\\..\\data\\2.png");
-	if (image == nullptr) return false;
-
-	FVM::Core::Vectorization::DefaultVectorization2 dv;
-	std::vector<IObject*> lines = dv.vectorizate(image);
-
-	if (lines.size() != 1) return false;
-
-	Line *l = static_cast<Line*>(lines[0]);
-	if (l->p1() != Point(1, 1) && l->p2() != Point(3, 3)) return false;
-	delete l;
-
-	delete image;
-	return true;
-}
-
-bool test_image_3()
-{
-	IImage *image = FVM::Core::IO::Reader<DefaultImage>::read("..\\..\\..\\data\\3.png");
-	if (image == nullptr) return false;
-
-	FVM::Core::Vectorization::DefaultVectorization2 dv;
-	std::vector<IObject*> lines = dv.vectorizate(image);
-
-	if (lines.size() != 1) return false;
-
-	Line *l = static_cast<Line*>(lines[0]);
-	if (l->p1() != Point(1, 1) && l->p2() != Point(1, 3)) return false;
-	delete l;
-
-	delete image;
-	return true;
-}
-
-bool test_image_4()
-{
-	IImage *image = FVM::Core::IO::Reader<DefaultImage>::read("..\\..\\..\\data\\4.png");
-	if (image == nullptr) return false;
-
-	FVM::Core::Vectorization::DefaultVectorization2 dv;
-	std::vector<IObject*> lines = dv.vectorizate(image);
-
-	if (lines.size() != 2) return false;
-
-	Line *l = static_cast<Line*>(lines[0]);
-	if (l->p1() != Point(1, 1) && l->p2() != Point(3, 1)) return false;
-	delete l;
-
-	l = static_cast<Line*>(lines[1]);
-	if (l->p1() != Point(1, 3) && l->p2() != Point(3, 3)) return false;
-	delete l;
-
-	delete image;
-	return true;
-}
-
-bool test_image_5()
-{
-	IImage *image = FVM::Core::IO::Reader<DefaultImage>::read("..\\..\\..\\data\\5.png");
-	if (image == nullptr) return false;
-
-	FVM::Core::Vectorization::DefaultVectorization2 dv;
-	std::vector<IObject*> lines = dv.vectorizate(image);
-
-	if (lines.size() != 2) return false;
-
-	Line *l = static_cast<Line*>(lines[0]);
-	if (l->p1() != Point(1, 1) && l->p2() != Point(3, 1)) return false;
-	delete l;
-
-	l = static_cast<Line*>(lines[1]);
-	if (l->p1() != Point(3, 1) && l->p2() != Point(5, 3)) return false;
-	delete l;
-
-	delete image;
-	return true;
-}
-
-bool test_image_6()
-{
-	IImage *image = FVM::Core::IO::Reader<DefaultImage>::read("..\\..\\..\\data\\6.png");
-	if (image == nullptr) return false;
-
-	FVM::Core::Vectorization::DefaultVectorization2 dv;
-	std::vector<IObject*> lines = dv.vectorizate(image);
-
-	if (lines.size() != 3) return false;
-
-	Line *l = static_cast<Line*>(lines[0]);
-	if (l->p1() != Point(1, 1) && l->p2() != Point(2, 1)) return false;
-	delete l;
-
-	l = static_cast<Line*>(lines[1]);
-	if (l->p1() != Point(2, 1) && l->p2() != Point(3, 2)) return false;
-	delete l;
-
-	l = static_cast<Line*>(lines[2]);
-	if (l->p1() != Point(3, 2) && l->p2() != Point(3, 3)) return false;
-	delete l;
-
-	delete image;
-	return true;
-}
-
-bool test_image_7()
-{
-	IImage *image = FVM::Core::IO::Reader<DefaultImage>::read("..\\..\\..\\data\\7.png");
-	if (image == nullptr) return false;
-
-	FVM::Core::Vectorization::DefaultVectorization2 dv;
-	std::vector<IObject*> lines = dv.vectorizate(image);
-
-	if (lines.size() != 3) return false;
-
-	Line *l = static_cast<Line*>(lines[0]);
-	if (l->p1() != Point(1, 1) && l->p2() != Point(2, 1)) return false;
-	delete l;
-
-	l = static_cast<Line*>(lines[1]);
-	if (l->p1() != Point(2, 1) && l->p2() != Point(3, 2)) return false;
-	delete l;
-
-	l = static_cast<Line*>(lines[2]);
-	if (l->p1() != Point(3, 2) && l->p2() != Point(3, 3)) return false;
-	delete l;
-
-	delete image;
-	return true;
-}
-
-bool test_image_8()
-{
-	IImage *image = FVM::Core::IO::Reader<DefaultImage>::read("..\\..\\..\\data\\8.png");
-	if (image == nullptr) return false;
-
-	FVM::Core::Vectorization::DefaultVectorization2 dv;
-	std::vector<IObject*> lines = dv.vectorizate(image);
-
-	if (lines.size() != 3) return false;
-
-	Line *l = static_cast<Line*>(lines[0]);
-	if (l->p1() != Point(1, 2) && l->p2() != Point(2, 2)) return false;
-	delete l;
-
-	l = static_cast<Line*>(lines[1]);
-	if (l->p1() != Point(2, 2) && l->p2() != Point(3, 1)) return false;
-	delete l;
-
-	l = static_cast<Line*>(lines[2]);
-	if (l->p1() != Point(2, 2) && l->p2() != Point(3, 3)) return false;
-	delete l;
-
-	delete image;
-	return true;
-}
-
-bool test_image_9()
-{
-	IImage *image = FVM::Core::IO::Reader<DefaultImage>::read("..\\..\\..\\data\\9.png");
-	if (image == nullptr) return false;
-
-	FVM::Core::Vectorization::DefaultVectorization2 dv;
-	std::vector<IObject*> lines = dv.vectorizate(image);
-
-	if (lines.size() != 2) return false;
-
-	Line *l = static_cast<Line*>(lines[0]);
-	if (l->p1() != Point(1, 1) && l->p2() != Point(3, 1)) return false;
-	delete l;
-
-	l = static_cast<Line*>(lines[1]);
-	if (l->p1() != Point(2, 1) && l->p2() != Point(3, 2)) return false;
-	delete l;
-
-	delete image;
-	return true;
-}
-
-int main()
-{
-	std::cout << "image[" << 1 << "]: [ " << (test_image_1() ? "OK" : "FAIL") << " ]" << std::endl;
-	std::cout << "image[" << 2 << "]: [ " << (test_image_2() ? "OK" : "FAIL") << " ]" << std::endl;
-	std::cout << "image[" << 3 << "]: [ " << (test_image_3() ? "OK" : "FAIL") << " ]" << std::endl;
-	std::cout << "image[" << 4 << "]: [ " << (test_image_4() ? "OK" : "FAIL") << " ]" << std::endl;
-	std::cout << "image[" << 5 << "]: [ " << (test_image_5() ? "OK" : "FAIL") << " ]" << std::endl;
-	std::cout << "image[" << 6 << "]: [ " << (test_image_6() ? "OK" : "FAIL") << " ]" << std::endl;
-	//std::cout << "image[" << 7 << "]: [ " << (test_image_7() ? "OK" : "FAIL") << " ]" << std::endl;
-	std::cout << "image[" << 8 << "]: [ " << (test_image_8() ? "OK" : "FAIL") << " ]" << std::endl;
-	std::cout << "image[" << 9 << "]: [ " << (test_image_9() ? "OK" : "FAIL") << " ]" << std::endl;
-
-
-	IImage *image = FVM::Core::IO::Reader<DefaultImage>::read("..\\..\\..\\data\\1.png");
-
-	FVM::Core::Vectorization::DefaultVectorization2 dv;
-	std::vector<IObject*> lines = dv.vectorizate(image);
-
-	for (int i = 0; i < lines.size(); i++)
-	{
-		Line *l = static_cast<Line*>(lines[i]);
-		std::cout << l->p1().x() << " " << l->p1().y() << std::endl << l->p2().x() << " " << l->p2().y() << std::endl << std::endl;
-	}
 
 	return 0;
 }

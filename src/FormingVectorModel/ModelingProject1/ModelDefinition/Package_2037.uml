@@ -37,7 +37,7 @@
           </operation>
           <operation
             Id="c8fbeacd-f54f-412f-a844-37a1e35930eb"
-            name="element"
+            name="get"
             isLeaf="false"
             isStatic="false"
             isAbstract="true"
@@ -46,7 +46,20 @@
             <ownedParameters>
               <operationHasOwnedParameters>
                 <parameter
-                  Id="4886fc05-072a-42cf-b7ca-b8a5178ddfcb"
+                  Id="27eb328e-2acf-41fe-aa4f-92dfb61971c7"
+                  direction="Return"
+                  isUnique="false">
+                  <type_NamedElement>
+                    <undefinedTypeMoniker
+                      Id="ec87a875-2b4f-4a52-b2b7-95e6951a7e5f"
+                      LastKnownName="T"
+                      LastKnownLocation="Package_2037.uml" />
+                  </type_NamedElement>
+                </parameter>
+              </operationHasOwnedParameters>
+              <operationHasOwnedParameters>
+                <parameter
+                  Id="f26391f9-9dd9-415e-9b89-8d2e3c9b4226"
                   name="index"
                   direction="In"
                   isUnique="false">
@@ -55,19 +68,6 @@
                       Id="f9b89bbb-c3b6-41e4-b403-aacd0deb03ba"
                       LastKnownName="int"
                       LastKnownLocation="Package2_2029.uml" />
-                  </type_NamedElement>
-                </parameter>
-              </operationHasOwnedParameters>
-              <operationHasOwnedParameters>
-                <parameter
-                  Id="27eb328e-2acf-41fe-aa4f-92dfb61971c7"
-                  direction="Return"
-                  isUnique="false">
-                  <type_NamedElement>
-                    <interfaceMoniker
-                      Id="30d1eff5-4e9d-429e-be24-07b1326c8965"
-                      LastKnownName="IElement"
-                      LastKnownLocation="Package_2037.uml" />
                   </type_NamedElement>
                 </parameter>
               </operationHasOwnedParameters>
@@ -75,7 +75,7 @@
           </operation>
           <operation
             Id="709c764a-e196-457d-b20f-cda1c01e9334"
-            name="element"
+            name="set"
             isLeaf="false"
             isStatic="false"
             isAbstract="true"
@@ -84,7 +84,7 @@
             <ownedParameters>
               <operationHasOwnedParameters>
                 <parameter
-                  Id="45842836-57a2-45b3-933d-ef16c1b6ed9a"
+                  Id="f72c656d-3900-43cb-a2fb-8180d1bf0962"
                   name="index"
                   direction="In"
                   isUnique="false">
@@ -98,14 +98,14 @@
               </operationHasOwnedParameters>
               <operationHasOwnedParameters>
                 <parameter
-                  Id="b88d8bf9-236c-4602-8bda-542b92a31847"
+                  Id="3eda574f-5e35-4a9d-8a42-3a3ba0ab562a"
                   name="value"
                   direction="In"
                   isUnique="false">
                   <type_NamedElement>
-                    <interfaceMoniker
-                      Id="30d1eff5-4e9d-429e-be24-07b1326c8965"
-                      LastKnownName="IElement"
+                    <undefinedTypeMoniker
+                      Id="ec87a875-2b4f-4a52-b2b7-95e6951a7e5f"
+                      LastKnownName="T"
                       LastKnownLocation="Package_2037.uml" />
                   </type_NamedElement>
                 </parameter>
@@ -123,14 +123,14 @@
             <ownedParameters>
               <operationHasOwnedParameters>
                 <parameter
-                  Id="a6b9879e-108a-4e8a-af75-4685348a4422"
+                  Id="d867a92e-c934-4ec7-953a-be2b5d0b08cc"
                   name="value"
                   direction="In"
                   isUnique="false">
                   <type_NamedElement>
-                    <interfaceMoniker
-                      Id="30d1eff5-4e9d-429e-be24-07b1326c8965"
-                      LastKnownName="IElement"
+                    <undefinedTypeMoniker
+                      Id="ec87a875-2b4f-4a52-b2b7-95e6951a7e5f"
+                      LastKnownName="T"
                       LastKnownLocation="Package_2037.uml" />
                   </type_NamedElement>
                 </parameter>
@@ -197,7 +197,7 @@
           </operation>
           <operation
             Id="ea65d5ef-f33f-48db-a762-4e93c8f1984a"
-            name="element"
+            name="get"
             isLeaf="false"
             isStatic="false"
             isAbstract="true"
@@ -210,16 +210,16 @@
                   direction="Return"
                   isUnique="false">
                   <type_NamedElement>
-                    <interfaceMoniker
-                      Id="30d1eff5-4e9d-429e-be24-07b1326c8965"
-                      LastKnownName="IElement"
+                    <undefinedTypeMoniker
+                      Id="ec87a875-2b4f-4a52-b2b7-95e6951a7e5f"
+                      LastKnownName="T"
                       LastKnownLocation="Package_2037.uml" />
                   </type_NamedElement>
                 </parameter>
               </operationHasOwnedParameters>
               <operationHasOwnedParameters>
                 <parameter
-                  Id="c13a2297-33a4-4a61-a006-dbfbd9cf4c12"
+                  Id="2035398f-280b-41c1-8a7a-ef61540ee4ad"
                   name="row"
                   direction="In"
                   isUnique="false">
@@ -233,7 +233,7 @@
               </operationHasOwnedParameters>
               <operationHasOwnedParameters>
                 <parameter
-                  Id="b5908bfd-ceb9-48cf-b0a8-cda0cced9eb5"
+                  Id="c5625e93-444b-4f84-bc0c-af6869e139ec"
                   name="col"
                   direction="In"
                   isUnique="false">
@@ -249,7 +249,7 @@
           </operation>
           <operation
             Id="a2734581-a7ef-4617-a28f-e4ec1df357da"
-            name="element"
+            name="set"
             isLeaf="false"
             isStatic="false"
             isAbstract="true"
@@ -258,7 +258,7 @@
             <ownedParameters>
               <operationHasOwnedParameters>
                 <parameter
-                  Id="1e524c9d-b482-4cd7-89f1-4c6bdedb34f7"
+                  Id="96b4cf49-3946-44f0-9495-f20d348acb10"
                   name="row"
                   direction="In"
                   isUnique="false">
@@ -272,7 +272,7 @@
               </operationHasOwnedParameters>
               <operationHasOwnedParameters>
                 <parameter
-                  Id="4d069ff0-7c9e-468e-ba0e-8ef5ca2f3ccf"
+                  Id="3deef5b0-fdd0-4181-893d-0d6d0ac550d9"
                   name="col"
                   direction="In"
                   isUnique="false">
@@ -286,14 +286,14 @@
               </operationHasOwnedParameters>
               <operationHasOwnedParameters>
                 <parameter
-                  Id="57d04b1d-2182-4dc3-aa1e-20edb19ceb78"
+                  Id="d38812cb-1fb7-4c42-8119-6fda957c2ab7"
                   name="value"
                   direction="In"
                   isUnique="false">
                   <type_NamedElement>
-                    <interfaceMoniker
-                      Id="30d1eff5-4e9d-429e-be24-07b1326c8965"
-                      LastKnownName="IElement"
+                    <undefinedTypeMoniker
+                      Id="ec87a875-2b4f-4a52-b2b7-95e6951a7e5f"
+                      LastKnownName="T"
                       LastKnownLocation="Package_2037.uml" />
                   </type_NamedElement>
                 </parameter>
@@ -319,6 +319,46 @@
               LastKnownLocation="Package_2037.uml" />
           </interfaceRealization>
         </suppliersInternal>
+        <ownedAttributesInternal>
+          <property
+            Id="848c896f-0f23-462e-8de9-50c9f2eadbee"
+            name="_data"
+            visibility="Private"
+            isLeaf="false"
+            isStatic="false"
+            isReadOnly="false"
+            isUnique="false"
+            isDerived="false"
+            isDerivedUnion="false"
+            aggregation="None"
+            isComposite="false">
+            <type_NamedElement>
+              <undefinedTypeMoniker
+                Id="ec87a875-2b4f-4a52-b2b7-95e6951a7e5f"
+                LastKnownName="T"
+                LastKnownLocation="Package_2037.uml" />
+            </type_NamedElement>
+          </property>
+          <property
+            Id="85fc96ab-6a49-422f-9612-797ccd792f4c"
+            name="_size"
+            visibility="Private"
+            isLeaf="false"
+            isStatic="false"
+            isReadOnly="false"
+            isUnique="false"
+            isDerived="false"
+            isDerivedUnion="false"
+            aggregation="None"
+            isComposite="false">
+            <type_NamedElement>
+              <undefinedTypeMoniker
+                Id="7b456219-7409-4e24-a4d5-a4d65cc9ba54"
+                LastKnownName="size_t"
+                LastKnownLocation="Package_2037.uml" />
+            </type_NamedElement>
+          </property>
+        </ownedAttributesInternal>
         <ownedOperationsInternal>
           <operation
             Id="f0497288-20f6-4a15-8f4c-81bf0621530a"
@@ -346,7 +386,7 @@
           </operation>
           <operation
             Id="5a73c20a-564c-405f-a9ba-868d7f04c8a1"
-            name="element"
+            name="get"
             isLeaf="false"
             isStatic="false"
             isAbstract="false"
@@ -373,9 +413,9 @@
                   direction="Return"
                   isUnique="false">
                   <type_NamedElement>
-                    <interfaceMoniker
-                      Id="30d1eff5-4e9d-429e-be24-07b1326c8965"
-                      LastKnownName="IElement"
+                    <undefinedTypeMoniker
+                      Id="ec87a875-2b4f-4a52-b2b7-95e6951a7e5f"
+                      LastKnownName="T"
                       LastKnownLocation="Package_2037.uml" />
                   </type_NamedElement>
                 </parameter>
@@ -384,7 +424,7 @@
           </operation>
           <operation
             Id="d8074ef7-a90c-4291-9307-3c71fb70523a"
-            name="element"
+            name="set"
             isLeaf="false"
             isStatic="false"
             isAbstract="false"
@@ -412,9 +452,9 @@
                   direction="In"
                   isUnique="false">
                   <type_NamedElement>
-                    <interfaceMoniker
-                      Id="30d1eff5-4e9d-429e-be24-07b1326c8965"
-                      LastKnownName="IElement"
+                    <undefinedTypeMoniker
+                      Id="ec87a875-2b4f-4a52-b2b7-95e6951a7e5f"
+                      LastKnownName="T"
                       LastKnownLocation="Package_2037.uml" />
                   </type_NamedElement>
                 </parameter>
@@ -437,9 +477,9 @@
                   direction="In"
                   isUnique="false">
                   <type_NamedElement>
-                    <interfaceMoniker
-                      Id="30d1eff5-4e9d-429e-be24-07b1326c8965"
-                      LastKnownName="IElement"
+                    <undefinedTypeMoniker
+                      Id="ec87a875-2b4f-4a52-b2b7-95e6951a7e5f"
+                      LastKnownName="T"
                       LastKnownLocation="Package_2037.uml" />
                   </type_NamedElement>
                 </parameter>
@@ -472,6 +512,46 @@
               LastKnownLocation="Package_2037.uml" />
           </interfaceRealization>
         </suppliersInternal>
+        <ownedAttributesInternal>
+          <property
+            Id="86857d5d-f43e-425a-8d7b-2ae4f386a6c5"
+            name="_rows"
+            visibility="Private"
+            isLeaf="false"
+            isStatic="false"
+            isReadOnly="false"
+            isUnique="false"
+            isDerived="false"
+            isDerivedUnion="false"
+            aggregation="None"
+            isComposite="false">
+            <type_NamedElement>
+              <undefinedTypeMoniker
+                Id="7b456219-7409-4e24-a4d5-a4d65cc9ba54"
+                LastKnownName="size_t"
+                LastKnownLocation="Package_2037.uml" />
+            </type_NamedElement>
+          </property>
+          <property
+            Id="6eddb00b-2d56-4526-9191-5c1c4aefda74"
+            name="_cols"
+            visibility="Private"
+            isLeaf="false"
+            isStatic="false"
+            isReadOnly="false"
+            isUnique="false"
+            isDerived="false"
+            isDerivedUnion="false"
+            aggregation="None"
+            isComposite="false">
+            <type_NamedElement>
+              <undefinedTypeMoniker
+                Id="7b456219-7409-4e24-a4d5-a4d65cc9ba54"
+                LastKnownName="size_t"
+                LastKnownLocation="Package_2037.uml" />
+            </type_NamedElement>
+          </property>
+        </ownedAttributesInternal>
         <ownedOperationsInternal>
           <operation
             Id="5c6abeaf-fafa-4323-bc98-c795bb52b9e7"
@@ -523,7 +603,7 @@
           </operation>
           <operation
             Id="058ad40e-2d82-4949-bf40-a75c588e4e6b"
-            name="element"
+            name="get"
             isLeaf="false"
             isStatic="false"
             isAbstract="false"
@@ -564,9 +644,9 @@
                   direction="Return"
                   isUnique="false">
                   <type_NamedElement>
-                    <interfaceMoniker
-                      Id="30d1eff5-4e9d-429e-be24-07b1326c8965"
-                      LastKnownName="IElement"
+                    <undefinedTypeMoniker
+                      Id="ec87a875-2b4f-4a52-b2b7-95e6951a7e5f"
+                      LastKnownName="T"
                       LastKnownLocation="Package_2037.uml" />
                   </type_NamedElement>
                 </parameter>
@@ -575,7 +655,7 @@
           </operation>
           <operation
             Id="2f59196b-01f9-4386-944f-80293eed09ee"
-            name="element"
+            name="set"
             isLeaf="false"
             isStatic="false"
             isAbstract="false"
@@ -617,9 +697,9 @@
                   direction="In"
                   isUnique="false">
                   <type_NamedElement>
-                    <interfaceMoniker
-                      Id="30d1eff5-4e9d-429e-be24-07b1326c8965"
-                      LastKnownName="IElement"
+                    <undefinedTypeMoniker
+                      Id="ec87a875-2b4f-4a52-b2b7-95e6951a7e5f"
+                      LastKnownName="T"
                       LastKnownLocation="Package_2037.uml" />
                   </type_NamedElement>
                 </parameter>
@@ -628,6 +708,16 @@
           </operation>
         </ownedOperationsInternal>
       </class>
+    </packageHasNamedElement>
+    <packageHasNamedElement>
+      <undefinedType
+        Id="7b456219-7409-4e24-a4d5-a4d65cc9ba54"
+        name="size_t" />
+    </packageHasNamedElement>
+    <packageHasNamedElement>
+      <undefinedType
+        Id="ec87a875-2b4f-4a52-b2b7-95e6951a7e5f"
+        name="T" />
     </packageHasNamedElement>
   </packagedElements>
 </package>

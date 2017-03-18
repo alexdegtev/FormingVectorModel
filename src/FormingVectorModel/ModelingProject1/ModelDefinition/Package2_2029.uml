@@ -168,6 +168,46 @@
               LastKnownLocation="Package2_2029.uml" />
           </interfaceRealization>
         </suppliersInternal>
+        <ownedAttributesInternal>
+          <property
+            Id="0e52104a-af1a-44b1-99ba-76af8aa8acd1"
+            name="_x"
+            visibility="Private"
+            isLeaf="false"
+            isStatic="false"
+            isReadOnly="false"
+            isUnique="false"
+            isDerived="false"
+            isDerivedUnion="false"
+            aggregation="None"
+            isComposite="false">
+            <type_NamedElement>
+              <undefinedTypeMoniker
+                Id="f9b89bbb-c3b6-41e4-b403-aacd0deb03ba"
+                LastKnownName="int"
+                LastKnownLocation="Package2_2029.uml" />
+            </type_NamedElement>
+          </property>
+          <property
+            Id="9979fedd-c2d0-4e31-aba6-fff0882e2702"
+            name="_y"
+            visibility="Private"
+            isLeaf="false"
+            isStatic="false"
+            isReadOnly="false"
+            isUnique="false"
+            isDerived="false"
+            isDerivedUnion="false"
+            aggregation="None"
+            isComposite="false">
+            <type_NamedElement>
+              <undefinedTypeMoniker
+                Id="f9b89bbb-c3b6-41e4-b403-aacd0deb03ba"
+                LastKnownName="int"
+                LastKnownLocation="Package2_2029.uml" />
+            </type_NamedElement>
+          </property>
+        </ownedAttributesInternal>
         <ownedOperationsInternal>
           <operation
             Id="937e1ab1-bcd7-4eab-852b-81ec57fdd302"
@@ -236,6 +276,46 @@
               LastKnownLocation="Package2_2029.uml" />
           </interfaceRealization>
         </suppliersInternal>
+        <ownedAttributesInternal>
+          <property
+            Id="8dd5d5bc-242f-4a0d-9b1c-d5a835a667fc"
+            name="_begin"
+            visibility="Private"
+            isLeaf="false"
+            isStatic="false"
+            isReadOnly="false"
+            isUnique="false"
+            isDerived="false"
+            isDerivedUnion="false"
+            aggregation="None"
+            isComposite="false">
+            <type_NamedElement>
+              <interfaceMoniker
+                Id="9a4203f9-f857-45e8-9979-979faf4cc816"
+                LastKnownName="IPoint"
+                LastKnownLocation="Package2_2029.uml" />
+            </type_NamedElement>
+          </property>
+          <property
+            Id="44e58aaa-675d-415a-828f-f95deef20052"
+            name="_end"
+            visibility="Private"
+            isLeaf="false"
+            isStatic="false"
+            isReadOnly="false"
+            isUnique="false"
+            isDerived="false"
+            isDerivedUnion="false"
+            aggregation="None"
+            isComposite="false">
+            <type_NamedElement>
+              <interfaceMoniker
+                Id="9a4203f9-f857-45e8-9979-979faf4cc816"
+                LastKnownName="IPoint"
+                LastKnownLocation="Package2_2029.uml" />
+            </type_NamedElement>
+          </property>
+        </ownedAttributesInternal>
         <ownedOperationsInternal>
           <operation
             Id="9cdf33a3-7867-4f48-8cd1-7d85ba931b40"
