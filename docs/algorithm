@@ -1,244 +1,212 @@
+algorithm_2
 
--------------------
-Структуры данных
+class IObject {
+	List<Point> intersection_points	// Точки пересечения с другими объектами
+	List<Point> special_point
+}
 
-	Point
-		+ enum state
-			unvisited
-			visited
-			excluded
+enum VisitState {
+	unvisited,
+	visited,
+	excluded
+}
 
-	Image
+class Pixel {
+	VisitState state
+}
 
-	ImageWithVisitMarks
-		+ bool has_unvisited_points()
-		+ Point get_first_unvisit()	// unvisit and point of interest
-		+ List<Point> get_neighbours(Point central_point)	// all neighbours
-		+ void convert_all_excluded_to_unvisited()
+class ImageWithVisitedMarks {
+	bool has_unvisited_pixels()
+	Pixel find_first_unvisited_pixel()
+	List<Pixel> get_neighbours( Pixel central )	// Все кроме VisitState.excluded
+	void convert_all_excluded_to_unvisited()
+	Pixel find_vertical_or_horizontal_neghbour( Pixel central, List<Pixel> neigbours )
+	bool is_aligned( Pixel a, Pixel b, Pixel c )
+}
 
-	VectorizationState
-		+ Point previous
-		+ Point current
-		+ List<Point> neighbours
-		+ Point start
-		+ List<Point> next	// neighbours without previous and visited
+class VectorizationState {
+	Pixel current
+	Pixel previous
+	Pixel start	// Начальная точка фигуры (отрезка) 
+	List<Pixel> neigbours
+	List<Pixel> next	// neigbours, кроме previous и VisitState.visited
+}
 
-	Object
+add_object( ref List<IObject> objects, Line line ) {
+	
+}
 
-	Line : Object
+function vectorization {
 
-	CommonFunctions
-		+ bool is_aligned(Point a, Point b, Point c)
-		+ Point vertical_or_horizontal_neighbour(Point central_point, List<Point> neighbours)
+	List<IObject> objects
+	iwvm = new ImageWithVisitedMarks( image )
+	vs = nullptr
+	List<Point> special_points
 
---------------------
-Алгоритм
+	while ( iwvm.has_unvisited_pixels() ) {
+		if ( vs == null ) {
+			Pixel p = iwvm.find_first_unvisited_pixel()
+			if ( p == null ) {
+				break
+			} else {
+				vs = new VectorizationState()
+				vs.current = p
+			}
+		}
+		
+		vs.neigbours = iwvm.get_neighbours( vs.current )
+		neighbours_count = vs.neigbours.count
 
-iwvm = new ImageWithVisitMarks
-vs = null
-objects = new List<Object>
+		switch ( neighbours_count ) {
+			case 0:
+				break
 
-while (iwvm.has_unvisited_points)
-	if vs == null
-		vs = new VectorizationState
-		Point virst_unvisited = iwvm.get_first_unvisit()
-		if (virst_unvisited != null)
-			vs.current = virst_unvisited
-		else
-			break
+			case 1:
+				special_points.add( vs.current )
+				vs.current.state = VisitState.visited
 
-	vs.neighbours = iwvm.get_neighbours(vs.current)
-
-	switch (vs.neighbours.count)
-		case 0: 
-			break
-
-		case 1:
-			if (vs.previous == null)	// [1]
-				vs.current.state = Point.state.visited
-				vs.previous = vs.current
-				vs.start = vs.current
-				vs.current = vs.next[0]
-				continue
-			
-			else	// [2]
-				iwvm.convert_all_excluded_to_unvisited()
-				objects.add(new Line(vs.start, vs.current))
-				vs = null
-				continue
-			break
-
-		case 2:
-			if (vs.previous == null)
-				vs.current.state = Point.state.visited
-				vs.previous = vs.current
-				vs.start = vs.current
-
-				Point neighbour = CommonFunctions.vertical_or_horizontal_neighbour(vs.current, vs.next)
-				vs.current = neighbour == null ? vs.next[0] /*[8]*/ : neighbour /*[6, 7]*/
-
-				for (i in vs.next)
-					if (i != vs.current)
-						i.state = Point.state.excluded
-				continue
-			else
-				if (CommonFunctions.is_aligned(vs.previous, vs.current, vs.next[0]))	// [3]
-					vs.current.state = Point.state.visited
-					vs.previous = vs.current
-					vs.current = vs.next[0]
-					continue
-				else	// [4, 5]
-					objects.add(new Line(vs.start, vs.current))
-					vs.current.state = Point.state.visited
-					vs.previous = vs.current
+				if ( vs.previous == null ) {
 					vs.start = vs.current
+					vs.previous = vs.current
 					vs.current = vs.next[0]
-					continue
-			break
+				} else {
+					add_object( ref objects, Line( vs.start, vs.current, special_points))
 
-		case 3:
-			if (vs.previous == null)
-				vs.current.state = Point.state.visited
-				vs.previous = vs.current
-				vs.start = vs.current
+					iwvm.convert_all_excluded_to_unvisited()
+					special_points.clear()
 
-				Point neighbour = CommonFunctions.vertical_or_horizontal_neighbour(vs.current, vs.neighbours)
-				vs.current = neighbour == null ? vs.next[0] : neighbour /*[12, 13]*/
+					vs = null
+				}
 
-				for (i in vs.next)
-					if (i != vs.current)
-						i.state = Point.state.excluded
-				continue
-			else
-				for (i in vs.next)
-					if (CommonFunctions.is_aligned(vs.previous, vs.current, i))	// [9, 10]
-						if (vs.next.count == 1)
-							vs.current.state = Point.state.visited
-						vs.previous = vs.current
-						vs.current = i
-						for (i in vs.next)
-							if (i != vs.current)
-								i.state = Point.state.excluded
-						continue
+				break
 
-				// [11]
-				if (vs.next.count == 1)
-					vs.current.state = Point.state.visited
-				vs.previous = vs.current
-				vs.current = vs.next[0]
-				for (i in vs.next)
-					if (i != vs.current)
-						i.state = Point.state.excluded
-				continue
-			break
+			case 2:
+				if ( vs.previous == null ) {
+					Pixel next = vs.next[0]
 
-		case 4:
-			if (vs.previous == null)
-				vs.current.state = Point.state.visited
-				vs.previous = vs.current
-				vs.start = vs.current
+					int unvisited_neighbours = 0
+					for ( i : vs.next ) {
+						if( i.state == VisitState.unvisited ) {
+							unvisited_neighbours++;
+						}
+					}
+					if( unvisited_neighbours == 1) {
+						vs.current.state = VisitState.visited
+					}
 
-				Point neighbour = CommonFunctions.vertical_or_horizontal_neighbour(vs.current, vs.neighbours)
-				vs.current = neighbour == null ? vs.next[0] : neighbour /*[18]*/
+					if(vs.current.state == VisitState.unvisited) {
+						for ( i : vs.next ) {
+							if( i != next ) {
+								i.state = VisitState.excluded
+							}
+						}
+					}
 
-				for (i in vs.next)
-					if (i != vs.current)
-						i.state = Point.state.excluded
-				continue
-			else
-				for (i in vs.next)
-					if (CommonFunctions.is_aligned(vs.previous, vs.current, i))
-						if (vs.next.count == 1)
-							vs.current.state = Point.state.visited
-						vs.previous = vs.current
-						vs.current = i
-						for (i in vs.next)
-							if (i != vs.current)
-								i.state = Point.state.excluded
-						continue
+					special_points.add( vs.current )
 
-				if (vs.next.count == 1)
-					vs.current.state = Point.state.visited
-				vs.previous = vs.current
-				vs.current = vs.next[0]
-				for (i in vs.next)
-					if (i != vs.current)
-						i.state = Point.state.excluded
-				continue
-			break
+					vs.start = vs.current
+					vs.previous = vs.current
+					vs.current = next
+				} else {
+					vs.current.state = VisitState.visited
 
-		case 5:
-			if (vs.previous == null)	// ?
-				vs.current.state = Point.state.visited
-				vs.previous = vs.current
-				vs.start = vs.current
+					if(!ImageWithVisitedMarks.is_aligned(vs.previous, vs.current, vs.next[0])) {
+						add_object( ref objects, Line( vs.start, vs.current, special_points))
 
-				Point neighbour = CommonFunctions.vertical_or_horizontal_neighbour(vs.current, vs.neighbours)
-				vs.current = neighbour == null ? vs.next[0] : neighbour /*[18]*/
+						iwvm.convert_all_excluded_to_unvisited()
+						special_points.clear()
 
-				for (i in vs.next)
-					if (i != vs.current)
-						i.state = Point.state.excluded
-				continue
-			else
-				for (i in vs.next)
-					if (CommonFunctions.is_aligned(vs.previous, vs.current, i))
-						if (vs.next.count == 1)
-							vs.current.state = Point.state.visited
-						vs.previous = vs.current
-						vs.current = i
-						for (i in vs.next)
-							if (i != vs.current)
-								i.state = Point.state.excluded
-						continue
+						special_points.add(vs.current)
 
-				if (vs.next.count == 1)
-					vs.current.state = Point.state.visited
-				vs.previous = vs.current
-				vs.current = vs.next[0]
-				for (i in vs.next)
-					if (i != vs.current)
-						i.state = Point.state.excluded
-				continue
-			break
+						vs.start = vs.current
+					}
 
-		case 6:
-			if (vs.previous == null)	// ?
-				vs.current.state = Point.state.visited
-				vs.previous = vs.current
-				vs.start = vs.current
+					vs.previous = vs.current
+					vs.current = vs.next[0]
+				}
 
-				Point neighbour = CommonFunctions.vertical_or_horizontal_neighbour(vs.current, vs.neighbours)
-				vs.current = neighbour == null ? vs.next[0] : neighbour /*[18]*/
+				break
 
-				for (i in vs.next)
-					if (i != vs.current)
-						i.state = Point.state.excluded
-				continue
-			else
-				for (i in vs.next)
-					if (CommonFunctions.is_aligned(vs.previous, vs.current, i))
-						if (vs.next.count == 1)
-							vs.current.state = Point.state.visited
-						vs.previous = vs.current
-						vs.current = i
-						for (i in vs.next)
-							if (i != vs.current)
-								i.state = Point.state.excluded
-						continue
+			case 3:
+			case 4:
+			case 5:
+			case 6:
+			case 7:
+			case 8:
+				if(vs.previous == null) {
+					Pixel next = vs.next[0]
 
-				if (vs.next.count == 1)
-					vs.current.state = Point.state.visited
-				vs.previous = vs.current
-				vs.current = vs.next[0]
-				for (i in vs.next)
-					if (i != vs.current)
-						i.state = Point.state.excluded
-				continue
-			break
+					int unvisited_neighbours = 0
+					for(i:vs.neighbours()) {	//TODO: neighbours or next
+						if( i.state == VisitState.unvisited ) {
+							unvisited_neighbours++;
+						}
+					}
+					if( unvisited_neighbours == 1) {
+						vs.current.state = VisitState.visited
+					}
 
-		case 7:
-			break
+					if(vs.current.state == VisitState.unvisited) {
+						for ( i : vs.next ) {
+							if( i != next ) {
+								i.state = VisitState.excluded
+							}
+						}
+					}
 
-		case 8:
-			break
+					special_points.add( vs.current )
+
+					vs.start = vs.current
+					vs.previous = vs.current
+					vs.current = next
+				} else {
+					int unvisited_neighbours = 0
+					for(i:vs.neighbours()) {	//TODO: neighbours or next
+						if(i.state == VisitState.unvisited) {
+							unvisited_neighbours++
+						}
+					}
+					if(unvisited_neighbours == 1) {
+						vs.current.state = VisitState.visited
+					}
+
+					Pixel next = null
+					for(i:vs.next) {
+						if(ImageWithVisitedMarks.is_aligned(vs.previous, vs.current, i)){
+							next = i
+							break
+						}
+					}
+
+					special_points.add(vs.current)
+					if(next == null) {
+						next = vs.next[0]
+
+						add_object(Line(vs.start, vs.current, special_points))
+						iwvm.convert_all_excluded_to_unvisited()
+						special_points.clear()
+			
+						special_points.add(vs.current)
+
+						vs.start = vs.current
+					}
+
+					for(i:vs.next) {
+						if(i != next) {
+							i.state = VisitState.excluded
+						}
+					}
+
+					vs.previous = vs.current
+					vs.current = next
+				}
+
+				break
+
+			default:
+				break
+		}
+	}
+
+	return objects
+}

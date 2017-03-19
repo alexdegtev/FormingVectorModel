@@ -38,6 +38,7 @@ namespace Core
 			void convert_all_excluded_to_unvisited();
 			Pixel* get_first_unvisited();
 			std::vector<Pixel*> get_neighbours(Pixel* central);
+			std::vector<Pixel*> get_neighbours_with_excluded(Pixel* central);
 			bool has_unvisited_pixels() const;
 			static Pixel *vertical_or_horizontal_neighbour(Pixel *central, std::vector<Pixel*> neighbours);
 			static bool is_aligned(Pixel *a, Pixel *b, Pixel *c);

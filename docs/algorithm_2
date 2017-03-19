@@ -92,6 +92,7 @@ function vectorization {
 				for ( i : vs.next ) {
 					if ( ImageWithVisitedMarks.is_aligned( vs.previous, vs.current, i )) {
 						next = i
+						break
 					}
 				}
 				if ( next == null ) {
@@ -108,7 +109,6 @@ function vectorization {
 				}
 
 				vs.previous = vs.current
-				vs.start = vs.current
 				vs.current = next
 			}
 		}

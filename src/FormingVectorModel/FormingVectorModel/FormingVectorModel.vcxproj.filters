@@ -90,6 +90,9 @@
     <ClCompile Include="Core\Objects\Geometric\AObject.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
+    <ClCompile Include="Core\Vectorizations\Vectorization3.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="Core\Objects\Geometric\IObject.h">
@@ -192,6 +195,9 @@
       <Filter>Header Files</Filter>
     </ClInclude>
     <ClInclude Include="Core\Objects\Geometric\AObject.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="Core\Vectorizations\Vectorization3.h">
       <Filter>Header Files</Filter>
     </ClInclude>
   </ItemGroup>

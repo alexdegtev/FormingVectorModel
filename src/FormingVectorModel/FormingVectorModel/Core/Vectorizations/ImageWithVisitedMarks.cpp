@@ -112,6 +112,31 @@ std::vector<Core::Vectorizations::ImageWithVisitedMarks::Pixel*> Core::Vectoriza
 	return neighbours;
 }
 
+std::vector<Core::Vectorizations::ImageWithVisitedMarks::Pixel*> Core::Vectorizations::ImageWithVisitedMarks::get_neighbours_with_excluded(Pixel* central)
+{
+	int row = central->point->x();
+	int col = central->point->y();
+
+	std::vector<Pixel*> neighbours;
+
+	for (int i = -1; i <= 1; i++)
+	{
+		for (int j = -1; j <= 1; j++)
+		{
+			if (i == 0 && j == 0) continue;
+
+			int index = (row + i) * _cols + (col + j);
+			if (0 <= row + i && row + i < _rows && 0 <= col + j && col + j < _cols &&
+				_data[index].color->brightness() == Objects::Visual::IColor::binary_color::turn_on)
+			{
+				neighbours.push_back(&_data[index]);
+			}
+		}
+	}
+
+	return neighbours;
+}
+
 bool Core::Vectorizations::ImageWithVisitedMarks::has_unvisited_pixels() const
 {
 	for (int i = 0; i < _rows * _cols; i++)

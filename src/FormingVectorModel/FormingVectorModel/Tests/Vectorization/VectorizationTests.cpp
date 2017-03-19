@@ -7,6 +7,7 @@
 #include "../../Core/Objects/Geometric/ILine.h"
 #include "../../Core/Objects/Geometric/Point.h"
 #include "../../Core/Objects/Geometric/Line.h"
+#include "../../Core/Vectorizations/Vectorization3.h"
 
 using namespace Core::Objects::Geometric;
 using namespace Core::IO;
@@ -18,7 +19,7 @@ VectorizationTests::VectorizationTests()
 
 std::vector<IObject*> VectorizationTests::vectorization(IImage* image, Path path)
 {
-	return image->vectorize(new Core::Vectorizations::Vectorization2);
+	return image->vectorize(new Core::Vectorizations::Vectorization3);
 }
 
 bool VectorizationTests::test1()
@@ -263,19 +264,51 @@ bool VectorizationTests::test8()
 	return result;
 }
 
+bool VectorizationTests::test9()
+{
+	Path path("../../../data/vectorization/9.png");
+	IImage* image = Reader::read(path);
+	bool result = false;
+
+
+	std::vector<IObject*> objects = vectorization(image, path);
+	if (objects.size() == 2)
+	{
+		ILine* l1 = (ILine*)objects[0];
+		ILine* l2 = (ILine*)objects[1];
+		if (l1 && l2 &&
+			*(l1) == Line(Point(1, 1), Point(2, 1)) &&
+			*(l2) == Line(Point(2, 1), Point(2, 2)))
+		{
+			result = true;
+		}
+	}
+
+
+	for (auto i : objects)
+	{
+		delete i;
+	}
+
+	delete image;
+
+	return result;
+}
+
 
 void VectorizationTests::run_all_tests()
 {
 	std::cout << "VectorizationTests begin" << std::endl;
 	int i = 1;
-	//std::cout << i++ << ": " << "[ " << (test1() ? "OK" : "FAIL") << " ]" << std::endl;
-	//std::cout << i++ << ": " << "[ " << (test2() ? "OK" : "FAIL") << " ]" << std::endl;
-	//std::cout << i++ << ": " << "[ " << (test3() ? "OK" : "FAIL") << " ]" << std::endl;
-	//std::cout << i++ << ": " << "[ " << (test4() ? "OK" : "FAIL") << " ]" << std::endl;
-	//std::cout << i++ << ": " << "[ " << (test5() ? "OK" : "FAIL") << " ]" << std::endl;
-	//std::cout << i++ << ": " << "[ " << (test6() ? "OK" : "FAIL") << " ]" << std::endl;
-	//std::cout << i++ << ": " << "[ " << (test7() ? "OK" : "FAIL") << " ]" << std::endl;
+	std::cout << i++ << ": " << "[ " << (test1() ? "OK" : "FAIL") << " ]" << std::endl;
+	std::cout << i++ << ": " << "[ " << (test2() ? "OK" : "FAIL") << " ]" << std::endl;
+	std::cout << i++ << ": " << "[ " << (test3() ? "OK" : "FAIL") << " ]" << std::endl;
+	std::cout << i++ << ": " << "[ " << (test4() ? "OK" : "FAIL") << " ]" << std::endl;
+	std::cout << i++ << ": " << "[ " << (test5() ? "OK" : "FAIL") << " ]" << std::endl;
+	std::cout << i++ << ": " << "[ " << (test6() ? "OK" : "FAIL") << " ]" << std::endl;
+	std::cout << i++ << ": " << "[ " << (test7() ? "OK" : "FAIL") << " ]" << std::endl;
 	std::cout << i++ << ": " << "[ " << (test8() ? "OK" : "FAIL") << " ]" << std::endl;
+	std::cout << i++ << ": " << "[ " << (test9() ? "OK" : "FAIL") << " ]" << std::endl;
 
 	std::cout << "VectorizationTests end" << std::endl;
 }
