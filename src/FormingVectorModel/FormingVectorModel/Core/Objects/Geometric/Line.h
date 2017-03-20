@@ -3,6 +3,7 @@
 
 #include "ILine.h"
 #include "Point.h"
+#include <vector>
 
 namespace Core
 {
@@ -15,6 +16,7 @@ namespace Core
 			public:
 				Line();
 				Line(IPoint* begin, IPoint* end);
+				Line(IPoint* begin, IPoint* end, std::vector<IPoint*> special_point);
 				Line(Point begin, Point end);
 				~Line();
 

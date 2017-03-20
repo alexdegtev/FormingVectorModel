@@ -16,6 +16,7 @@ namespace Core
 		{
 		public:
 			std::vector<Objects::Geometric::IObject*> execute(Objects::Visual::IImage* image) override;
+			std::vector<Objects::Geometric::IObject*> execute1(Objects::Visual::IImage* image);
 
 		private:
 			ImageWithVisitedMarks *iwvm;
