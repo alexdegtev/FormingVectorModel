@@ -14,7 +14,7 @@ Core::Objects::Geometric::Line::Line(IPoint* begin, IPoint* end) : _begin(new Po
 		_end = new Point();
 }
 
-Core::Objects::Geometric::Line::Line(IPoint* begin, IPoint* end, std::vector<IPoint*> special_point)
+Core::Objects::Geometric::Line::Line(IPoint* begin, IPoint* end, std::vector<IPoint*> special_point) : Line(begin, end)
 {
 }
 

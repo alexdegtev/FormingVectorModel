@@ -133,18 +133,22 @@ function vectorization {
 			case 6:
 			case 7:
 			case 8:
-				if(vs.previous == null) {
-					Pixel next = vs.next[0]
+				int unvisited_neighbours = 0
+				for(i:vs.neighbours()) {	//TODO: neighbours or next
+					if( i.state == VisitState.unvisited ) {
+						unvisited_neighbours++;
+					}
+				}
+				if( unvisited_neighbours == 1) {
+					vs.current.state = VisitState.visited
+				}	
 
-					int unvisited_neighbours = 0
-					for(i:vs.neighbours()) {	//TODO: neighbours or next
-						if( i.state == VisitState.unvisited ) {
-							unvisited_neighbours++;
-						}
-					}
-					if( unvisited_neighbours == 1) {
-						vs.current.state = VisitState.visited
-					}
+				special_points.add( vs.current )
+
+				Pixel next
+
+				if(vs.previous == null) {
+					next = vs.next[0]
 
 					if(vs.current.state == VisitState.unvisited) {
 						for ( i : vs.next ) {
@@ -154,23 +158,9 @@ function vectorization {
 						}
 					}
 
-					special_points.add( vs.current )
-
 					vs.start = vs.current
-					vs.previous = vs.current
-					vs.current = next
 				} else {
-					int unvisited_neighbours = 0
-					for(i:vs.neighbours()) {	//TODO: neighbours or next
-						if(i.state == VisitState.unvisited) {
-							unvisited_neighbours++
-						}
-					}
-					if(unvisited_neighbours == 1) {
-						vs.current.state = VisitState.visited
-					}
-
-					Pixel next = null
+					next = null
 					for(i:vs.next) {
 						if(ImageWithVisitedMarks.is_aligned(vs.previous, vs.current, i)){
 							next = i
@@ -178,7 +168,6 @@ function vectorization {
 						}
 					}
 
-					special_points.add(vs.current)
 					if(next == null) {
 						next = vs.next[0]
 
@@ -196,10 +185,10 @@ function vectorization {
 							i.state = VisitState.excluded
 						}
 					}
-
-					vs.previous = vs.current
-					vs.current = next
 				}
+
+				vs.previous = vs.current
+				vs.current = next
 
 				break
 

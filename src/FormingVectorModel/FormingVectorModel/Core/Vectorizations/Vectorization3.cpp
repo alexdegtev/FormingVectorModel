@@ -116,9 +116,78 @@ std::vector<Core::Objects::Geometric::IObject*> Core::Vectorizations::Vectorizat
 		case 6:
 		case 7:
 		case 8:
-			if(vs->previous() == nullptr)
 			{
-				
+				int unvisited_neighbours_count = 0;
+				for (auto i : vs->neighbours())
+				{
+					if (i->state == ImageWithVisitedMarks::VisitState::unvisited)
+					{
+						unvisited_neighbours_count++;
+					}
+				}
+				if (unvisited_neighbours_count == 1)
+				{
+					vs->current()->state = ImageWithVisitedMarks::VisitState::visited;
+				}
+
+				special_points.push_back(vs->current()->point);
+
+				ImageWithVisitedMarks::Pixel *next;
+
+				if (vs->previous() == nullptr)
+				{
+					next = vs->next()[0];
+
+					if (vs->current()->state == ImageWithVisitedMarks::VisitState::visited)
+					{
+						for (auto i : vs->next())
+						{
+							if (i != next)
+							{
+								i->state = ImageWithVisitedMarks::VisitState::excluded;
+							}
+						}
+					}
+
+					vs->start(vs->current());
+				}
+				else
+				{
+					next = nullptr;
+
+					for (auto i : vs->next())
+					{
+						if (ImageWithVisitedMarks::is_aligned(vs->previous(), vs->current(), i))
+						{
+							next = i;
+							break;
+						}
+					}
+
+					if (next == nullptr)
+					{
+						next = vs->next()[0];
+
+						add_object(new Objects::Geometric::Line(vs->start()->point, vs->current()->point, special_points));
+						iwvm->convert_all_excluded_to_unvisited();
+						special_points.clear();
+
+						special_points.push_back(vs->current()->point);
+
+						vs->start(vs->current());
+					}
+
+					for (auto i : vs->next())
+					{
+						if (i != next)
+						{
+							i->state = ImageWithVisitedMarks::VisitState::excluded;
+						}
+					}
+				}
+
+				vs->previous(vs->current());
+				vs->current(next);
 			}
 			break;
 
