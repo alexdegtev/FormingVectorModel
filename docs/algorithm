@@ -85,174 +85,94 @@ function vectorization {
 		
 		vs.neigbours = iwvm.get_neighbours( vs.current )
 
-		switch ( vs.neigbours.count ) {
-			case 0:
-				break
-
-			case 1:
-				special_points.add( vs.current )
-				vs.current.state = VisitState.visited
-
-				if ( vs.previous == null ) {
-					vs.start = vs.current
-					vs.previous = vs.current
-					vs.current = vs.next[0]
-				} else {
-					add_object( Line( vs.start, vs.current, special_points), special_points))
-
-					special_points.clear()
-
-					vs = null
-				}
-
-				break
-
-			case 2:
-				vs.current.state = VisitState.visited
-
-				Pixel next = vs.next[0]
-
-				if ( vs.previous == null ) {
-					for ( i : vs.next ) {
-						if( i != next) {
-							i.state = VisitState.excluded
-						}
-					}
-
-					special_points.add( vs.current )
-
-					vs.start = vs.current
-				} else {
-					if(!ImageWithVisitedMarks.is_aligned(vs.previous, vs.current, next)) {
-						add_object( Line( vs.start, vs.current, special_points)), special_points)
-
-						special_points.clear()
-
-						special_points.add(vs.current)
-
-						vs.start = vs.current
-					}
-				}
-
-				vs.previous = vs.current
-				vs.current = next
-
-				break
-
-			case 3:
-			case 4:
-			case 5:
-			case 6:
-			case 7:
-			case 8:
-				vs.current.state = VisitState.visited
-
-				Pixel next
-
-				if( vs.previous == null ) {
-					next = vs.next[0]
-
-					for ( i : vs.next ) {
-						if ( i != next ) {
-							i.state = VisitState.excluded
-						}
-					}
-
-					special_points.add( vs.current )
-
-					vs.start = vs.current
-				} else {
-					next = null
-					for( i : vs.next ) {
-						if( ImageWithVisitedMarks.is_aligned( vs.previous, vs.current, i )){
-							next = i
-							break
-						}
-					}
-
-					if( next == null ) {
-						next = vs.next[0]
-
-						add_object( Line( vs.start, vs.current, special_points ), special_points)
-
-						special_points.clear()
-			
-						special_points.add(vs.current)
-
-						vs.start = vs.current
-					}
-
-					for ( i : vs.next ) {
-						if ( i != next ) {
-							i.state = VisitState.excluded
-						}
-					}
-				}
-
-				vs.previous = vs.current
-				vs.current = next
-
-				break
-
-			default:
-				break
-
-			case n:
-				vs.current.state = VisitState.visited
-
-				Pixel next
-
-				if( vs.previous == null ) {
-					special_points.add( vs.current )
-
-					next = vs.next[0]
-
-					for ( i : vs.next ) {
-						if ( i != next ) {
-							i.state = VisitState.excluded
-						}
-					}
-
-					vs.start = vs.current
-				} else {
-					next = null
-
-					for( i : vs.next ) {
-						if( ImageWithVisitedMarks.is_aligned( vs.previous, vs.current, i )) {
-							next = i
-							break
-						}
-					}
-
-					if( next == null ) {
-						special_points.add( vs.current )
-
-						add_object( Line( vs.start, vs.current, special_points ), special_points)
-						special_points.clear()
-
-						if ( vs.next.length == 0 ) {
-							vs = null
-							continue
-						} else {
-							next = vs.next[0]
-							special_points.add( vs.current )
-							vs.start = vs.current
-						}
-					}
-
-					for ( i : vs.next ) {
-						if ( i != next ) {
-							i.state = VisitState.excluded
-						}
-					}
-				}
-
-				vs.previous = vs.current
-				vs.current = next
-
-				break
+		if( vs.neighbours.count == 0 ) {
+			continue
 		}
+
+
+		vs.current.state = VisitState.visited
+
+		Pixel next
+
+		if( vs.previous == null ) {
+			special_points.add( vs.current )
+
+			next = vs.next[0]
+
+			for ( i : vs.next ) {
+				if ( i != next ) {
+					i.state = VisitState.excluded
+				}
+			}
+
+			vs.start = vs.current
+		} else {
+			next = null
+
+			add_special_point()
+
+			for( i : vs.next ) {
+				if( ImageWithVisitedMarks.is_aligned( vs.previous, vs.current, i )) {
+					next = i
+					break
+				}
+			}
+
+			if( next == null ) {
+				add_object( Line( vs.start, vs.current, special_points ), special_points)
+				special_points.clear()
+
+				if ( vs.next.length == 0 ) {
+					vs = null
+					continue
+				} else {
+					next = vs.next[0]
+					special_points.add( vs.current )
+					vs.start = vs.current
+				}
+			}
+
+			for ( i : vs.next ) {
+				if ( i != next ) {
+					i.state = VisitState.excluded
+				}
+			}
+		}
+
+		vs.previous = vs.current
+		vs.current = next
 	}
 
 	return objects
+}
+
+
+
+add_special_point() {
+	bool has_aligned = false
+	for( i : vs.next ) {
+		if( ImageWithVisitedMarks.is_aligned( vs.previous, vs.current, i )) {
+			has_aligned = true
+			break
+		}
+	}
+
+	bool has_horizontal_neigbours = false
+	if( ImageWithVisitedMarks.get_horizontal_neigbour(vs.previous, vs.current)) {
+		has_horizontal_neigbours = true
+	}
+
+	bool need_to_add = false
+
+	if( has_horizontal_neigbours ) {
+		need_to_add = true
+	} else {
+		if( !has_aligned ) {
+			need_to_add = true
+		}
+	}
+
+	if( need_to_add ) {
+		special_points.add( vs.current )
+	}
 }

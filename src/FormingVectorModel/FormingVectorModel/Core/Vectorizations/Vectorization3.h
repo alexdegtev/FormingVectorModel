@@ -15,14 +15,17 @@ namespace Core
 		class Vectorization3 : public IVectorization
 		{
 		public:
-			std::vector<Objects::Geometric::IObject*> execute(Objects::Visual::IImage* image) override;
+			std::vector<Objects::Geometric::IObject*> execute2(Objects::Visual::IImage* image);
 			std::vector<Objects::Geometric::IObject*> execute1(Objects::Visual::IImage* image);
+			std::vector<Objects::Geometric::IObject*> execute(Objects::Visual::IImage* image) override;
 
 		private:
 			ImageWithVisitedMarks *iwvm;
 			VectorizationState *vs;
 			std::vector<Core::Objects::Geometric::IObject*> objects;
 			void add_object(Objects::Geometric::ILine *line);
+
+			void add_special_point(std::vector<ImageWithVisitedMarks::Pixel*> *special_pixels);
 		};
 	}
 }

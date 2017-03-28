@@ -188,3 +188,9 @@ Core::Vectorizations::ImageWithVisitedMarks::Pixel* Core::Vectorizations::ImageW
 
 	return nullptr;
 }
+
+std::vector<Core::Vectorizations::ImageWithVisitedMarks::Pixel*> Core::Vectorizations::ImageWithVisitedMarks::get_horizontal_neigbour(Pixel* previous, Pixel* center)
+{
+	std::vector<Core::Vectorizations::ImageWithVisitedMarks::Pixel*> result;
+	return result;
+}
