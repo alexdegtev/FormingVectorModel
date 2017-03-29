@@ -304,8 +304,8 @@ void VectorizationTests::run_all_tests()
 	//std::cout << i++ << ": " << "[ " << (test2() ? "OK" : "FAIL") << " ]" << std::endl;
 	//std::cout << i++ << ": " << "[ " << (test3() ? "OK" : "FAIL") << " ]" << std::endl;
 	//std::cout << i++ << ": " << "[ " << (test4() ? "OK" : "FAIL") << " ]" << std::endl;
-	std::cout << i++ << ": " << "[ " << (test5() ? "OK" : "FAIL") << " ]" << std::endl;
-	//std::cout << i++ << ": " << "[ " << (test6() ? "OK" : "FAIL") << " ]" << std::endl;
+	//std::cout << i++ << ": " << "[ " << (test5() ? "OK" : "FAIL") << " ]" << std::endl;
+	std::cout << i++ << ": " << "[ " << (test6() ? "OK" : "FAIL") << " ]" << std::endl;
 	//std::cout << i++ << ": " << "[ " << (test7() ? "OK" : "FAIL") << " ]" << std::endl;
 	//std::cout << i++ << ": " << "[ " << (test8() ? "OK" : "FAIL") << " ]" << std::endl;
 	//std::cout << i++ << ": " << "[ " << (test9() ? "OK" : "FAIL") << " ]" << std::endl;
