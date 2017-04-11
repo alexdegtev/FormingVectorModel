@@ -77,6 +77,7 @@ std::vector<Core::Objects::Geometric::IObject*> Core::Vectorizations::Vectorizat
 				}
 				else
 				{
+					vs->current()->state = ImageWithVisitedMarks::VisitState::visited;
 					next = vs->next()[0];
 					special_pixels.push_back(vs->current());
 					vs->start(vs->current());
@@ -121,9 +122,9 @@ void Core::Vectorizations::Vectorization3::add_object(Objects::Geometric::ILine*
 void Core::Vectorizations::Vectorization3::add_special_point(std::vector<ImageWithVisitedMarks::Pixel*> *special_pixels)
 {
 	bool has_aligned = false;
-	for(auto i:vs->next())
+	for (auto i : vs->neighbours())
 	{
-		if(ImageWithVisitedMarks::is_aligned(vs->previous(), vs->current(), i))
+		if (i != vs->previous() && ImageWithVisitedMarks::is_aligned(vs->previous(), vs->current(), i))
 		{
 			has_aligned = true;
 			break;
@@ -131,7 +132,7 @@ void Core::Vectorizations::Vectorization3::add_special_point(std::vector<ImageWi
 	}
 
 	bool has_horizontal_neighbours = false;
-	if(ImageWithVisitedMarks::get_horizontal_neigbour(vs->previous(), vs->current()).size() != 0)
+	if(iwvm->get_horizontal_neigbour(vs->previous(), vs->current()).size() != 0)
 	{
 		has_horizontal_neighbours = true;
 	}

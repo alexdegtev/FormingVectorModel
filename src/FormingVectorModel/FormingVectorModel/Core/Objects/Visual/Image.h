@@ -23,7 +23,7 @@ namespace Core
 				void set(int row, int col, IColor* value) override;
 				void transform(Transformations::ITransformation* transforamtion) override;
 				std::vector<Geometric::IObject*> vectorize(Vectorizations::IVectorization* vectorization) override;
-
+				std::vector<IColor*> get_neighbours(int row, int col, unsigned char brightness = IColor::binary_color::turn_on) override;
 			private:
 				Color* _data;
 				int _rows;

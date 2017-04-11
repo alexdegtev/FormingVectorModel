@@ -50,3 +50,26 @@ std::vector<Core::Objects::Geometric::IObject*> Core::Objects::Visual::Image::ve
 {
 	return vectorization->execute(this);
 }
+
+std::vector<Core::Objects::Visual::IColor*> Core::Objects::Visual::Image::get_neighbours(int row, int col, unsigned char brightness)
+{
+	std::vector<IColor*> neighbours;
+
+	for (int i = -1; i <= 1; i++)
+	{
+		for (int j = -1; j <= 1; j++)
+		{
+			if (i == 0 && j == 0) continue;
+
+			int index = (row + i) * _cols + (col + j);
+			if (0 <= row + i && row + i < _rows && 0 <= col + j && col + j < _cols &&
+				_data[index].brightness() == brightness)
+			{
+				neighbours.push_back(&_data[index]);
+			}
+		}
+	}
+
+	return neighbours;
+}
+

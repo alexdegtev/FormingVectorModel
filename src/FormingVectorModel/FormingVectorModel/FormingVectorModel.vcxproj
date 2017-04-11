@@ -148,6 +148,7 @@
     <ClCompile Include="Core\Transformations\GuoHallSkeletization.cpp" />
     <ClCompile Include="Core\Transformations\Invertation.cpp" />
     <ClCompile Include="Core\Transformations\MiddleThresholdBinarization.cpp" />
+    <ClCompile Include="Core\Transformations\NoiseRemover.cpp" />
     <ClCompile Include="Core\Transformations\OtsuBinarization.cpp" />
     <ClCompile Include="Core\Transformations\YIQGrayscalation.cpp" />
     <ClCompile Include="Core\Transformations\ZhangSuenSkeletization.cpp" />
@@ -183,10 +184,12 @@
     <ClInclude Include="Core\Transformations\IBinarization.h" />
     <ClInclude Include="Core\Transformations\IGrayscalation.h" />
     <ClInclude Include="Core\Transformations\IInvertation.h" />
+    <ClInclude Include="Core\Transformations\INoiseRemover.h" />
     <ClInclude Include="Core\Transformations\Invertation.h" />
     <ClInclude Include="Core\Transformations\ISkeletization.h" />
     <ClInclude Include="Core\Transformations\ITransformation.h" />
     <ClInclude Include="Core\Transformations\MiddleThresholdBinarization.h" />
+    <ClInclude Include="Core\Transformations\NoiseRemover.h" />
     <ClInclude Include="Core\Transformations\OtsuBinarization.h" />
     <ClInclude Include="Core\Transformations\YIQGrayscalation.h" />
     <ClInclude Include="Core\Transformations\ZhangSuenSkeletization.h" />

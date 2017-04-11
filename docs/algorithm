@@ -24,7 +24,7 @@ class ImageWithVisitedMarks {
 	bool is_aligned( Pixel a, Pixel b, Pixel c )
 }
 
-class VectorizationState {
+class VectorizationStatkbe {
 	Pixel current
 	Pixel previous
 	Pixel start	// Начальная точка фигуры (отрезка) 

@@ -101,8 +101,8 @@ std::vector<Core::Vectorizations::ImageWithVisitedMarks::Pixel*> Core::Vectoriza
 
 			int index = (row + i) * _cols + (col + j);
 			if (0 <= row + i && row + i < _rows && 0 <= col + j && col + j < _cols &&
-				_data[index].color->brightness() == Objects::Visual::IColor::binary_color::turn_on &&
-				_data[index].state != VisitState::excluded)
+				_data[index].color->brightness() == Objects::Visual::IColor::binary_color::turn_on /*&&
+				_data[index].state != VisitState::excluded*/)
 			{
 				neighbours.push_back(&_data[index]);
 			}
@@ -191,6 +191,22 @@ Core::Vectorizations::ImageWithVisitedMarks::Pixel* Core::Vectorizations::ImageW
 
 std::vector<Core::Vectorizations::ImageWithVisitedMarks::Pixel*> Core::Vectorizations::ImageWithVisitedMarks::get_horizontal_neigbour(Pixel* previous, Pixel* center)
 {
-	std::vector<Core::Vectorizations::ImageWithVisitedMarks::Pixel*> result;
+	std::vector<Pixel*> result;
+
+	for(auto n:get_neighbours(center))
+	{
+		if(is_horizontal_neighbour(previous, center, n))
+		{
+			result.push_back(n);
+		}
+	}
+
 	return result;
+}
+
+bool Core::Vectorizations::ImageWithVisitedMarks::is_horizontal_neighbour(Pixel* previous, Pixel* center, Pixel* neighbour)
+{
+	int AB = previous->point->x() - neighbour->point->x();
+	int BC = previous->point->y() - neighbour->point->y();
+	return AB * AB + BC * BC == 2;
 }

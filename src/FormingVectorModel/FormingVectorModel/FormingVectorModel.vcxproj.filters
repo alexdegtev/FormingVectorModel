@@ -93,6 +93,9 @@
     <ClCompile Include="Core\Vectorizations\Vectorization3.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
+    <ClCompile Include="Core\Transformations\NoiseRemover.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="Core\Objects\Geometric\IObject.h">
@@ -194,10 +197,16 @@
     <ClInclude Include="Core\Vectorizations\IntersectionPoint.h">
       <Filter>Header Files</Filter>
     </ClInclude>
-    <ClInclude Include="Core\Objects\Geometric\AObject.h">
+    <ClInclude Include="Core\Vectorizations\Vectorization3.h">
       <Filter>Header Files</Filter>
     </ClInclude>
-    <ClInclude Include="Core\Vectorizations\Vectorization3.h">
+    <ClInclude Include="Core\Transformations\INoiseRemover.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="Core\Transformations\NoiseRemover.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="Core\Objects\Geometric\AObject.h">
       <Filter>Header Files</Filter>
     </ClInclude>
   </ItemGroup>
