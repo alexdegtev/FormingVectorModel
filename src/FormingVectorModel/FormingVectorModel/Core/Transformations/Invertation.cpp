@@ -9,12 +9,7 @@ void Core::Transformations::Invertation::execute(Objects::Visual::IImage* image)
 	{
 		for (int j = 0; j < image->cols(); j++)
 		{
-			Objects::Visual::IColor* color = image->get(i, j);
-			Objects::Visual::Color new_color(
-				UCHAR_MAX - color->red(),
-				         UCHAR_MAX - color->green(),
-				         UCHAR_MAX - color->blue()
-			);
+			Objects::Visual::Color new_color(UCHAR_MAX - image->get(i, j)->brightness());
 			image->set(i, j, &new_color);
 		}
 	}
