@@ -134,11 +134,11 @@ int main(int argc, char* argv[])
 
 			bool write_result = true;
 			grayscalation(image, path, write_result);
-			invertation(image, path, write_result);
-			binarization_MiddleThresholdBinarization(image, path, write_result);
-			noiseRemover(image, path, write_result);
-			//skeletization_ZhangSuenSkeletization(image, path, write_result);
-			skeletization_GuoHallSkeletization(image, path, write_result);
+			//invertation(image, path, write_result);
+			//binarization_MiddleThresholdBinarization(image, path, write_result);
+			//noiseRemover(image, path, write_result);
+			////skeletization_ZhangSuenSkeletization(image, path, write_result);
+			//skeletization_GuoHallSkeletization(image, path, write_result);
 
 			std::cout << "end." << std::endl;
 			delete image;
