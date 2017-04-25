@@ -18,6 +18,7 @@ namespace FormingVectorModelLibraryTest
             Transform(image, new Invertation(), @"..\..\..\..\..\data\2_out_" + i++ + ".png");
             //Transform(image, new MiddleThresholdBinarization(), @"..\..\..\..\..\data\2_out_" + i++ + ".png");
             Transform(image, new OtsuBinarization(), @"..\..\..\..\..\data\2_out_" + i++ + ".png");
+            Transform(image, new NoiseRemover(), @"..\..\..\..\..\data\2_out_" + i++ + ".png");
 
         }
 

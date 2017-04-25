@@ -2,6 +2,7 @@
 #define CORE_TRANSFORMATIONS_OTSUBINARIZATION_H
 
 #include "IBinarization.h"
+#include <vector>
 
 namespace Core
 {
@@ -13,7 +14,10 @@ namespace Core
 			void execute(Objects::Visual::IImage* image) override;
 
 		private:
-			unsigned char threshold(Objects::Visual::IImage* image);
+			Objects::Visual::IImage* image;
+
+			unsigned char threshold();
+			std::vector<int> get_histogram(int *min, int *max);
 		};
 	}
 }

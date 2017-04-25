@@ -15,6 +15,7 @@
 #include "Core/Objects/Geometric/ILine.h"
 #include "Tests/Vectorization/VectorizationTests.h"
 #include "Core/Transformations/NoiseRemover.h"
+#include "Core/Transformations/OtsuBinarization.h"
 
 void grayscalation(Core::Objects::Visual::IImage* image, Core::IO::Path path, bool write_result = true)
 {
@@ -50,6 +51,19 @@ void binarization_MiddleThresholdBinarization(Core::Objects::Visual::IImage* ima
 	if (write_result) {
 		std::cout << "writing...";
 		Core::IO::Writer::write(Core::IO::Path(path.path_to_file(), path.file_name() + "_out_3_MiddleThresholdBinarization", path.file_extention()), image);
+	}
+
+	std::cout << std::endl;
+}
+
+void binarization_OtsuBinarization(Core::Objects::Visual::IImage* image, Core::IO::Path path, bool write_result = true)
+{
+	std::cout << "binarization (OtsuBinarization)... ";
+	image->transform(new Core::Transformations::OtsuBinarization);
+
+	if (write_result) {
+		std::cout << "writing...";
+		Core::IO::Writer::write(Core::IO::Path(path.path_to_file(), path.file_name() + "_out_3_OtsuBinarization", path.file_extention()), image);
 	}
 
 	std::cout << std::endl;
@@ -134,9 +148,10 @@ int main(int argc, char* argv[])
 
 			bool write_result = true;
 			grayscalation(image, path, write_result);
-			//invertation(image, path, write_result);
+			invertation(image, path, write_result);
 			//binarization_MiddleThresholdBinarization(image, path, write_result);
-			//noiseRemover(image, path, write_result);
+			binarization_OtsuBinarization(image, path, write_result);
+			noiseRemover(image, path, write_result);
 			////skeletization_ZhangSuenSkeletization(image, path, write_result);
 			//skeletization_GuoHallSkeletization(image, path, write_result);
 

@@ -6,8 +6,6 @@ namespace FormingVectorModelLibrary.Core.Transformation
 {
     public class NoiseRemover : INoiseRemover
     {
-        private byte middleColor = Byte.MaxValue / 2;
-
         public void Execute(IImage image)
         {
             for (int i = 1; i < image.Rows - 1; i++)
@@ -17,31 +15,22 @@ namespace FormingVectorModelLibrary.Core.Transformation
                     IColor currentColor = image[i, j];
                     if (currentColor.Brightness == (byte) Color.BinaryColor.TurnOff)
                     {
-                        //IList<IColor> neighbours = image.
+                        IList<IColor> neighbours = image.GetNeighboursByBrightness(i, j, (byte) Color.BinaryColor.TurnOn);
+                        if (neighbours.Count >= 5)
+                        {
+                            image[i, j].Brightness = (byte) Color.BinaryColor.TurnOn;
+                        }
+                    }
+                    else
+                    {
+                        IList<IColor> neighbours = image.GetNeighboursByBrightness(i, j, (byte)Color.BinaryColor.TurnOff);
+                        if (neighbours.Count == 5)
+                        {
+                            image[i, j].Brightness = (byte)Color.BinaryColor.TurnOff;
+                        }
                     }
                 }
             }
-        }
-
-        private byte GetDominantColor(IList<IColor> colors)
-        {
-            int turnOnCount = 0, turnOffCount = 0;
-
-            foreach (var color in colors)
-            {
-                if (color.Brightness == (byte) Color.BinaryColor.TurnOn)
-                {
-                    turnOnCount++;
-                }
-                else
-                {
-                    turnOffCount++;
-                }
-            }
-
-            if (turnOnCount > turnOffCount) return (byte) Color.BinaryColor.TurnOn;
-            if (turnOnCount < turnOffCount) return (byte) Color.BinaryColor.TurnOff;
-            return middleColor;
         }
     }
 }

@@ -85,11 +85,16 @@ namespace FormingVectorModelLibrary.Core.Objects.Visual
                 {
                     if (i == 0 && j == 0) continue;
 
-                    
+                    if (0 <= row + i && row + i < data.Rows && 
+                        0 <= col + j && col + j < data.Cols &&
+                        data[row + i, col + j].Brightness == brightness)
+                    {
+                        neighbours.Add(data[row + i, col + j]);
+                    }
                 }
             }
 
-            return null;
+            return neighbours;
         }
     }
 }

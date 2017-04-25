@@ -66,11 +66,13 @@
     <Compile Include="Core\Objects\Visual\IPixel.cs" />
     <Compile Include="Core\Objects\Visual\Pixel.cs" />
     <Compile Include="Core\Transformation\ABinarization.cs" />
+    <Compile Include="Core\Transformation\GuoHallSkeletization.cs" />
     <Compile Include="Core\Transformation\IBinarization.cs" />
     <Compile Include="Core\Transformation\IGrayscalation.cs" />
     <Compile Include="Core\Transformation\IInvertation.cs" />
     <Compile Include="Core\Transformation\INoiseRemover.cs" />
     <Compile Include="Core\Transformation\Invertation.cs" />
+    <Compile Include="Core\Transformation\ISkeletization.cs" />
     <Compile Include="Core\Transformation\ITransformation.cs" />
     <Compile Include="Core\Transformation\MiddleThresholdBinarization.cs" />
     <Compile Include="Core\Transformation\NoiseRemover.cs" />

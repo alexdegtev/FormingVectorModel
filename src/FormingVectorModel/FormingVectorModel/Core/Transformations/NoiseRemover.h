@@ -12,12 +12,12 @@ namespace Core
 		class NoiseRemover : public INoiseRemover
 		{
 		public:
-			NoiseRemover();
+			//NoiseRemover();
 			void execute(Objects::Visual::IImage* image) override;
 
 		private:
-			unsigned char get_dominant_color(std::vector<Objects::Visual::IColor*> colors);
-			unsigned char middle_color;
+			//unsigned char get_dominant_color(std::vector<Objects::Visual::IColor*> colors);
+			//unsigned char middle_color;
 		};
 	}
 }
