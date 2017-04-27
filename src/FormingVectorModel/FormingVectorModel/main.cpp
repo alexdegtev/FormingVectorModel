@@ -127,6 +127,19 @@ std::vector<Core::Objects::Geometric::IObject*> vectorization(Core::Objects::Vis
 
 int main(int argc, char* argv[])
 {
+	Core::IO::Path path("../../../data/2.png");
+	Core::Objects::Visual::IImage* image = Core::IO::Reader::read(path);
+
+	grayscalation(image, path, true);
+	invertation(image, path, true);
+	binarization_MiddleThresholdBinarization(image, path, true);
+	//binarization_OtsuBinarization(image, path, true);
+	noiseRemover(image, path, true);
+	//skeletization_ZhangSuenSkeletization(image, path, true);
+	skeletization_GuoHallSkeletization(image, path, true);
+
+	return 0;
+
 	switch (argc)
 	{
 	case 2:
@@ -147,10 +160,10 @@ int main(int argc, char* argv[])
 			std::cout << "    " << "cols (width): " << image->cols() << std::endl;
 
 			bool write_result = true;
-			grayscalation(image, path, write_result);
-			invertation(image, path, write_result);
+			//grayscalation(image, path, write_result);
+			//invertation(image, path, write_result);
 			//binarization_MiddleThresholdBinarization(image, path, write_result);
-			binarization_OtsuBinarization(image, path, write_result);
+			//binarization_OtsuBinarization(image, path, write_result);
 			noiseRemover(image, path, write_result);
 			////skeletization_ZhangSuenSkeletization(image, path, write_result);
 			//skeletization_GuoHallSkeletization(image, path, write_result);
