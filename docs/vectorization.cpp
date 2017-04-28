@@ -29,7 +29,7 @@ class VectorizationState(){
 	vector<Point> nexts {
 		vector<Point> result;
 		for (Point n : neighbours) {
-			if (n.state == VisitState.unvisited){
+			if (n.state == VisitState.unvisited && n != previous){
 				result.add(n);
 			}
 		}
@@ -108,28 +108,55 @@ class Image {
 		return get_horizontal_or_vertical_neighbour(center, get_neighbours(center));
 	}
 	
+	bool has_left_or_right_neighbours(VectorizationState vs);
+	
 	int rows;
 	int cols;
 	data;
 }
 
-class Object {
-	
-}
-
 class IntersectionPoint {
+	IntersectionPoint(Coord coord);
+	void add_object(Object object);
+	
 	Coord coord;
 	// Пересекающиеся объекты
 	vector<Object> objects;
 }
 
+class Object {
+	Object(vector<IntersectionPoint> intersections);
+	vector<IntersectionPoint> get_intersections();
+	
+	vector<IntersectionPoint> intersections;
+}
+
 class Line : Object {
 	Line(Point begin, Point end);
-	Line(Point begin, Point end, vector<IntersectionPoint> intersections);
+	Line(Point begin, Point end, vector<IntersectionPoint> intersections) : base(intersections);
 	
 	Point begin;
 	Point end;
-	vector<IntersectionPoint> intersections;
+}
+
+class IntersectionsSet {
+	void add(IntersectionPoint point) {
+		
+	}
+	
+	IntersectionPoint get_intersection_point(Coord coord) {
+		for (IntersectionPoint p : intersections) {
+			if (p.coord == coord) {
+				return p;
+			}
+		}
+		
+		IntersectionPoint point = new IntersectionPoint(coord);
+		intersections.add(point);
+		return point;
+	}
+	
+	set<IntersectionPoint> intersections;
 }
 
 class Functions {
@@ -137,162 +164,131 @@ class Functions {
 	bool is_right_angle(Point a, Point b, Point c);
 }
 
-void Vectorization(IImage img){
+void Vectorization(IImage img) {
 	VisitState vs = null;
 	Image image = new Image(img);
 	vector<Object> objects;
 	vector<IntersectionPoint> intersections;
 	
-	while(image.has_unvisited_points()){
+	while (image.has_unvisited_points()) {
 		
-		if(vs == null){
+		if (vs == null) {
 			image.convert_all_excluded_to_unvisited();
 			
 			Point point = image.get_first_unvisited();
-			if(point != null){
+			if (point != null) {
 				vs == new VisitState();
 				vs.current = point;
 			}
 		}
 		
-		vector<Point> neighbours = image.get_neighbours(vs.current);
+		vs.neighbours = image.get_neighbours(vs.current);
 		
-		switch (neighbours.count) {
-			case 0:
+		if (vs.neighbours.count == 0) {
+			vs.current.state = VisitState.visited;
+			continue;
+		}
+
+		if (vs.previous == null) {
+			// Определяем следующую точку
+			vector<Point> nexts = vs.nexts;
+			
+			Point next = image.get_horizontal_or_vertical_neighbour(vs.current, nexts);
+			if (next == null) {
+				next = nexts[0];
+			}
+
+			// Исключаем другие точки
+			bool has_excluded = false;
+			for (Point n : nexts) {
+				if (n != next) {
+					n.state = VisitState.excluded;
+					
+					if (!has_excluded) {
+						has_excluded = true;
+					}
+				}
+			}
+
+			// Меняем состояние текущей точки
+			vs.current.state = has_excluded ? VisitState.excluded : VisitState.visited;
+			//TODO: Проверка на точки пересечения
+			
+
+			// Переходим в следующую точку
+			vs.start = vs.current;
+			vs.previous = vs.current;
+			vs.current = next;
+		} else {
+			// Определяем следующую точку
+			vector<Point> nexts = vs.nexts;
+			if (vs.nexts.count == 0) {
+				objects.add(new Line(vs.start, vs.current));
 				vs.current.state = VisitState.visited;
-				break;
+				vs = null;
+				continue;
+			}
+			
+			//TODO: Проверка на точки пересечения
+			if (image.has_left_or_right_neighbours(vs)) {
 				
-			case 1:
-				vs.current.state = VisitState.visited;
-				if (vs.previous == null) {
-					vs.previous = vs.current;
-					vs.start = vs.current;
-					vs.current = neighbours[0];
-				} else {
-					objects.add(new Line(vs.start, vs.current));
-					vs = null;
+			}
+			
+			Point next;
+			bool is_next_point_aligned = false;
+			for (Point n : nexts) {
+				if (Functions.is_aligned(vs.previous, vs.current, n)) {
+					next = n;
+					is_next_point_aligned = true;
+					break;
 				}
-				break;
+			}
+			if (next == null) {
+				next = nexts[0];
 				
-			case 2:
-				if (vs.previous == null) {
-					// Определяем следующую точку
-					vector<Point> nexts = vs.nexts;
-					Point next = image.get_horizontal_or_vertical_neighbour(vs.current, nexts);
-					if (next == null) {
-						next = neighbours[0];
+				//TODO: Проверка случая 
+				// -x-
+				// xxx
+				// ---
+			}
+			
+			// Исключаем другие точки
+			bool has_excluded = false;
+			for (Point n : nexts) {
+				if (n != next) {
+					n.state = VisitState.excluded;
+					
+					if (!has_excluded) {
+						has_excluded = true;
 					}
-					
-					// Скрываем остальные (не являющиеся следующей)
-					for (Point n : nexts) {
-						if (n != next) {
-							n.state = VisitState.excluded;
-						}
-					}
-					
-					// Переход в следующую точку
-					vs.previous = vs.current;
-					vs.start = vs.current;
-					vs.current = next;
-					
-					// Пометить текущую как прочитанную
-					//TODO
-				} else {
-					vs.current.state = VisitState.visited;
-					
-					if (!Functions.is_aligned(vs.previous, vs.current, next)) {
-						objects.add(new Line(vs.start, vs.current));
-					}
-					
-					vs.previous = vs.current;
-					vs.start = vs.current;
-					vs.current = next;
 				}
-				break;
-				
-			case 3:
-				if (vs.previous == null) {
-					// Определяем следующую точку
-					vector<Point> nexts = vs.nexts;
-					Point next = image.get_horizontal_or_vertical_neighbour(vs.current, nexts);
-					if (next == null) {
-						next = neighbours[0];
-					}
-					
-					// Пометить текущую как прочитанную
-					//TODO: Here?
-					
-					// Скрываем остальные (не являющиеся следующей)
-					for (Point n : nexts) {
-						if (n != next) {
-							n.state = VisitState.excluded;
-						}
-					}
-					
-					// Переход в следующую точку
-					vs.previous = vs.current;
-					vs.start = vs.current;
-					vs.current = next;
-					
-					// Пометить текущую как прочитанную
-					//TODO: Or here?
-				} else {
-					// Определяем следующую точку
-					vector<Point> nexts = vs.nexts;
-					Point next = null;
-					for (Point n : next) {
-						if (Functions.is_aligned(vs.previous, vs.current, n) {
-							next = n;
-							break;
-						}
-					}
-					
-					if (next == null) {
-						next = neighbours[0];
-					}
-					
-					// Пометить текущую как прочитанную
-					
-				}
-
-			case ...:
-				if (vs.previous == null) {
- 					// Определяем следующую точку
- 					vector<Point> nexts = vs.nexts;
-					
-					Point next = image.get_horizontal_or_vertical_neighbour(vs.current, nexts);
-					if (next == null) {
-						next = nexts[0];
-					}
-
-					// Исключаем другие точки
-					for (Point n : nexts) {
-						if (n != next) {
-							n.state = VisitState.excluded;
-						}
-					}
-
-					// Меняем состояние текущей точки
-					bool has_excluded = false;
-					for (Point n : nexts) {
-						if(n.state == VisitState.excluded) {
-							has_excluded = true;
-							break;
-						}
-					}
-					vs.current.state = has_excluded ? VisitState.excluded : VisitState.visited;
-
-					// Переходим в следующую точку
-					vs.start = vs.current;
-					vs.previous = vs.current;
-					vs.current = next;
-				} else {
-					
-				}
+			}
+			
+			// Меняем состояние текущей точки
+			vs.current.state = has_excluded ? VisitState.excluded : VisitState.visited;
+			
+			// Переходим в следующую точку
+			if (!is_next_point_aligned) {
+				//TODO: Проверка на точки пересечения
+				objects.add(new Line(vs.start, vs.current));
+				vs.start = vs.current;
+			}
+			
+			vs.previous = vs.current;
+			vs.current = next;
+			
 		}
 	}
 }
 
+
+
+
+
+
+
+растр -> предобработка -> векторизация (с учётом топологии) -> векторная модель (с топологией)
+вектор -> векторная модель
 
 
 
