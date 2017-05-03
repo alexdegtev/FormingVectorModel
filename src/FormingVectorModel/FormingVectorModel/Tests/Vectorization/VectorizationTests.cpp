@@ -3,11 +3,10 @@
 #include "../../Core/IO/Writer.h"
 #include "../../Core/Vectorizations/Vectorization2.h"
 #include "../../Core/IO/Reader.h"
-//#include <opencv2/objdetect.hpp>
 #include "../../Core/Objects/Geometric/ILine.h"
 #include "../../Core/Objects/Geometric/Point.h"
 #include "../../Core/Objects/Geometric/Line.h"
-#include "../../Core/Vectorizations/Vectorization3.h"
+#include "../../Core/Vectorizations/Vectorization.h"
 
 using namespace Core::Objects::Geometric;
 using namespace Core::IO;
@@ -19,7 +18,7 @@ VectorizationTests::VectorizationTests()
 
 std::vector<IObject*> VectorizationTests::vectorization(IImage* image, Path path)
 {
-	return image->vectorize(new Core::Vectorizations::Vectorization3);
+	return image->vectorize(new Core::Vectorizations::Vectorization);
 }
 
 bool VectorizationTests::test1()
@@ -339,8 +338,8 @@ void VectorizationTests::run_all_tests()
 	std::cout << i++ << ": " << "[ " << (test6() ? "OK" : "FAIL") << " ]" << std::endl;
 	std::cout << i++ << ": " << "[ " << (test7() ? "OK" : "FAIL") << " ]" << std::endl;
 	std::cout << i++ << ": " << "[ " << (test8() ? "OK" : "FAIL") << " ]" << std::endl;
-	//std::cout << i++ << ": " << "[ " << (test9() ? "OK" : "FAIL") << " ]" << std::endl;
-	//std::cout << i++ << ": " << "[ " << (test10() ? "OK" : "FAIL") << " ]" << std::endl;
+	std::cout << i++ << ": " << "[ " << (test9() ? "OK" : "FAIL") << " ]" << std::endl;
+	std::cout << i++ << ": " << "[ " << (test10() ? "OK" : "FAIL") << " ]" << std::endl;
 
 	std::cout << "VectorizationTests end" << std::endl;
 }

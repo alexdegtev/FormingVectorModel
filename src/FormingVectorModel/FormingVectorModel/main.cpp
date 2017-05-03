@@ -16,6 +16,7 @@
 #include "Tests/Vectorization/VectorizationTests.h"
 #include "Core/Transformations/NoiseRemover.h"
 #include "Core/Transformations/OtsuBinarization.h"
+#include "Core/Transformations/ParemetrizedBinarization.h"
 
 void grayscalation(Core::Objects::Visual::IImage* image, Core::IO::Path path, bool write_result = true)
 {
@@ -64,6 +65,19 @@ void binarization_OtsuBinarization(Core::Objects::Visual::IImage* image, Core::I
 	if (write_result) {
 		std::cout << "writing...";
 		Core::IO::Writer::write(Core::IO::Path(path.path_to_file(), path.file_name() + "_out_3_OtsuBinarization", path.file_extention()), image);
+	}
+
+	std::cout << std::endl;
+}
+
+void binarization_ParemetrizedBinarization(Core::Objects::Visual::IImage* image, Core::IO::Path path, bool write_result = true)
+{
+	std::cout << "binarization (ParemetrizedBinarization)... ";
+	image->transform(new Core::Transformations::ParemetrizedBinarization(200));
+
+	if (write_result) {
+		std::cout << "writing...";
+		Core::IO::Writer::write(Core::IO::Path(path.path_to_file(), path.file_name() + "_out_3_ParemetrizedBinarization", path.file_extention()), image);
 	}
 
 	std::cout << std::endl;
@@ -127,18 +141,23 @@ std::vector<Core::Objects::Geometric::IObject*> vectorization(Core::Objects::Vis
 
 int main(int argc, char* argv[])
 {
-	Core::IO::Path path("../../../data/2.png");
-	Core::Objects::Visual::IImage* image = Core::IO::Reader::read(path);
+	//Core::IO::Path path("../../../data/2.png");
+	//Core::Objects::Visual::IImage* image = Core::IO::Reader::read(path);
 
-	grayscalation(image, path, true);
-	invertation(image, path, true);
-	binarization_MiddleThresholdBinarization(image, path, true);
-	//binarization_OtsuBinarization(image, path, true);
-	noiseRemover(image, path, true);
-	//skeletization_ZhangSuenSkeletization(image, path, true);
-	skeletization_GuoHallSkeletization(image, path, true);
+	//grayscalation(image, path, true);
 
-	return 0;
+	//invertation(image, path, true);
+
+	//binarization_MiddleThresholdBinarization(image, path, true);
+	////binarization_OtsuBinarization(image, path, true);
+	////binarization_ParemetrizedBinarization(image, path, true);
+
+	////noiseRemover(image, path, true);
+
+	////skeletization_ZhangSuenSkeletization(image, path, true);
+	//skeletization_GuoHallSkeletization(image, path, true);
+
+	//return 0;
 
 	switch (argc)
 	{

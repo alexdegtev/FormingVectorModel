@@ -96,6 +96,9 @@
     <ClCompile Include="Core\Transformations\NoiseRemover.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
+    <ClCompile Include="Core\Transformations\ParemetrizedBinarization.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="Core\Objects\Geometric\IObject.h">
@@ -207,6 +210,9 @@
       <Filter>Header Files</Filter>
     </ClInclude>
     <ClInclude Include="Core\Objects\Geometric\AObject.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="Core\Transformations\ParemetrizedBinarization.h">
       <Filter>Header Files</Filter>
     </ClInclude>
   </ItemGroup>

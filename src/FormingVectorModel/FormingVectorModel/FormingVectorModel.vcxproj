@@ -69,7 +69,7 @@
   </ImportGroup>
   <PropertyGroup Label="UserMacros" />
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">
-    <IncludePath>..\CoreLibrary;C:\opencv\build\include;$(IncludePath)</IncludePath>
+    <IncludePath>C:\opencv\build\include;$(IncludePath)</IncludePath>
     <LibraryPath>C:\opencv\build\x64\vc14\lib;$(LibraryPath)</LibraryPath>
   </PropertyGroup>
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">
@@ -79,7 +79,7 @@
     <IncludePath>..\CoreLibrary;$(IncludePath)</IncludePath>
   </PropertyGroup>
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|x64'">
-    <IncludePath>..\CoreLibrary;C:\opencv\build\include;$(IncludePath)</IncludePath>
+    <IncludePath>C:\opencv\build\include;$(IncludePath)</IncludePath>
     <LibraryPath>C:\opencv\build\x64\vc14\lib;$(LibraryPath)</LibraryPath>
   </PropertyGroup>
   <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">
@@ -150,6 +150,7 @@
     <ClCompile Include="Core\Transformations\MiddleThresholdBinarization.cpp" />
     <ClCompile Include="Core\Transformations\NoiseRemover.cpp" />
     <ClCompile Include="Core\Transformations\OtsuBinarization.cpp" />
+    <ClCompile Include="Core\Transformations\ParemetrizedBinarization.cpp" />
     <ClCompile Include="Core\Transformations\YIQGrayscalation.cpp" />
     <ClCompile Include="Core\Transformations\ZhangSuenSkeletization.cpp" />
     <ClCompile Include="Core\Vectorizations\ImageWithVisitedMarks.cpp" />
@@ -191,6 +192,7 @@
     <ClInclude Include="Core\Transformations\MiddleThresholdBinarization.h" />
     <ClInclude Include="Core\Transformations\NoiseRemover.h" />
     <ClInclude Include="Core\Transformations\OtsuBinarization.h" />
+    <ClInclude Include="Core\Transformations\ParemetrizedBinarization.h" />
     <ClInclude Include="Core\Transformations\YIQGrayscalation.h" />
     <ClInclude Include="Core\Transformations\ZhangSuenSkeletization.h" />
     <ClInclude Include="Core\Vectorizations\ImageWithVisitedMarks.h" />
