@@ -135,8 +135,6 @@ std::vector<Core::Objects::Geometric::IObject*> Core::Vectorizations::Vectorizat
 	}
 
 
-
-
 	if (image_) delete image_;
 	if (vs) delete vs;
 
