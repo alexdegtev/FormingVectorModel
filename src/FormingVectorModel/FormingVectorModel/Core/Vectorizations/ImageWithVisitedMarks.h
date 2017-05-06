@@ -45,6 +45,19 @@ namespace Core
 			static Pixel *find_aligned(Pixel *previous, Pixel *central, std::vector<Pixel*> neighbours);
 			std::vector<Pixel *> get_horizontal_neigbour(Pixel *previous, Pixel *center);
 			static bool is_horizontal_neighbour(Pixel *previous, Pixel *center, Pixel *neighbour);
+			static Pixel* get_horizontal_or_vertical_neighbour(Pixel *center, std::vector<Pixel*> neighbours)
+			{
+				for (auto n : neighbours) {
+					if (center->point->x() + 1 == n->point->x() && center->point->y() == n->point->y() ||
+						center->point->x() - 1 == n->point->x() && center->point->y() == n->point->y() ||
+						center->point->x() == n->point->x() && center->point->y() + 1 == n->point->y() ||
+						center->point->x() == n->point->x() && center->point->y() - 1 == n->point->y())
+					{
+						return n;
+					}
+				}
+				return nullptr;
+			}
 
 		private:
 			Pixel* _data;

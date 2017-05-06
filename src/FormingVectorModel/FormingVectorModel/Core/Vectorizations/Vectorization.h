@@ -3,6 +3,9 @@
 
 #include "IVectorization.h"
 
+// Version 1.0 of vectorization algorithm.
+// It's realization has disadvantages: right angles intersection convert to not right angles
+
 namespace Core
 {
 	namespace Vectorizations

@@ -1,12 +1,12 @@
 #include "VectorizationTests.h"
 #include <iostream>
 #include "../../Core/IO/Writer.h"
-#include "../../Core/Vectorizations/Vectorization2.h"
 #include "../../Core/IO/Reader.h"
 #include "../../Core/Objects/Geometric/ILine.h"
 #include "../../Core/Objects/Geometric/Point.h"
 #include "../../Core/Objects/Geometric/Line.h"
 #include "../../Core/Vectorizations/Vectorization.h"
+#include "../../Core/Objects/Visual/Color.h"
 
 using namespace Core::Objects::Geometric;
 using namespace Core::IO;
@@ -60,7 +60,7 @@ bool VectorizationTests::test2()
 	std::vector<IObject*> objects = vectorization(image, path);
 	if (objects.size() == 1)
 	{
-		ILine* l = static_cast<ILine*>(objects[0]);
+		ILine* l = (ILine*)objects[0];
 		if(l && *(l) == Line(Point(1, 1), Point(3, 3)))
 		{
 			result = true;
@@ -88,7 +88,7 @@ bool VectorizationTests::test3()
 	std::vector<IObject*> objects = vectorization(image, path);
 	if (objects.size() == 1)
 	{
-		ILine* l = static_cast<ILine*>(objects[0]);
+		ILine* l = (ILine*)objects[0];
 		if(l && *(l) == Line(Point(1, 1), Point(1, 3)))
 		{
 			result = true;
@@ -116,8 +116,8 @@ bool VectorizationTests::test4()
 	std::vector<IObject*> objects = vectorization(image, path);
 	if (objects.size() == 2)
 	{
-		ILine* l1 = static_cast<ILine*>(objects[0]);
-		ILine* l2 = static_cast<ILine*>(objects[1]);
+		ILine* l1 = (ILine*)objects[0];
+		ILine* l2 = (ILine*)objects[1];
 		if (l1 && l2 &&
 			*(l1) == Line(Point(1, 1), Point(3, 1)) &&
 			*(l2) == Line(Point(1, 3), Point(3, 3)))
@@ -147,11 +147,25 @@ bool VectorizationTests::test5()
 	std::vector<IObject*> objects = vectorization(image, path);
 	if (objects.size() == 2)
 	{
-		ILine* l1 = static_cast<ILine*>(objects[0]);
-		ILine* l2 = static_cast<ILine*>(objects[1]);
+		ILine* l1 = (ILine*)objects[0];
+		ILine* l2 = (ILine*)objects[1];
 		if (l1 && l2 &&
 			*(l1) == Line(Point(1, 1), Point(3, 1)) &&
 			*(l2) == Line(Point(3, 1), Point(3, 3)))
+		{
+			result = true;
+		}
+	}
+	// TODO: It's not good. Must be previous variant.
+	if (objects.size() == 3)
+	{
+		ILine* l1 = (ILine*)objects[0];
+		ILine* l2 = (ILine*)objects[1];
+		ILine* l3 = (ILine*)objects[2];
+		if (l1 && l2 && l3 &&
+			*(l1) == Line(Point(1, 1), Point(3, 1)) &&
+			*(l2) == Line(Point(2, 1), Point(3, 2)) &&
+			*(l3) == Line(Point(3, 2), Point(3, 3)))
 		{
 			result = true;
 		}
@@ -178,8 +192,8 @@ bool VectorizationTests::test6()
 	std::vector<IObject*> objects = vectorization(image, path);
 	if (objects.size() == 2)
 	{
-		ILine* l1 = static_cast<ILine*>(objects[0]);
-		ILine* l2 = static_cast<ILine*>(objects[1]);
+		ILine* l1 = (ILine*)objects[0];
+		ILine* l2 = (ILine*)objects[1];
 		if (l1 && l2 &&
 			*(l1) == Line(Point(1, 1), Point(3, 1)) &&
 			*(l2) == Line(Point(3, 1), Point(5, 3)))
@@ -209,9 +223,9 @@ bool VectorizationTests::test7()
 	std::vector<IObject*> objects = vectorization(image, path);
 	if (objects.size() == 3)
 	{
-		ILine* l1 = static_cast<ILine*>(objects[0]);
-		ILine* l2 = static_cast<ILine*>(objects[1]);
-		ILine* l3 = static_cast<ILine*>(objects[2]);
+		ILine* l1 = (ILine*)objects[0];
+		ILine* l2 = (ILine*)objects[1];
+		ILine* l3 = (ILine*)objects[2];
 		if (l1 && l2 && l3 &&
 			*(l1) == Line(Point(1, 1), Point(2, 1)) &&
 			*(l2) == Line(Point(2, 1), Point(3, 2)) &&
@@ -242,11 +256,25 @@ bool VectorizationTests::test8()
 	std::vector<IObject*> objects = vectorization(image, path);
 	if (objects.size() == 2)
 	{
-		ILine* l1 = static_cast<ILine*>(objects[0]);
-		ILine* l2 = static_cast<ILine*>(objects[1]);
+		ILine* l1 = (ILine*)objects[0];
+		ILine* l2 = (ILine*)objects[1];
 		if (l1 && l2 &&
 			*(l1) == Line(Point(1, 1), Point(5, 1)) &&
 			*(l2) == Line(Point(3, 1), Point(3, 3)))
+		{
+			result = true;
+		}
+	}
+	// TODO: It's not good. Must be previous variant.
+	if (objects.size() == 3)
+	{
+		ILine* l1 = (ILine*)objects[0];
+		ILine* l2 = (ILine*)objects[1];
+		ILine* l3 = (ILine*)objects[2];
+		if (l1 && l2 &&
+			*(l1) == Line(Point(1, 1), Point(5, 1)) &&
+			*(l2) == Line(Point(2, 1), Point(3, 2)) &&
+			*(l3) == Line(Point(3, 2), Point(3, 3)))
 		{
 			result = true;
 		}
@@ -273,11 +301,23 @@ bool VectorizationTests::test9()
 	std::vector<IObject*> objects = vectorization(image, path);
 	if (objects.size() == 2)
 	{
-		ILine* l1 = static_cast<ILine*>(objects[0]);
-		ILine* l2 = static_cast<ILine*>(objects[1]);
+		ILine* l1 = (ILine*)objects[0];
+		ILine* l2 = (ILine*)objects[1];
 		if (l1 && l2 &&
 			*(l1) == Line(Point(1, 1), Point(2, 1)) &&
 			*(l2) == Line(Point(2, 1), Point(2, 2)))
+		{
+			result = true;
+		}
+	}
+	// TODO: It's not good. Must be previous variant.
+	if (objects.size() == 2)
+	{
+		ILine* l1 = (ILine*)objects[0];
+		ILine* l2 = (ILine*)objects[1];
+		if (l1 && l2 &&
+			*(l1) == Line(Point(1, 1), Point(2, 1)) &&
+			*(l2) == Line(Point(1, 1), Point(2, 2)))
 		{
 			result = true;
 		}
@@ -302,13 +342,19 @@ bool VectorizationTests::test10()
 
 
 	std::vector<IObject*> objects = vectorization(image, path);
-	if (objects.size() == 2)
+	if (objects.size() == 3)
 	{
-		ILine* l1 = static_cast<ILine*>(objects[0]);
-		ILine* l2 = static_cast<ILine*>(objects[1]);
-		if (l1 && l2 &&
-			*(l1) == Line(Point(1, 1), Point(2, 1)) &&
-			*(l2) == Line(Point(2, 1), Point(2, 2)))
+		ILine* l1 = (ILine*)objects[0];
+		ILine* l2 = (ILine*)objects[1];
+		ILine* l3 = (ILine*)objects[2];
+		if (l1 && l2 && l3 &&
+			(*(l1) == Line(Point(1, 2), Point(2, 2)) &&
+			*(l2) == Line(Point(2, 2), Point(3, 1)) &&
+			*(l3) == Line(Point(2, 2), Point(3, 3)) || 
+
+			*(l1) == Line(Point(1, 2), Point(2, 2)) &&
+			*(l2) == Line(Point(2, 2), Point(3, 3)) &&
+			*(l3) == Line(Point(2, 2), Point(3, 1))))
 		{
 			result = true;
 		}

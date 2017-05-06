@@ -222,7 +222,7 @@ void Vectorization(IImage img) {
 		} else {
 			// Определяем следующую точку
 			vector<Point> nexts = vs.nexts;
-			if (vs.nexts.count == 0) {
+			if (nexts.count == 0) {
 				objects.add(new Line(vs.start, vs.current));
 				vs.current.state = VisitState.visited;
 				vs = null;

@@ -156,12 +156,8 @@
     <ClCompile Include="Core\Vectorizations\ImageWithVisitedMarks.cpp" />
     <ClCompile Include="Core\Vectorizations\IntersectionPoint.cpp" />
     <ClCompile Include="Core\Vectorizations\Vectorization.cpp" />
-    <ClCompile Include="Core\Vectorizations\Vectorization2.cpp" />
-    <ClCompile Include="Core\Vectorizations\Vectorization3.cpp" />
     <ClCompile Include="Core\Vectorizations\VectorizationState.cpp" />
     <ClCompile Include="main.cpp" />
-    <ClCompile Include="main_old.cpp" />
-    <ClCompile Include="Source.cpp" />
     <ClCompile Include="Tests\Vectorization\VectorizationTests.cpp" />
   </ItemGroup>
   <ItemGroup>
@@ -199,8 +195,6 @@
     <ClInclude Include="Core\Vectorizations\IntersectionPoint.h" />
     <ClInclude Include="Core\Vectorizations\IVectorization.h" />
     <ClInclude Include="Core\Vectorizations\Vectorization.h" />
-    <ClInclude Include="Core\Vectorizations\Vectorization2.h" />
-    <ClInclude Include="Core\Vectorizations\Vectorization3.h" />
     <ClInclude Include="Core\Vectorizations\VectorizationState.h" />
     <ClInclude Include="Tests\Vectorization\VectorizationTests.h" />
   </ItemGroup>
