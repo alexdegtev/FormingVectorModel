@@ -16,6 +16,7 @@ namespace Core
 			static void mat_to_iimage(cv::Mat* mat, Objects::Visual::IImage* image);
 			static bool is_aligned(Objects::Geometric::IPoint* a, Objects::Geometric::IPoint* b, Objects::Geometric::IPoint* c);
 			static Objects::Geometric::IPoint* vertical_or_horizontal_neighbour(Objects::Geometric::IPoint* central_point, std::vector<Core::Objects::Geometric::IPoint*> neighbours);
+			static std::vector<Objects::Visual::IColor*> get_all_neighbours(int row, int col, Objects::Visual::IImage* image);
 		};
 	}
 }

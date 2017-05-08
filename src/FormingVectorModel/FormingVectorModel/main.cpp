@@ -17,6 +17,7 @@
 #include "Core/Transformations/NoiseRemover.h"
 #include "Core/Transformations/OtsuBinarization.h"
 #include "Core/Transformations/ParemetrizedBinarization.h"
+#include "Core/Transformations/SingleNoisePointsRemover.h"
 
 void grayscalation(Core::Objects::Visual::IImage* image, Core::IO::Path path, bool write_result = true)
 {
@@ -85,12 +86,25 @@ void binarization_ParemetrizedBinarization(Core::Objects::Visual::IImage* image,
 
 void noiseRemover(Core::Objects::Visual::IImage* image, Core::IO::Path path, bool write_result = true)
 {
-	std::cout << "noiseRemover... ";
+	std::cout << "noise removing (NoiseRemover)... ";
 	image->transform(new Core::Transformations::NoiseRemover);
 
 	if (write_result) {
 		std::cout << "writing...";
 		Core::IO::Writer::write(Core::IO::Path(path.path_to_file(), path.file_name() + "_out_4_NoiseRemover", path.file_extention()), image);
+	}
+
+	std::cout << std::endl;
+}
+
+void singleNoisePointsRemover(Core::Objects::Visual::IImage* image, Core::IO::Path path, bool write_result = true)
+{
+	std::cout << "noise removing (SingleNoisePointsRemover)... ";
+	image->transform(new Core::Transformations::SingleNoisePointsRemover);
+
+	if (write_result) {
+		std::cout << "writing...";
+		Core::IO::Writer::write(Core::IO::Path(path.path_to_file(), path.file_name() + "_out_4_SingleNoisePointsRemover", path.file_extention()), image);
 	}
 
 	std::cout << std::endl;
@@ -141,24 +155,6 @@ std::vector<Core::Objects::Geometric::IObject*> vectorization(Core::Objects::Vis
 
 int main(int argc, char* argv[])
 {
-	//Core::IO::Path path("../../../data/2.png");
-	//Core::Objects::Visual::IImage* image = Core::IO::Reader::read(path);
-
-	//grayscalation(image, path, true);
-
-	//invertation(image, path, true);
-
-	//binarization_MiddleThresholdBinarization(image, path, true);
-	////binarization_OtsuBinarization(image, path, true);
-	////binarization_ParemetrizedBinarization(image, path, true);
-
-	////noiseRemover(image, path, true);
-
-	////skeletization_ZhangSuenSkeletization(image, path, true);
-	//skeletization_GuoHallSkeletization(image, path, true);
-
-	//return 0;
-
 	switch (argc)
 	{
 	case 2:
@@ -177,15 +173,21 @@ int main(int argc, char* argv[])
 			std::cout << "image:" << std::endl;
 			std::cout << "    " << "rows (height): " << image->rows() << std::endl;
 			std::cout << "    " << "cols (width): " << image->cols() << std::endl;
+			
 
 			bool write_result = true;
-			//grayscalation(image, path, write_result);
-			//invertation(image, path, write_result);
+			grayscalation(image, path, write_result);
+
+			invertation(image, path, write_result);
+
 			//binarization_MiddleThresholdBinarization(image, path, write_result);
-			//binarization_OtsuBinarization(image, path, write_result);
-			noiseRemover(image, path, write_result);
-			////skeletization_ZhangSuenSkeletization(image, path, write_result);
-			//skeletization_GuoHallSkeletization(image, path, write_result);
+			binarization_OtsuBinarization(image, path, write_result);
+
+			//noiseRemover(image, path, write_result);
+			singleNoisePointsRemover(image, path, write_result);
+
+			//skeletization_ZhangSuenSkeletization(image, path, write_result);
+			skeletization_GuoHallSkeletization(image, path, write_result);
 
 			std::cout << "end." << std::endl;
 			delete image;

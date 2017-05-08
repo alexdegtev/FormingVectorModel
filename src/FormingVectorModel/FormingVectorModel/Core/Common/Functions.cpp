@@ -57,6 +57,28 @@ bool Core::Common::Functions::is_aligned(Objects::Geometric::IPoint* a, Objects:
 	return (a->x() - c->x()) * (b->y() - c->y()) == (b->x() - c->x()) * (a->y() - c->y());
 }
 
+std::vector<Core::Objects::Visual::IColor*> Core::Common::Functions::get_all_neighbours(int row, int col, Objects::Visual::IImage* image)
+{
+	int rows = image->rows();
+	int cols = image->cols();
+	std::vector<Objects::Visual::IColor*> neighbours;
+
+	for (int i = -1; i <= 1; i++)
+	{
+		for (int j = -1; j <= 1; j++)
+		{
+			if (i == 0 && j == 0) continue;
+
+			if (0 <= row + i && row + i < rows && 0 <= col + j && col + j < cols)
+			{
+				neighbours.push_back(image->get(row + i, col + j));
+			}
+		}
+	}
+
+	return neighbours;
+}
+
 Core::Objects::Geometric::IPoint* Core::Common::Functions::vertical_or_horizontal_neighbour(Objects::Geometric::IPoint* central_point, std::vector<Core::Objects::Geometric::IPoint*> neighbours)
 {
 	Objects::Geometric::IPoint* c = central_point;
