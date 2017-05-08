@@ -19,6 +19,7 @@ public:
 	bool test8();
 	bool test9();
 	bool test10();
+	bool test11();
 
 	void run_all_tests();
 };

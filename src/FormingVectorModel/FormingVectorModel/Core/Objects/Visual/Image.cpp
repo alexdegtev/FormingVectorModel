@@ -41,12 +41,12 @@ void Core::Objects::Visual::Image::set(int row, int col, IColor* value)
 		throw "index out of range";
 }
 
-void Core::Objects::Visual::Image::transform(Transformations::ITransformation* transforamtion)
+void Core::Objects::Visual::Image::transform(Transformation::ITransformation* transforamtion)
 {
 	transforamtion->execute(this);
 }
 
-std::vector<Core::Objects::Geometric::IObject*> Core::Objects::Visual::Image::vectorize(Vectorizations::IVectorization* vectorization)
+std::vector<Core::Objects::Geometric::IObject*> Core::Objects::Visual::Image::vectorize(Vectorization::IVectorization* vectorization)
 {
 	return vectorization->execute(this);
 }

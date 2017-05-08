@@ -20,6 +20,8 @@ namespace Core
 				int x() const override;
 				int y() const override;
 
+				std::string to_string() override;
+
 			private:
 				int _x;
 				int _y;

@@ -5,7 +5,7 @@
 #include "../../Core/Objects/Geometric/ILine.h"
 #include "../../Core/Objects/Geometric/Point.h"
 #include "../../Core/Objects/Geometric/Line.h"
-#include "../../Core/Vectorizations/Vectorization.h"
+#include "../../Core/Vectorization/Vectorization.h"
 #include "../../Core/Objects/Visual/Color.h"
 
 using namespace Core::Objects::Geometric;
@@ -18,7 +18,7 @@ VectorizationTests::VectorizationTests()
 
 std::vector<IObject*> VectorizationTests::vectorization(IImage* image, Path path)
 {
-	return image->vectorize(new Core::Vectorizations::Vectorization);
+	return image->vectorize(new Core::Vectorization::Vectorization);
 }
 
 bool VectorizationTests::test1()
@@ -371,6 +371,38 @@ bool VectorizationTests::test10()
 	return result;
 }
 
+bool VectorizationTests::test11()
+{
+	Path path("../../../data/vectorization/11.png");
+	IImage* image = Reader::read(path);
+	bool result = false;
+
+
+	std::vector<IObject*> objects = vectorization(image, path);
+	if (objects.size() == 2)
+	{
+		ILine* l1 = (ILine*)objects[0];
+		ILine* l2 = (ILine*)objects[1];
+		if (l1 && l2 &&
+			*(l1) == Line(Point(0, 0), Point(8, 8)) &&
+			*(l2) == Line(Point(0, 8), Point(8, 0)))
+		{
+			result = true;
+		}
+	}
+
+
+	for (auto i : objects)
+	{
+		delete i;
+	}
+
+	delete image;
+
+	return result;
+}
+
+
 
 void VectorizationTests::run_all_tests()
 {
@@ -386,6 +418,7 @@ void VectorizationTests::run_all_tests()
 	std::cout << i++ << ": " << "[ " << (test8() ? "OK" : "FAIL") << " ]" << std::endl;
 	std::cout << i++ << ": " << "[ " << (test9() ? "OK" : "FAIL") << " ]" << std::endl;
 	std::cout << i++ << ": " << "[ " << (test10() ? "OK" : "FAIL") << " ]" << std::endl;
+	std::cout << i++ << ": " << "[ " << (test11() ? "OK" : "FAIL") << " ]" << std::endl;
 
 	std::cout << "VectorizationTests end" << std::endl;
 }

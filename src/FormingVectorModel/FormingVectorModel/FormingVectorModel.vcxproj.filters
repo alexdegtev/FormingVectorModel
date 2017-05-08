@@ -45,49 +45,52 @@
     <ClCompile Include="Core\IO\Writer.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
-    <ClCompile Include="Core\Transformations\YIQGrayscalation.cpp">
-      <Filter>Source Files</Filter>
-    </ClCompile>
-    <ClCompile Include="Core\Transformations\OtsuBinarization.cpp">
-      <Filter>Source Files</Filter>
-    </ClCompile>
-    <ClCompile Include="Core\Transformations\MiddleThresholdBinarization.cpp">
-      <Filter>Source Files</Filter>
-    </ClCompile>
-    <ClCompile Include="Core\Transformations\Invertation.cpp">
-      <Filter>Source Files</Filter>
-    </ClCompile>
-    <ClCompile Include="Core\Transformations\ZhangSuenSkeletization.cpp">
-      <Filter>Source Files</Filter>
-    </ClCompile>
-    <ClCompile Include="Core\Transformations\GuoHallSkeletization.cpp">
-      <Filter>Source Files</Filter>
-    </ClCompile>
-    <ClCompile Include="Core\Vectorizations\Vectorization.cpp">
-      <Filter>Source Files</Filter>
-    </ClCompile>
-    <ClCompile Include="Core\Vectorizations\ImageWithVisitedMarks.cpp">
-      <Filter>Source Files</Filter>
-    </ClCompile>
-    <ClCompile Include="Core\Vectorizations\VectorizationState.cpp">
-      <Filter>Source Files</Filter>
-    </ClCompile>
     <ClCompile Include="Tests\Vectorization\VectorizationTests.cpp">
-      <Filter>Source Files</Filter>
-    </ClCompile>
-    <ClCompile Include="Core\Vectorizations\IntersectionPoint.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
     <ClCompile Include="Core\Objects\Geometric\AObject.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
-    <ClCompile Include="Core\Transformations\NoiseRemover.cpp">
+    <ClCompile Include="Core\Transformation\GuoHallSkeletization.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
-    <ClCompile Include="Core\Transformations\ParemetrizedBinarization.cpp">
+    <ClCompile Include="Core\Transformation\Invertation.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
-    <ClCompile Include="Core\Transformations\SingleNoisePointsRemover.cpp">
+    <ClCompile Include="Core\Transformation\MiddleThresholdBinarization.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="Core\Transformation\NoiseRemover.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="Core\Transformation\OtsuBinarization.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="Core\Transformation\ParemetrizedBinarization.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="Core\Transformation\SingleNoisePointsRemover.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="Core\Transformation\YIQGrayscalation.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="Core\Transformation\ZhangSuenSkeletization.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="Core\Vectorization\ImageWithVisitedMarks.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="Core\Vectorization\IntersectionPoint.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="Core\Vectorization\Vectorization.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="Core\Vectorization\VectorizationState.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="Core\Vectorization\IntersectionPointsSet.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
   </ItemGroup>
@@ -108,24 +111,6 @@
       <Filter>Header Files</Filter>
     </ClInclude>
     <ClInclude Include="Core\Objects\Visual\IImage.h">
-      <Filter>Header Files</Filter>
-    </ClInclude>
-    <ClInclude Include="Core\Transformations\ITransformation.h">
-      <Filter>Header Files</Filter>
-    </ClInclude>
-    <ClInclude Include="Core\Transformations\IGrayscalation.h">
-      <Filter>Header Files</Filter>
-    </ClInclude>
-    <ClInclude Include="Core\Transformations\IBinarization.h">
-      <Filter>Header Files</Filter>
-    </ClInclude>
-    <ClInclude Include="Core\Transformations\ISkeletization.h">
-      <Filter>Header Files</Filter>
-    </ClInclude>
-    <ClInclude Include="Core\Transformations\IInvertation.h">
-      <Filter>Header Files</Filter>
-    </ClInclude>
-    <ClInclude Include="Core\Vectorizations\IVectorization.h">
       <Filter>Header Files</Filter>
     </ClInclude>
     <ClInclude Include="Core\IO\Path.h">
@@ -155,52 +140,73 @@
     <ClInclude Include="Core\IO\Writer.h">
       <Filter>Header Files</Filter>
     </ClInclude>
-    <ClInclude Include="Core\Transformations\YIQGrayscalation.h">
-      <Filter>Header Files</Filter>
-    </ClInclude>
-    <ClInclude Include="Core\Transformations\OtsuBinarization.h">
-      <Filter>Header Files</Filter>
-    </ClInclude>
-    <ClInclude Include="Core\Transformations\MiddleThresholdBinarization.h">
-      <Filter>Header Files</Filter>
-    </ClInclude>
-    <ClInclude Include="Core\Transformations\Invertation.h">
-      <Filter>Header Files</Filter>
-    </ClInclude>
-    <ClInclude Include="Core\Transformations\ZhangSuenSkeletization.h">
-      <Filter>Header Files</Filter>
-    </ClInclude>
-    <ClInclude Include="Core\Transformations\GuoHallSkeletization.h">
-      <Filter>Header Files</Filter>
-    </ClInclude>
-    <ClInclude Include="Core\Vectorizations\Vectorization.h">
-      <Filter>Header Files</Filter>
-    </ClInclude>
     <ClInclude Include="Tests\Vectorization\VectorizationTests.h">
-      <Filter>Header Files</Filter>
-    </ClInclude>
-    <ClInclude Include="Core\Vectorizations\ImageWithVisitedMarks.h">
-      <Filter>Header Files</Filter>
-    </ClInclude>
-    <ClInclude Include="Core\Vectorizations\VectorizationState.h">
-      <Filter>Header Files</Filter>
-    </ClInclude>
-    <ClInclude Include="Core\Vectorizations\IntersectionPoint.h">
-      <Filter>Header Files</Filter>
-    </ClInclude>
-    <ClInclude Include="Core\Transformations\INoiseRemover.h">
-      <Filter>Header Files</Filter>
-    </ClInclude>
-    <ClInclude Include="Core\Transformations\NoiseRemover.h">
       <Filter>Header Files</Filter>
     </ClInclude>
     <ClInclude Include="Core\Objects\Geometric\AObject.h">
       <Filter>Header Files</Filter>
     </ClInclude>
-    <ClInclude Include="Core\Transformations\ParemetrizedBinarization.h">
+    <ClInclude Include="Core\Transformation\GuoHallSkeletization.h">
       <Filter>Header Files</Filter>
     </ClInclude>
-    <ClInclude Include="Core\Transformations\SingleNoisePointsRemover.h">
+    <ClInclude Include="Core\Transformation\IBinarization.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="Core\Transformation\IGrayscalation.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="Core\Transformation\IInvertation.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="Core\Transformation\INoiseRemover.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="Core\Transformation\Invertation.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="Core\Transformation\ISkeletization.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="Core\Transformation\ITransformation.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="Core\Transformation\MiddleThresholdBinarization.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="Core\Transformation\NoiseRemover.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="Core\Transformation\OtsuBinarization.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="Core\Transformation\ParemetrizedBinarization.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="Core\Transformation\SingleNoisePointsRemover.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="Core\Transformation\YIQGrayscalation.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="Core\Transformation\ZhangSuenSkeletization.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="Core\Vectorization\ImageWithVisitedMarks.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="Core\Vectorization\IntersectionPoint.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="Core\Vectorization\IVectorization.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="Core\Vectorization\Vectorization.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="Core\Vectorization\VectorizationState.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="Core\Vectorization\IntersectionPointsSet.h">
       <Filter>Header Files</Filter>
     </ClInclude>
   </ItemGroup>

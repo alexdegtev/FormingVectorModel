@@ -6,23 +6,23 @@
 #include "Core/IO/Writer.h"
 #include "opencv2/opencv.hpp"
 #include "Core/Objects/Visual/Color.h"
-#include "Core/Transformations/YIQGrayscalation.h"
-#include "Core/Transformations/Invertation.h"
-#include "Core/Transformations/MiddleThresholdBinarization.h"
-#include "Core/Transformations/ZhangSuenSkeletization.h"
-#include "Core/Transformations/GuoHallSkeletization.h"
-#include "Core/Vectorizations/Vectorization.h"
+#include "Core/Transformation/YIQGrayscalation.h"
+#include "Core/Transformation/Invertation.h"
+#include "Core/Transformation/MiddleThresholdBinarization.h"
+#include "Core/Transformation/ZhangSuenSkeletization.h"
+#include "Core/Transformation/GuoHallSkeletization.h"
+#include "Core/Vectorization/Vectorization.h"
 #include "Core/Objects/Geometric/ILine.h"
 #include "Tests/Vectorization/VectorizationTests.h"
-#include "Core/Transformations/NoiseRemover.h"
-#include "Core/Transformations/OtsuBinarization.h"
-#include "Core/Transformations/ParemetrizedBinarization.h"
-#include "Core/Transformations/SingleNoisePointsRemover.h"
+#include "Core/Transformation/NoiseRemover.h"
+#include "Core/Transformation/OtsuBinarization.h"
+#include "Core/Transformation/ParemetrizedBinarization.h"
+#include "Core/Transformation/SingleNoisePointsRemover.h"
 
 void grayscalation(Core::Objects::Visual::IImage* image, Core::IO::Path path, bool write_result = true)
 {
 	std::cout << "grayscalation (YIQGrayscalation)... ";
-	image->transform(new Core::Transformations::YIQGrayscalation);
+	image->transform(new Core::Transformation::YIQGrayscalation);
 
 	if (write_result) {
 		std::cout << "writing...";
@@ -35,7 +35,7 @@ void grayscalation(Core::Objects::Visual::IImage* image, Core::IO::Path path, bo
 void invertation(Core::Objects::Visual::IImage* image, Core::IO::Path path, bool write_result = true)
 {
 	std::cout << "invertation (Invertation)... ";
-	image->transform(new Core::Transformations::Invertation);
+	image->transform(new Core::Transformation::Invertation);
 
 	if (write_result) {
 		std::cout << "writing...";
@@ -48,7 +48,7 @@ void invertation(Core::Objects::Visual::IImage* image, Core::IO::Path path, bool
 void binarization_MiddleThresholdBinarization(Core::Objects::Visual::IImage* image, Core::IO::Path path, bool write_result = true)
 {
 	std::cout << "binarization (MiddleThresholdBinarization)... ";
-	image->transform(new Core::Transformations::MiddleThresholdBinarization);
+	image->transform(new Core::Transformation::MiddleThresholdBinarization);
 
 	if (write_result) {
 		std::cout << "writing...";
@@ -61,7 +61,7 @@ void binarization_MiddleThresholdBinarization(Core::Objects::Visual::IImage* ima
 void binarization_OtsuBinarization(Core::Objects::Visual::IImage* image, Core::IO::Path path, bool write_result = true)
 {
 	std::cout << "binarization (OtsuBinarization)... ";
-	image->transform(new Core::Transformations::OtsuBinarization);
+	image->transform(new Core::Transformation::OtsuBinarization);
 
 	if (write_result) {
 		std::cout << "writing...";
@@ -74,7 +74,7 @@ void binarization_OtsuBinarization(Core::Objects::Visual::IImage* image, Core::I
 void binarization_ParemetrizedBinarization(Core::Objects::Visual::IImage* image, Core::IO::Path path, bool write_result = true)
 {
 	std::cout << "binarization (ParemetrizedBinarization)... ";
-	image->transform(new Core::Transformations::ParemetrizedBinarization(200));
+	image->transform(new Core::Transformation::ParemetrizedBinarization(200));
 
 	if (write_result) {
 		std::cout << "writing...";
@@ -87,7 +87,7 @@ void binarization_ParemetrizedBinarization(Core::Objects::Visual::IImage* image,
 void noiseRemover(Core::Objects::Visual::IImage* image, Core::IO::Path path, bool write_result = true)
 {
 	std::cout << "noise removing (NoiseRemover)... ";
-	image->transform(new Core::Transformations::NoiseRemover);
+	image->transform(new Core::Transformation::NoiseRemover);
 
 	if (write_result) {
 		std::cout << "writing...";
@@ -100,7 +100,7 @@ void noiseRemover(Core::Objects::Visual::IImage* image, Core::IO::Path path, boo
 void singleNoisePointsRemover(Core::Objects::Visual::IImage* image, Core::IO::Path path, bool write_result = true)
 {
 	std::cout << "noise removing (SingleNoisePointsRemover)... ";
-	image->transform(new Core::Transformations::SingleNoisePointsRemover);
+	image->transform(new Core::Transformation::SingleNoisePointsRemover);
 
 	if (write_result) {
 		std::cout << "writing...";
@@ -113,7 +113,7 @@ void singleNoisePointsRemover(Core::Objects::Visual::IImage* image, Core::IO::Pa
 void skeletization_ZhangSuenSkeletization(Core::Objects::Visual::IImage* image, Core::IO::Path path, bool write_result = true)
 {
 	std::cout << "skeletization (ZhangSuenSkeletization)... ";
-	image->transform(new Core::Transformations::ZhangSuenSkeletization);
+	image->transform(new Core::Transformation::ZhangSuenSkeletization);
 
 	if (write_result) {
 		std::cout << "writing...";
@@ -126,7 +126,7 @@ void skeletization_ZhangSuenSkeletization(Core::Objects::Visual::IImage* image, 
 void skeletization_GuoHallSkeletization(Core::Objects::Visual::IImage* image, Core::IO::Path path, bool write_result = true)
 {
 	std::cout << "skeletization (GuoHallSkeletization)... ";
-	image->transform(new Core::Transformations::GuoHallSkeletization);
+	image->transform(new Core::Transformation::GuoHallSkeletization);
 
 	if (write_result) {
 		std::cout << "writing...";
@@ -138,8 +138,8 @@ void skeletization_GuoHallSkeletization(Core::Objects::Visual::IImage* image, Co
 
 std::vector<Core::Objects::Geometric::IObject*> vectorization(Core::Objects::Visual::IImage* image, Core::IO::Path path, bool write_result = true)
 {
-	std::cout << "vectorization ";
-	std::vector<Core::Objects::Geometric::IObject*> result;// = image->vectorize(new Core::Vectorizations::Vectorization);
+	std::cout << "vectorization...";
+	std::vector<Core::Objects::Geometric::IObject*> result = image->vectorize(new Core::Vectorization::Vectorization);
 
 	if (write_result) {
 		std::cout << "writing...";
@@ -188,6 +188,12 @@ int main(int argc, char* argv[])
 
 			//skeletization_ZhangSuenSkeletization(image, path, write_result);
 			skeletization_GuoHallSkeletization(image, path, write_result);
+
+			std::vector<Core::Objects::Geometric::IObject*> objects = ::vectorization(image, path, write_result);
+			for(auto o : objects)
+			{
+				std::cout << o->to_string();
+			}
 
 			std::cout << "end." << std::endl;
 			delete image;

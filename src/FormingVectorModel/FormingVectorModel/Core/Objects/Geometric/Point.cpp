@@ -25,3 +25,8 @@ int Core::Objects::Geometric::Point::y() const
 {
 	return _y;
 }
+
+std::string Core::Objects::Geometric::Point::to_string()
+{
+	return "<point x=\"" + std::to_string(_x) + "\" y=\"" + std::to_string(_y) + "\" />";
+}

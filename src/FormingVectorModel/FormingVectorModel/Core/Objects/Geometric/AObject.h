@@ -12,8 +12,7 @@ namespace Core
 			class AObject : public IObject
 			{
 			public:
-				Vectorizations::IntersectionPoint* intersection_point() const override;
-				void intersection_point(Vectorizations::IntersectionPoint* value) override;
+				virtual ~AObject() { }
 			};
 		}
 	}

@@ -1,0 +1,45 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<drawing>
+	<view type="main">
+		<line id="1" type="main">
+			<point x="0" y="0" />
+			<point x="10" y="10" />
+			<intersections>
+				<point id="1">
+			</intersections>
+		</line>
+		<line id="2" type="main">
+			<point x="0" y="10" />
+			<point x="10" y="0" />
+			<intersections>
+				<point id="1">
+			</intersections>
+		</line>
+	</view>
+</drawing>
+<intersections>
+	<intersectionPoint id="1" x="5" y="5">
+		<objects>
+			<line id="1">
+			<line id="2">
+		</objects>
+	</intersectionPoint>
+</intersections>
+
+
+
+view {
+	type {
+		main, // Один вид
+		front, // Фронтальный
+		side, // Слева
+		top // Сверху
+	}
+}
+
+line {
+	type {
+		visibleContour, // Линия видимого контура
+		invisibleContour // Линия невидимого контура
+	}
+}

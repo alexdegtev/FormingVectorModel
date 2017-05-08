@@ -89,3 +89,8 @@ void Core::Objects::Visual::Pixel::brightness(unsigned char value)
 {
 	_color->brightness(value);
 }
+
+std::string Core::Objects::Visual::Pixel::to_string()
+{
+	return _point->to_string();
+}

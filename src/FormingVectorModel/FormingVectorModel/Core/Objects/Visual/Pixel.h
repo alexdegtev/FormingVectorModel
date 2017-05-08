@@ -35,6 +35,7 @@ namespace Core
 				unsigned char brightness() const override;
 				void brightness(unsigned char value) override;
 
+				std::string to_string() override;
 			private:
 				IPoint* _point;
 				IColor* _color;
