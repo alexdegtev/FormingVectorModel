@@ -144,6 +144,7 @@ std::vector<Core::Objects::Geometric::IObject*> vectorization(Core::Objects::Vis
 	if (write_result) {
 		std::cout << "writing...";
 		Core::IO::Writer::write(Core::IO::Path(path.path_to_file(), path.file_name() + "_out_6_Vectorization", path.file_extention()), image);
+		Core::IO::Writer::write(Core::IO::Path(path.path_to_file(), path.file_name() + "_out_6_Vectorization", "svg"), result, image);
 	}
 
 	std::cout << std::endl;
@@ -190,10 +191,6 @@ int main(int argc, char* argv[])
 			skeletization_GuoHallSkeletization(image, path, write_result);
 
 			std::vector<Core::Objects::Geometric::IObject*> objects = ::vectorization(image, path, write_result);
-			for(auto o : objects)
-			{
-				std::cout << o->to_string();
-			}
 
 			std::cout << "end." << std::endl;
 			delete image;

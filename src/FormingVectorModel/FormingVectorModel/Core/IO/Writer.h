@@ -12,8 +12,13 @@ namespace Core
 		class Writer
 		{
 		public:
-			static void write(std::string path, Objects::Visual::IImage* image);
 			static void write(Path path, Objects::Visual::IImage* image);
+			static void write(Path path, std::vector<Objects::Geometric::IObject*> objects, Objects::Visual::IImage* image);
+
+		private:
+			static void write_raster(std::string path, Objects::Visual::IImage* image);
+			static void write_svg(std::string path, std::vector<Objects::Geometric::IObject*> objects, Objects::Visual::IImage* image);
+			static void write_xml(std::string path, std::vector<Objects::Geometric::IObject*> objects);
 		};
 	}
 }

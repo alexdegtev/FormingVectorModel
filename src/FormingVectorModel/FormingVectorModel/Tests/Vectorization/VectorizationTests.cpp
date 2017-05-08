@@ -402,6 +402,28 @@ bool VectorizationTests::test11()
 	return result;
 }
 
+bool VectorizationTests::test12()
+{
+	Path path("../../../data/vectorization/12.png");
+	IImage* image = Reader::read(path);
+	bool result = false;
+
+
+	std::vector<IObject*> objects = vectorization(image, path);
+
+	// TODO: Add implementation of checking
+	result = true;
+
+
+	for (auto i : objects)
+	{
+		delete i;
+	}
+
+	delete image;
+
+	return result;
+}
 
 
 void VectorizationTests::run_all_tests()
@@ -419,6 +441,7 @@ void VectorizationTests::run_all_tests()
 	std::cout << i++ << ": " << "[ " << (test9() ? "OK" : "FAIL") << " ]" << std::endl;
 	std::cout << i++ << ": " << "[ " << (test10() ? "OK" : "FAIL") << " ]" << std::endl;
 	std::cout << i++ << ": " << "[ " << (test11() ? "OK" : "FAIL") << " ]" << std::endl;
+	std::cout << i++ << ": " << "[ " << (test12() ? "OK" : "FAIL") << " ]" << std::endl;
 
 	std::cout << "VectorizationTests end" << std::endl;
 }

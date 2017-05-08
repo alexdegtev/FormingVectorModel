@@ -75,10 +75,5 @@ std::string Core::Objects::Geometric::Line::to_string()
 		<< "\t" << _end->to_string() << std::endl
 		<< "</line>" << std::endl;
 
-	for(auto i : intersections_)
-	{
-		ss << i->x() << " " << i->y() << std::endl;
-	}
-
 	return ss.str();
 }
