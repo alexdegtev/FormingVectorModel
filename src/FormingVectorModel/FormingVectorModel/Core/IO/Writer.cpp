@@ -44,15 +44,15 @@ void Core::IO::Writer::write_svg(std::string path, std::vector<Objects::Geometri
 	std::ofstream outfile(path);
 
 	std::stringstream str;
-	str << "<svg version=\"1.1\" baseProfile=\"full\" xmlns=\"http://www.w3.org/2000/svg\" width=\"" << image->rows() << "\" height=\"" << image->cols() << "\">" << std::endl;
+	str << "<svg version=\"1.1\" baseProfile=\"full\" xmlns=\"http://www.w3.org/2000/svg\" width=\"" << image->cols() << "\" height=\"" << image->rows() << "\">" << std::endl;
 
 	for (auto o : objects)
 	{
 		Objects::Geometric::ILine* l = (Objects::Geometric::ILine*)o;
 
 		str << "\t"
-			<< "<line x1=\"" << l->begin()->x() << "\" y1=\"" << l->begin()->y() << "\" "
-			<< "x2=\"" << l->end()->x() << "\" y2=\"" << l->end()->y() << "\" "
+			<< "<line x1=\"" << l->begin()->y() << "\" y1=\"" << l->begin()->x() << "\" "
+			<< "x2=\"" << l->end()->y() << "\" y2=\"" << l->end()->x() << "\" "
 			<< "stroke=\"rgb(0,0,0)\" />" << std::endl;
 	}
 
