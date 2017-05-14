@@ -7,7 +7,7 @@ Core::Objects::Geometric::Line::Line() : Line(nullptr, nullptr)
 {
 }
 
-Core::Objects::Geometric::Line::Line(IPoint* begin, IPoint* end) : _begin(new Point(begin)), _end(new Point(end))
+Core::Objects::Geometric::Line::Line(IPoint* begin, IPoint* end) : _begin(new Point(begin)), _end(new Point(end)), type_(Type::visible)
 {
 	if (!_begin)
 		_begin = new Point();
@@ -76,4 +76,14 @@ std::string Core::Objects::Geometric::Line::to_string()
 		<< "</line>" << std::endl;
 
 	return ss.str();
+}
+
+Core::Objects::Geometric::ILine::Type Core::Objects::Geometric::Line::type() const
+{
+	return type_;
+}
+
+void Core::Objects::Geometric::Line::type(Type value)
+{
+	type_ = value;
 }

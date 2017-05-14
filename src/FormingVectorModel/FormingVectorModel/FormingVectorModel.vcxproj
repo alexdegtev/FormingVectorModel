@@ -149,6 +149,7 @@
     <ClCompile Include="Core\Objects\Geometric\Line.cpp" />
     <ClCompile Include="Core\Objects\Geometric\Point.cpp" />
     <ClCompile Include="Core\Objects\Visual\Color.cpp" />
+    <ClCompile Include="Core\Objects\Visual\Drawing.cpp" />
     <ClCompile Include="Core\Objects\Visual\Image.cpp" />
     <ClCompile Include="Core\Objects\Visual\Pixel.cpp" />
     <ClCompile Include="Core\Transformation\GuoHallSkeletization.cpp" />
@@ -180,6 +181,7 @@
     <ClInclude Include="Core\Objects\Geometric\Line.h" />
     <ClInclude Include="Core\Objects\Geometric\Point.h" />
     <ClInclude Include="Core\Objects\Visual\Color.h" />
+    <ClInclude Include="Core\Objects\Visual\Drawing.h" />
     <ClInclude Include="Core\Objects\Visual\IColor.h" />
     <ClInclude Include="Core\Objects\Visual\IImage.h" />
     <ClInclude Include="Core\Objects\Visual\Image.h" />

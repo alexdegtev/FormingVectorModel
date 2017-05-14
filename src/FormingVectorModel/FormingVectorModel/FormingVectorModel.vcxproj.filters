@@ -93,6 +93,9 @@
     <ClCompile Include="Core\Vectorization\IntersectionPointsSet.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
+    <ClCompile Include="Core\Objects\Visual\Drawing.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="Core\Objects\Geometric\IObject.h">
@@ -207,6 +210,9 @@
       <Filter>Header Files</Filter>
     </ClInclude>
     <ClInclude Include="Core\Vectorization\IntersectionPointsSet.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="Core\Objects\Visual\Drawing.h">
       <Filter>Header Files</Filter>
     </ClInclude>
   </ItemGroup>

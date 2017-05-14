@@ -5,6 +5,7 @@
 #include <fstream>
 #include "../Objects/Visual/IImage.h"
 #include "../Objects/Geometric/ILine.h"
+#include <iterator>
 
 void Core::IO::Writer::write(Path path, Objects::Visual::IImage* image)
 {
@@ -57,6 +58,44 @@ void Core::IO::Writer::write_svg(std::string path, std::vector<Objects::Geometri
 	}
 
 	str << "</svg>" << std::endl;
+
+	outfile << str.str() << std::endl;
+
+	outfile.close();
+}
+
+void Core::IO::Writer::write_xml(std::string path, Objects::Visual::Drawing* drawing)
+{
+	std::ofstream outfile(path);
+	int line_id = 0;
+	int point_id = 0;
+
+	std::stringstream str;
+	str << "<?xml version=\"1.0\"?>" << std::endl
+		<< "<Model xmlns:xsi=\"http://www.w3.org/2001/XMLSchema-instance\" xmlns:xsd=\"http://www.w3.org/2001/XMLSchema\">" << std::endl
+		<< "	<proections>" << std::endl;
+	
+
+	str << "		<proection type=\"front\">" << std::endl
+		<< "			<lines>" << std::endl;
+
+	for(auto l : drawing->front_view())
+	{
+		str << "			<line id=\"" << line_id++ << "\" type=\"visible\">" << std::endl
+			<< "				<points>" << std::endl
+			<< "					<point id=\"" << point_id++ << "\" x=\"0\" y=\"" << l->begin()->x() << "\" z=\"" << l->begin()->y() << "\" />" << std::endl
+			<< "					<point id=\"" << point_id++ << "\" x=\"0\" y=\"" << l->end()->x() << "\" z=\"" << l->end()->y() << "\" />" << std::endl
+			<< "				</points>" << std::endl
+			<< "			</line>" << std::endl;
+	}
+
+	str << "			</lines>" << std::endl
+		<< "		</proection>" << std::endl;
+
+
+
+	str << "	</proections>" << std::endl
+		<< "</Model>" << std::endl;
 
 	outfile << str.str() << std::endl;
 

@@ -12,12 +12,20 @@ namespace Core
 			class ILine : public AObject
 			{
 			public:
+				enum Type
+				{
+					visible,
+					hidden
+				};
+
 				virtual ~ILine()
 				{
 				}
 
 				virtual IPoint* begin() const = 0;
 				virtual IPoint* end() const = 0;
+				virtual Type type() const = 0;
+				virtual void type(Type value) = 0;
 			};
 
 			inline bool operator==(const ILine& lhs, const ILine& rhs)

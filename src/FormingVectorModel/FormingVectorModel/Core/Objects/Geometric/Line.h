@@ -28,10 +28,14 @@ namespace Core
 
 				std::string to_string() override;
 
+				Type type() const override;
+				void type(Type value) override;
+
 			private:
 				IPoint* _begin;
 				IPoint* _end;
 				std::vector<Vectorization::IntersectionPoint*> intersections_;
+				Type type_;
 			};
 		}
 	}
