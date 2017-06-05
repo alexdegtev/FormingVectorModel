@@ -1,0 +1,35 @@
+<?xml version="1.0"?>
+<Model xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema">
+  <proections>
+    <proection type="front">
+      <lines>
+        <line type="visible" id="1">
+          <points>
+            <point x="0" y="0" z="0" id="1" />
+            <point x="10" y="10" z="0" id="2" />
+          </points>
+          <intersertion_points>
+            <point id="1" />
+          </intersertion_points>
+        </line>
+        <line type="visible" id="2">
+          <points>
+            <point x="10" y="0" z="0" id="3" />
+            <point x="0" y="10" z="0" id="4" />
+          </points>
+          <intersertion_points>
+            <point id="1" />
+          </intersertion_points>
+        </line>
+      </lines>
+    </proection>
+  </proections>
+  <intersections>
+    <intersertion_point x="5" y="5" z="0">
+      <objects>
+        <line id="1" />
+        <line id="2" />
+      </objects>
+    </intersertion_point>
+  </intersections>
+</Model>
