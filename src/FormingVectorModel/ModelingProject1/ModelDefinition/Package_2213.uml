@@ -1,0 +1,38 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<package xmlns:dm0="http://schemas.microsoft.com/VisualStudio/2008/DslTools/Core" xmlns:dm1="http://schemas.microsoft.com/dsltools/Kernel" xmlns:dm2="http://schemas.microsoft.com/dsltools/Component" xmlns:dm3="http://schemas.microsoft.com/dsltools/Activity" xmlns:dm4="http://schemas.microsoft.com/dsltools/UseCase" xmlns:dm5="http://schemas.microsoft.com/dsltools/Interaction" xmlns:dm6="http://schemas.microsoft.com/dsltools/UmlModelLibrary" xmlns:dm7="http://schemas.microsoft.com/dsltools/UmlDiagrams" xmlns:dm8="http://schemas.microsoft.com/dsltools/LogicalClassDesigner"
+  dslVersion="1.0.0.0"
+  Id="bb707eaf-7f3b-493d-b6a8-6995ac72c993"
+  name="Core" xmlns="http://schemas.microsoft.com/dsltools/ModelStore">
+  <packagedElements>
+    <packageHasNamedElement>
+      <packageMoniker
+        Id="01d78761-9000-4c9a-aa81-2f4ae779b21a"
+        LastKnownName="Common"
+        LastKnownLocation="Package_2214.uml" />
+    </packageHasNamedElement>
+    <packageHasNamedElement>
+      <packageMoniker
+        Id="396f31a1-9e49-4aba-bc66-06c892cce730"
+        LastKnownName="IO"
+        LastKnownLocation="Package1_2214.uml" />
+    </packageHasNamedElement>
+    <packageHasNamedElement>
+      <packageMoniker
+        Id="5d66b534-b8c7-46ee-a2c3-e4bcc16b3473"
+        LastKnownName="Objects"
+        LastKnownLocation="Package2_2214.uml" />
+    </packageHasNamedElement>
+    <packageHasNamedElement>
+      <packageMoniker
+        Id="7605f1a8-bc3f-468a-b844-fc2a6d6ea439"
+        LastKnownName="Transformation"
+        LastKnownLocation="Package3_2214.uml" />
+    </packageHasNamedElement>
+    <packageHasNamedElement>
+      <packageMoniker
+        Id="52ed692a-c335-4666-a020-f30a66424b80"
+        LastKnownName="Vectorization"
+        LastKnownLocation="Package4_2214.uml" />
+    </packageHasNamedElement>
+  </packagedElements>
+</package>

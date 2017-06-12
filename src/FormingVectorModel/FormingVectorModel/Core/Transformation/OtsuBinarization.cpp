@@ -2,12 +2,15 @@
 #include "../Objects/Visual/IImage.h"
 #include "../Objects/Visual/Color.h"
 #include <climits>
+#include <iostream>
 
 void Core::Transformation::OtsuBinarization::execute(Objects::Visual::IImage* image)
 {
 	this->image = image;
 
 	unsigned char t = threshold();
+	std::cout << "threshold: " << (int)t << std::endl;
+	system("pause");
 
 	for (int i = 0; i < image->rows(); i++)
 	{

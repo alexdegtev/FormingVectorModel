@@ -24,6 +24,12 @@
         LastKnownName="Core"
         LastKnownLocation="Package_2029.uml" />
     </packageHasNamedElement>
+    <packageHasNamedElement>
+      <packageMoniker
+        Id="bb707eaf-7f3b-493d-b6a8-6995ac72c993"
+        LastKnownName="Core"
+        LastKnownLocation="Package_2213.uml" />
+    </packageHasNamedElement>
   </packagedElements>
   <primitiveType
     Id="220a3521-e091-4221-bae9-3ef9018e845c"
