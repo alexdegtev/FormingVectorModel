@@ -201,8 +201,9 @@ int main(int argc, char* argv[])
 				}
 				else if (strcmp(argv[i], "vectorization") == 0)
 				{
+					i++;
 					std::vector<Core::Objects::Geometric::IObject*> objects = ::vectorization(image, Core::IO::Path(path.path_to_file(), path.file_name() + "_out_" + std::to_string(command_counter++) + "_Vectorization", path.file_extention()), write_intermediate_results);
-					Core::IO::Writer::write(Core::IO::Path(path.path_to_file(), path.file_name() + "_out_" + std::to_string(command_counter++) + "_Vectorization", "svg"), objects, image);
+					Core::IO::Writer::write(Core::IO::Path(path.path_to_file(), path.file_name() + "_out_" + std::to_string(command_counter++) + "_Vectorization", argv[i]), objects, image);
 				}
 			}
 

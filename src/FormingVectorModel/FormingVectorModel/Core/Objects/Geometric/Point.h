@@ -22,6 +22,8 @@ namespace Core
 
 				std::string to_string() override;
 
+				std::vector<Vectorization::IntersectionPoint*> get_intersections() { std::vector<Vectorization::IntersectionPoint*> s; return s; }
+
 			private:
 				int _x;
 				int _y;

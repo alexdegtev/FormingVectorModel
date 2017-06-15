@@ -7,20 +7,22 @@ namespace Core
 {
 	namespace Vectorization
 	{
-		class IntersectionPoint : public Objects::Geometric::IPoint
+		class IntersectionPoint //: //public Objects::Geometric::IPoint
 		{
 		public:
-			IntersectionPoint(IPoint *point);
+			IntersectionPoint(Objects::Geometric::IPoint *point);
 
-			int x() const override;
-			int y() const override;
-			std::vector<IObject*> intersected_objects() const;
-			void add_object(IObject *object);
+			int x() const ;
+			int y() const ;
+			std::vector<Objects::Geometric::IObject*> intersected_objects() const;
+			void add_object(Objects::Geometric::IObject *object);
 
-			std::string to_string() override;
+			std::string to_string() ;
+
+			std::vector<IntersectionPoint*> get_intersections() ;
 		private:
-			IPoint *_point;
-			std::vector<IObject*> _intersected_objects;
+			Objects::Geometric::IPoint *_point;
+			std::vector<Objects::Geometric::IObject*> _intersected_objects;
 		};
 	}
 }

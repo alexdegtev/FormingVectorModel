@@ -9,8 +9,6 @@ void Core::Transformation::OtsuBinarization::execute(Objects::Visual::IImage* im
 	this->image = image;
 
 	unsigned char t = threshold();
-	std::cout << "threshold: " << (int)t << std::endl;
-	system("pause");
 
 	for (int i = 0; i < image->rows(); i++)
 	{

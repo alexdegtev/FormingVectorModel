@@ -2,6 +2,7 @@
 #define CORE_OBJECTS_GEOMETRIC_IOBJECT_H
 
 #include <string>
+#include <vector>
 
 namespace Core
 {
@@ -23,6 +24,7 @@ namespace Core
 				virtual ~IObject() { }
 
 				virtual std::string to_string() = 0;
+				virtual std::vector<Vectorization::IntersectionPoint*> get_intersections() = 0;
 			};
 		}
 	}

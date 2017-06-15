@@ -6,6 +6,8 @@
 #include "../Objects/Visual/IImage.h"
 #include "../Objects/Geometric/ILine.h"
 #include <iterator>
+#include <set>
+#include "../Vectorization/IntersectionPoint.h"
 
 void Core::IO::Writer::write(Path path, Objects::Visual::IImage* image)
 {
@@ -104,5 +106,66 @@ void Core::IO::Writer::write_xml(std::string path, Objects::Visual::Drawing* dra
 
 void Core::IO::Writer::write_xml(std::string path, std::vector<Objects::Geometric::IObject*> objects)
 {
+	std::ofstream outfile(path);
 
+	std::set<Vectorization::IntersectionPoint*> all_intersections_set;
+
+	for (auto object : objects)
+	{
+		for(auto intersection : object->get_intersections())
+		{
+			all_intersections_set.insert(intersection);
+		}
+	}
+
+	std::stringstream str;
+	str << "<?xml version=\"1.0\"?>\n";
+	str << "<Model xmlns:xsi=\"http://www.w3.org/2001/XMLSchema-instance\" xmlns:xsd=\"http://www.w3.org/2001/XMLSchema\">\n";
+	str << "  <proections>\n";
+	str << "    <proection type=\"front\">\n";
+	str << "      <lines>\n";
+
+	int point_id = 1;
+	for(auto object : objects)
+	{
+		Objects::Geometric::ILine* l = (Objects::Geometric::ILine*)object;
+
+		str << "        <line type=\"visible\" id=\"" << (int)object << "\">\n";
+		str << "          <points>\n";
+		str << "			<point id=\"" << point_id++ << "\" x=\"0\" y=\"" << l->begin()->x() << "\" z=\"" << l->begin()->y() << "\" />" << std::endl;
+		str << "			<point id=\"" << point_id++ << "\" x=\"0\" y=\"" << l->end()->x() << "\" z=\"" << l->end()->y() << "\" />" << std::endl;
+		str << "          </points>\n";
+		str << "          <intersertion_points>\n";
+		for(auto i : l->get_intersections())
+		{
+			str << "            <point id=\"" << (int) i << "\" />\n";
+		}
+		str << "          </intersertion_points>\n";
+		str << "        </line>\n";
+	}
+	str << "        </line>\n";
+	str << "      </lines>\n";
+	str << "    </proection>\n";
+	str << "  </proections>\n";
+
+	str << "  <intersections>\n";
+	for (auto i : all_intersections_set)
+	{
+		str << "    <intersertion_point id=\"" << (int) i << "\" x=\"" << i->x() << "\" y=\"" << i->y() << "\" z=\"0\">\n";
+		str << "      <objects>\n";
+
+		for(auto o : i->intersected_objects())
+		{
+			str << "        <line id=\"" << (int)o << "\" />\n";
+		}
+
+		str << "      </objects>\n";
+		str << "    </intersertion_point>\n";
+
+	}
+	str << "  </intersections>\n";
+	str << "</Model>\n";
+	outfile << str.str() << std::endl;
+
+	outfile.close();
 }

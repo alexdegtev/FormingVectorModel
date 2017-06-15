@@ -31,6 +31,8 @@ namespace Core
 				Type type() const override;
 				void type(Type value) override;
 
+				std::vector<Vectorization::IntersectionPoint*> get_intersections() { return intersections_; }
+
 			private:
 				IPoint* _begin;
 				IPoint* _end;
